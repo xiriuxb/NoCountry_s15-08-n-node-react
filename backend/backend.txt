@@ -1,0 +1,5 @@
+Tareas
+
+- Definir que patrones utilizar
+- Elegir la BBDD, relacion o no relacional (en el caso de ser no relacional, cambiamos de ORM)
+- Realizar la estructura de Carpetas de acuerdo al patron elegido

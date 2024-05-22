@@ -1,6 +1,8 @@
 import CardHome from "../../components/cardHome/CardHome";
+// import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/variants";
 const HeroPage = () => {
-
   const imgUrl =
     "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";
   const imgUrl1 =
@@ -14,30 +16,64 @@ const HeroPage = () => {
         <article className="w-full h-[60%] flex">
           <section className=" w-1/3"></section>
           <section className=" w-2/3 pr-20 py-8 flex flex-col items-start justify-center">
-            <h1 className="font-poetsen text-5xl text-left font-bold">
+            {/* <motion.h1
+              variants={fadeIn("up", 0.3)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+              className="text-[50px] font-bold leading-[0.8] lg:text-[100px]"
+            >
+              GERMAN <span>RAVAROTTO </span>
+            </motion.h1> */}
+            <motion.h1
+              variants={fadeIn("left", 0.5)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+              className="font-poetsen text-5xl text-left font-bold"
+            >
               El contacto con la naturaleza
               <br />
               es la clave a la paz de uno mismo
-            </h1>
-            <button className="btn btn-outline btn-secondary mt-4">
+            </motion.h1>
+            <motion.button
+              variants={fadeIn("left", 0.7)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+              className="btn  btn-secondary mt-4"
+            >
               Unete a la comunidad de pescadores
-            </button>
+            </motion.button>
           </section>
         </article>
         <footer className=" w-full h-[40%] flex justify-start px-20 py-6  ">
-          <div className="w-64 h-full  mr-8 ">
+          <motion.div
+            variants={fadeIn("left", 1.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+            className="w-64 h-full  mr-8 "
+          >
             <CardHome
               img={imgUrl}
               title="Torneo"
               text="Hermosos ejemplares de peces "
             />
-          </div>
-          <div className="w-64 h-full ">
-            <CardHome img={imgUrl1} 
-            title="Campings" 
-            text="Lista de nuestros mejores campings en la zonas del Parana" 
+          </motion.div>
+          <motion.div
+            variants={fadeIn("left", 1.5)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+            className="w-64 h-full "
+          >
+            <CardHome
+              img={imgUrl1}
+              title="Campings"
+              text="Lista de nuestros mejores campings en la zonas del Parana"
             />
-          </div>
+          </motion.div>
         </footer>
       </div>
     </main>

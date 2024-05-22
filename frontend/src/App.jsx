@@ -1,9 +1,10 @@
 import { FaFishFins } from "react-icons/fa6";
+import UserSignUp from "./components/userSignUp/UserSignUp";
 
 export default function App() {
   return (
     <>
-      <h1 className="font-poetsen text-3xl text-red-900 hover:text-blue-800 font-bold underline">
+      {/* <h1 className="font-poetsen text-3xl text-red-900 hover:text-blue-800 font-bold underline">
         FishSeason!
       </h1>
       <FaFishFins />
@@ -22,7 +23,8 @@ export default function App() {
             <button className="btn btn-secondary">Buy Now</button>
           </div>
         </div>
-      </div>
+      </div> */}
+<UserSignUp />
     </>
   );
 }

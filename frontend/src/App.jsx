@@ -1,6 +1,4 @@
 
-
-
 import HeroPage from "./views/home/HeroPage";
 
 

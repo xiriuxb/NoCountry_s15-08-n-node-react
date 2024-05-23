@@ -10,6 +10,21 @@ export default {
       fontFamily: {
         poetsen: ["Poetsen One", "sans-serif"],
       },
+      backdropBlur: {
+        xs: "2px",
+      },
+      keyframes: {
+        enterFromRight: {
+          "0%": { left: "calc(100vw + 2rem)" },
+          "100%": { left: "0" },
+        },
+      },
+      animation: {
+        heroHorizontalCard: 'enterFromRight ease-in-out forwards',
+      },
+      boxShadow:{
+        personal: "0px 4px 48px 0px rgba(0,0,0,0.75);"
+      }
     },
   },
   plugins: [require("daisyui")],

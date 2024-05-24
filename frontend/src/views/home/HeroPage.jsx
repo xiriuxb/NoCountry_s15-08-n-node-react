@@ -2,6 +2,7 @@ import CardHome from "../../components/cardHome/CardHome";
 // import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
+import Navbar from "../../components/Navbar";
 const HeroPage = () => {
   const imgUrl =
     "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";
@@ -9,28 +10,19 @@ const HeroPage = () => {
     "https://www.nps.gov/subjects/fishing/images/27374286534_f699a7a8e3_o.jpg?maxwidth=1300&autorotate=false&quality=78&format=webp";
   return (
     <main className="w-full bg-fondo bg-cover min-h-screen text-white flex flex-col ">
-      <header className="bg-gray-500/30 w-full h-[80px] mb-4">
-        {/* COLOCAR NAVBAR */}
+      <header className=" w-full h-[80px] mb-4">
+        <Navbar/>
       </header>
       <div className="w-full h-[85vh] flex flex-col items-center justify-between ">
         <article className="w-full h-[60%] flex">
           <section className=" w-1/3"></section>
           <section className=" w-2/3 pr-20 py-8 flex flex-col items-start justify-center">
-            {/* <motion.h1
-              variants={fadeIn("up", 0.3)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.7 }}
-              className="text-[50px] font-bold leading-[0.8] lg:text-[100px]"
-            >
-              GERMAN <span>RAVAROTTO </span>
-            </motion.h1> */}
             <motion.h1
               variants={fadeIn("left", 0.5)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="font-poetsen text-5xl text-left font-bold"
+              className="font-playfair text-5xl text-left font-bold"
             >
               El contacto con la naturaleza
               <br />
@@ -41,7 +33,7 @@ const HeroPage = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="btn  btn-secondary mt-4"
+              className="btn  btn-secondary mt-4 font-playfair text-xl"
             >
               Unete a la comunidad de pescadores
             </motion.button>

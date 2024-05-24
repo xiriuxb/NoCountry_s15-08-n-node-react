@@ -7,10 +7,10 @@ const CardHome = ({ img, text, title }) => {
         <img className="w-full h-full object-cover" src={img} alt="Shoes" />
       </figure>
       <div className="card-body w-full h-[160px] p-2">
-        <h2 className="card-title">{title}</h2>
-        <p>{text}</p>
+        <h2 className="card-title font-playfair text-xl">{title}</h2>
+        <p className="">{text}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-outline">Ver mas..</button>
+          <button className="btn btn-outline font-playfair text-white">Ver mas..</button>
         </div>
       </div>
     </div>

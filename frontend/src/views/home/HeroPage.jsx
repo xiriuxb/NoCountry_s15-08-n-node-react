@@ -10,7 +10,7 @@ const HeroPage = () => {
   return (
     <main className="w-full bg-fondo bg-cover min-h-screen text-white flex flex-col ">
       <header className="bg-gray-500/30 w-full h-[80px] mb-4">
-        {/* COLOCAR NAVBAR */}
+        {/* {<NavBar/>} */}
       </header>
       <div className="w-full h-[85vh] flex flex-col items-center justify-between ">
         <article className="w-full h-[60%] flex">

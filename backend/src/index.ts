@@ -1,20 +1,9 @@
-import express from "express";
-import Router from "./routes/router";
+import { app } from './app/App';
+import { connection } from './database/db';
+const port = process.env.PORT || 3000;
 
-export const initApp = () => {
-    const app = express();
-    const port = process.env.PORT || 3000; 
+connection();
 
-    //middleware
-    app.use(express.json());
-
-    //conexion a la BD
-
-
-    //ruta principal
-    app.use("/",Router);
-
-    //servidor
-    app.listen(port, () => {console.log(`Servidor ejecutandose en el puerto ${port}.`)})
-}
-
+app.listen(port, () => {
+    console.log(`Servidor ejecutándose en el puerto ${port}.`);
+});

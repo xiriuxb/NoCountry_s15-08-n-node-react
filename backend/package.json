@@ -5,9 +5,9 @@
     "main": "build/index.js",
     "scripts": {
         "start": "node build/index.js",
-        "dev": "ts-node-dev --respawn --ignore-watch node_modules app.ts",
+        "dev": "ts-node-dev -r tsconfig-paths/register --respawn --ignore-watch node_modules app.ts",
         "lint": "eslint . --ext .ts",
-        "build": "tsc"
+        "build": "tsc && tsc-alias -p tsconfig.json"
     },
     "keywords": [],
     "author": "c15-08-n",
@@ -39,6 +39,8 @@
         "prettier": "^3.2.5",
         "sequelize-typescript": "^2.1.6",
         "ts-node-dev": "^2.0.0",
+        "tsc-alias": "^1.8.10",
+        "tsconfig-paths": "^4.2.0",
         "typescript": "^5.4.5",
         "zod": "^3.23.8"
     }

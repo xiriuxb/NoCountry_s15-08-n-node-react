@@ -1,6 +1,6 @@
-import { Table, Model, DataType } from 'sequelize-typescript';
-import { sequelize } from '../../../database/db';
-import { Role } from '../../../utils/types';
+import { Model, DataType } from 'sequelize-typescript';
+import { sequelize } from '@database/db';
+import { Role } from '@utils/types';
 
 export default class UserModel extends Model {
     public id_user!: number;

@@ -1,22 +1,28 @@
 {
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "standard-with-typescript",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "eslint:recommended"
-  ],
-  "plugins": ["@typescript-eslint", "prettier", "import"],
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "rules": {
-    "prettier/prettier": "error",
-    "@typescript-eslint/no-misused-promises": "off"
-  }
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
+    "extends": [
+        "standard-with-typescript",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "eslint:recommended"
+    ],
+    "plugins": ["@typescript-eslint", "prettier", "import"],
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./",
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "@typescript-eslint/no-misused-promises": "off"
+    }
 }

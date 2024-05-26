@@ -1,8 +1,8 @@
 import { Table, Model, DataType } from 'sequelize-typescript';
-import { sequelize } from '../../../database/db';
-import UserModel from '../../tableUser/model/User.model';
-import PublicationModel from '../../tablePublication/Model/Publication.model';
-import { Expertise } from '../../../utils/types';
+import { sequelize } from '@database/db';
+import UserModel from '@modules/tableUser/model/User.model';
+import PublicationModel from '@modules/tablePublication/Model/Publication.model';
+import { Expertise } from '@utils/types';
 
 export default class FisherModel extends Model {
     public id_fisher!: number;

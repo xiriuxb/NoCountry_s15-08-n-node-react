@@ -1,6 +1,6 @@
-import { Table, Model, DataType } from 'sequelize-typescript';
-import { sequelize } from '../../../database/db';
-import UserModel from '../../tableUser/model/User.model';
+import { Model, DataType } from 'sequelize-typescript';
+import { sequelize } from '@database/db';
+import UserModel from '@modules/tableUser/model/User.model';
 
 export default class PublicationModel extends Model {
     public id_publication!: number;

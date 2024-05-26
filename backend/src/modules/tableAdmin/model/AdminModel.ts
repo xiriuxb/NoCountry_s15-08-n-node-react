@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../database/db';
+import { sequelize } from '@database/db';
 
 class Admin extends Model {}
 

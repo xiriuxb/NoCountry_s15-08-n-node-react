@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const HomeLayout = () => {
   return (
     <>
-      <header className=" w-full h-[80px] mb-4">
+      <header className="text-white w-full h-[80px] absolute">
         <Navbar />
       </header>
       <Outlet />

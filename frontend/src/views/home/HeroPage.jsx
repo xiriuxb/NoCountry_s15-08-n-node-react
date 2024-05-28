@@ -9,7 +9,7 @@ const HeroPage = () => {
   const imgUrl1 =
     "https://www.nps.gov/subjects/fishing/images/27374286534_f699a7a8e3_o.jpg?maxwidth=1300&autorotate=false&quality=78&format=webp";
   return (
-    <main className="w-full bg-fondo bg-cover min-h-screen text-white flex flex-col ">
+    <main className="w-full bg-fondo bg-cover min-h-screen text-white flex flex-col pt-20">
       <div className="w-full h-[85vh] flex flex-col items-center justify-between ">
         <article className="w-full h-[60%] flex">
           <section className=" w-1/3"></section>

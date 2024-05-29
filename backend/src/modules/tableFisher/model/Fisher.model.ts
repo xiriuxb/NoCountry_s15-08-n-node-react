@@ -14,6 +14,7 @@ FisherModel.init(
     {
         id_user: {
             type: DataType.INTEGER,
+            primaryKey: true,
             allowNull: false
         },
         address: {

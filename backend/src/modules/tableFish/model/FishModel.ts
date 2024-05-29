@@ -1,33 +1,33 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '@database/db';
 
-class Fish extends Model {}
+class FishModel extends Model {}
 
-Fish.init(
+FishModel.init(
     {
-        idPez: {
+        id_fish: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        nombreEspecie: {
+        species_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        nombreCientifico: {
+        scientific_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        estacion: {
+        season: {
             type: DataTypes.ENUM,
             allowNull: false
         },
-        peso: {
+        weight: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        importanciaPescaDeportiva: {
+        importance_sport_fishing: {
             type: DataTypes.STRING,
             allowNull: false
         }
@@ -37,10 +37,10 @@ Fish.init(
         freezeTableName: true,
         createdAt: false,
         timestamps: false,
-        tableName: 'Pez'
+        tableName: 'fish'
     }
 );
 
 /* ver los tipos ENUM y Crear valores iniciales (3 PECES)*/
 
-export default Fish;
+export default FishModel;

@@ -1,6 +1,6 @@
 import { Table, Model, DataType } from 'sequelize-typescript';
 import { sequelize } from '@database/db';
-import UserModel from '@modules/tableUser/model/User.model';
+import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
 export default class PointInterestModel extends Model {
     public id_point_interest!: number;
@@ -66,4 +66,7 @@ PointInterestModel.init(
     }
 );
 
-PointInterestModel.belongsTo(UserModel, { foreignKey: 'id_user' });
+PointInterestModel.belongsTo(AdminModel, { 
+    foreignKey: 'id_user',
+    targetKey: 'id_user' 
+});

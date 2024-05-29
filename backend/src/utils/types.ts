@@ -13,3 +13,11 @@ export enum Status {
     ACTIVE = 'active',
     INACTIVE = 'inactive'
 }
+
+export interface Tips {
+    id_tip: number,
+    id_user: number,
+    id_fish: number,
+    zone: string,
+    description: string
+}

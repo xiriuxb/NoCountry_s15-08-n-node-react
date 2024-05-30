@@ -1,21 +1,23 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '@database/db';
+import EventModel from '@/modules/tableEvent/model/EventModel';
+import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 
-class Competitor extends Model {}
+class CompetitorModel extends Model {}
 
-Competitor.init(
+CompetitorModel.init(
     {
-        idParticipante: {
+        id_competitor: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        idEvento: {
+        id_event: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        idUsuario: {
+        id_user: {
             type: DataTypes.INTEGER,
             allowNull: false
         }
@@ -25,10 +27,22 @@ Competitor.init(
         freezeTableName: true,
         createdAt: false,
         timestamps: false,
-        tableName: 'Participante'
+        tableName: 'Competitor'
     }
 );
 
 /* Establecer relacion con las tablas PESCADOR y EVENTO */
 
-export default Competitor;
+export default CompetitorModel;
+
+/* puede ser un BELONGTOMANY() */
+
+EventModel.belongsToMany(FisherModel, {
+    through: CompetitorModel, 
+    foreignKey: 'id_event'
+});
+
+FisherModel.belongsToMany(EventModel, {
+    through: CompetitorModel, 
+    foreignKey: 'id_user'
+});

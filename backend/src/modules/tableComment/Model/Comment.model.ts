@@ -1,7 +1,8 @@
 import { Table, Model, DataType } from 'sequelize-typescript';
 import { sequelize } from '@database/db';
-import UserModel from '@modules/tableUser/model/User.model';
+import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 import PublicationModel from '@modules/tablePublication/Model/Publication.model';
+
 
 export default class CommentModel extends Model {
     public id_comment!: number;
@@ -44,5 +45,11 @@ CommentModel.init(
     }
 );
 
-CommentModel.belongsTo(UserModel, { foreignKey: 'id_user' });
-CommentModel.belongsTo(PublicationModel, { foreignKey: 'id_publication' });
+CommentModel.belongsTo(AdminModel, { 
+    foreignKey: 'id_user', 
+    targetKey: 'id_user' 
+});
+CommentModel.belongsTo(PublicationModel, { 
+    foreignKey: 'id_publication', 
+    targetKey: 'id_publication' 
+});

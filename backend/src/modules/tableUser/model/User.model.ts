@@ -1,6 +1,8 @@
 import { Model, DataType } from 'sequelize-typescript';
 import { sequelize } from '@database/db';
 import { Role } from '@utils/types';
+import FisherModel from '@/modules/tableFisher/model/Fisher.model';
+import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
 export default class UserModel extends Model {
     public id_user!: number;
@@ -42,3 +44,6 @@ UserModel.init(
     },
     { sequelize, freezeTableName: true, createdAt: false }
 );
+
+UserModel.hasOne(AdminModel, {foreignKey: 'id_user', sourceKey: 'id_user'})
+UserModel.hasMany(FisherModel, {foreignKey: 'id_user', sourceKey: 'id_user'})

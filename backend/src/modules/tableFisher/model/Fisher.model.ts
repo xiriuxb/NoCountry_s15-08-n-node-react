@@ -1,7 +1,6 @@
 import { Table, Model, DataType } from 'sequelize-typescript';
 import { sequelize } from '@database/db';
-import UserModel from '@modules/tableUser/model/User.model';
-import PublicationModel from '@modules/tablePublication/Model/Publication.model';
+import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 import { Expertise } from '@utils/types';
 
 export default class FisherModel extends Model {
@@ -13,13 +12,9 @@ export default class FisherModel extends Model {
 
 FisherModel.init(
     {
-        id_fisher: {
-            type: DataType.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         id_user: {
             type: DataType.INTEGER,
+            primaryKey: true,
             allowNull: false
         },
         address: {
@@ -34,17 +29,12 @@ FisherModel.init(
     {
         sequelize,
         freezeTableName: true,
-        tableName: 'fishers',
+        tableName: 'fisher',
         timestamps: false
     }
 );
 
-FisherModel.belongsTo(UserModel, {
+FisherModel.belongsTo(AdminModel, {
     foreignKey: 'id_user',
     targetKey: 'id_user'
-});
-
-FisherModel.belongsTo(PublicationModel, {
-    foreignKey: 'id_publication',
-    targetKey: 'id_publication'
 });

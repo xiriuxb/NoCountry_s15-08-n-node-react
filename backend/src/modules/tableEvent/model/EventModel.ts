@@ -1,33 +1,35 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '@database/db';
+import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
+import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
-class Event extends Model {}
+class EventModel extends Model {}
 
-Event.init(
+EventModel.init(
     {
-        idEvento: {
+        id_event: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        idPuntoInteres: {
+        id_point_interest: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        idUsuario: {
+        id_user: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        nombre: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        edicion: {
+        edition: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        descripcion: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -35,19 +37,19 @@ Event.init(
             type: DataTypes.ENUM,
             allowNull: false
         },
-        fecha: {
+        date: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        estado: {
+        state: {
             type: DataTypes.ENUM,
             allowNull: false
         },
-        horario: {
+        schedule: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        auspiciante: {
+        sponsor: {
             type: DataTypes.STRING,
             allowNull: true
         }
@@ -57,11 +59,21 @@ Event.init(
         freezeTableName: true,
         createdAt: false,
         timestamps: false,
-        tableName: 'Evento'
+        tableName: 'event'
     }
 );
 
 /* Establecer relacion con las tablas PUNTO DE INTERES y ADMINISTRADOR */
 /* ver los tipos ENUM y DATE*/
 
-export default Event;
+export default EventModel;
+
+EventModel.belongsTo(PointInterestModel, {
+    foreignKey: 'id_point_interest',
+    targetKey: 'id_point_interest'
+});
+
+EventModel.belongsTo(AdminModel, {
+    foreignKey: 'id_user',
+    targetKey: 'id_user'
+})

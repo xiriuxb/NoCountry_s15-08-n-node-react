@@ -1,6 +1,8 @@
 import { Model, DataType } from 'sequelize-typescript';
 import { sequelize } from '@database/db';
-import UserModel from '@modules/tableUser/model/User.model';
+import FisherModel from '@/modules/tableFisher/model/Fisher.model';
+import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
+
 
 export default class PublicationModel extends Model {
     public id_publication!: number;
@@ -55,12 +57,17 @@ PublicationModel.init(
     {
         sequelize,
         freezeTableName: true,
-        tableName: 'publications',
+        tableName: 'publication',
         timestamps: false
     }
 );
 
-PublicationModel.hasOne(UserModel, {
+PublicationModel.belongsTo(FisherModel, {
     foreignKey: 'id_user',
-    sourceKey: 'id_user'
+    targetKey: 'id_user'
 });
+
+PublicationModel.belongsTo(PointInterestModel, {
+    foreignKey: 'id_point_interest',
+    targetKey: 'id_point_interest'
+})

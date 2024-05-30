@@ -1,25 +1,25 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '@database/db';
 
-class Admin extends Model {}
+class AdminModel extends Model {}
 
-Admin.init(
+AdminModel.init(
     {
-        idUsuario: {
+        id_user: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        contacto: {
+        contact: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        direccion: {
+        address: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        descripcion: {
+        description: {
             type: DataTypes.STRING,
             allowNull: true
         }
@@ -29,7 +29,7 @@ Admin.init(
         freezeTableName: true,
         createdAt: false,
         timestamps: false,
-        tableName: 'administrador'
+        tableName: 'admin'
     }
 );
 
@@ -43,6 +43,5 @@ Admin.init(
 //     }
 // })
 
-/* Establecer relacion con la tabla USUARIO */
 
-export default Admin;
+export default AdminModel;

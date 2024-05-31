@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navBar/Navbar";
 import MapPage from "../views/map/MapPage";
 import SectionPost from "../components/sectionPost/SectionPost";
 

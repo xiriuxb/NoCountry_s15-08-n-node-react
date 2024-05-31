@@ -9,6 +9,8 @@ export default {
       },
       fontFamily: {
         poetsen: ["Poetsen One", "sans-serif"],
+        playfair: ["Playfair Display", "serif"]
+
       },
     },
   },

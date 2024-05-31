@@ -22,11 +22,10 @@ const getZoomBreakPoints = (zoom) => {
   return 0;
 };
 
-const MapComponent = ({ type, data, onMarkerClic }) => {
+const MapComponent = ({ data, onMarkerClic, onNewPointCick }) => {
   const mapRef = useRef();
   const newPoint = useMapStore((state) => state.newPoint);
   const selectedPoint = useMapStore((state) => state.selectedPoint);
-  const setNewPoint = useMapStore((state) => state.setNewPoint);
   const [zoomBreakpoint, setZoomBreakpoint] = useState(
     getZoomBreakPoints(INITIAL_VIEW_STATE.zoom)
   );
@@ -50,16 +49,6 @@ const MapComponent = ({ type, data, onMarkerClic }) => {
     }
   },[data, selectedPoint]);
 
-  const handleClicNewPoint = (e) => {
-    if (import.meta.env.VITE_USER_ROLE != "admin") return;
-    if (type != "admin") return;
-    if (!newPoint) {
-      setNewPoint({ lat: e.lngLat.lat, lng: e.lngLat.lng });
-      return;
-    }
-    setNewPoint(null);
-  };
-
   const handleZoomBreakpoint = (e) => {
     setZoomBreakpoint(getZoomBreakPoints(e.viewState.zoom));
   };
@@ -68,7 +57,7 @@ const MapComponent = ({ type, data, onMarkerClic }) => {
     <Map
       ref={mapRef}
       cursor="auto"
-      onClick={handleClicNewPoint}
+      onClick={onNewPointCick}
       mapboxAccessToken={MAPBOX_KEY}
       mapLib={import("mapbox-gl")}
       initialViewState={INITIAL_VIEW_STATE}

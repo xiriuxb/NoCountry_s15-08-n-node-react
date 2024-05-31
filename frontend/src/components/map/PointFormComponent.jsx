@@ -1,7 +1,7 @@
 const PointFormComponent = ({ point, setData, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    setData((prev) => [...prev, { Latitud: point.lat, Longitud: point.lng }]);
+    setData((prev) => [...prev, { latitud: point.lat, longitud: point.lng }]);
     onCancel();
   };
 
@@ -35,7 +35,7 @@ const PointFormComponent = ({ point, setData, onCancel }) => {
             </div>
             <div>
               <div className="label">
-                <span className="label-text">Longituds:</span>
+                <span className="label-text">Longitud:</span>
               </div>
               <input
                 type="text"

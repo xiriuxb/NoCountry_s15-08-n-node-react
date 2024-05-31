@@ -1,11 +1,18 @@
 import { Model, DataType } from 'sequelize-typescript';
+import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
 import { sequelize } from '@database/db';
 import { Role } from '@utils/types';
 import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
-export default class UserModel extends Model {
-    public id_user!: number;
+export default class UserModel extends Model<
+    InferAttributes<UserModel>,
+    InferCreationAttributes<UserModel>
+> {
+    constructor() {
+        super();
+    }
+    public id_user!: CreationOptional<number>;
     public name!: string;
     public last_name!: string;
     public email!: string;
@@ -45,5 +52,5 @@ UserModel.init(
     { sequelize, freezeTableName: true, createdAt: false }
 );
 
-UserModel.hasOne(AdminModel, {foreignKey: 'id_user', sourceKey: 'id_user'})
-UserModel.hasMany(FisherModel, {foreignKey: 'id_user', sourceKey: 'id_user'})
+UserModel.hasOne(AdminModel, { foreignKey: 'id_user', sourceKey: 'id_user' });
+UserModel.hasMany(FisherModel, { foreignKey: 'id_user', sourceKey: 'id_user' });

@@ -1,11 +1,18 @@
-import { Table, Model, DataType } from 'sequelize-typescript';
+import { Model, DataType } from 'sequelize-typescript';
+import { ForeignKey, InferAttributes, InferCreationAttributes } from 'sequelize';
 import { sequelize } from '@database/db';
-import AdminModel from '@/modules/tableAdmin/model/AdminModel';
-import { Expertise } from '@utils/types';
 
-export default class FisherModel extends Model {
-    public id_fisher!: number;
-    public id_user!: number;
+import { Expertise } from '@utils/types';
+import UserModel from '@/modules/tableUser/model/User.model';
+
+export default class FisherModel extends Model<
+    InferAttributes<FisherModel>,
+    InferCreationAttributes<FisherModel>
+> {
+    constructor() {
+        super();
+    }
+    public id_user!: ForeignKey<UserModel['id_user']>;
     public address!: string;
     public expertise!: Expertise;
 }
@@ -19,6 +26,11 @@ FisherModel.init(
         },
         address: {
             type: DataType.STRING,
+            validate: {
+                notEmpty: true,
+                min: 4,
+                max: 500
+            },
             allowNull: false
         },
         expertise: {
@@ -34,7 +46,7 @@ FisherModel.init(
     }
 );
 
-FisherModel.belongsTo(AdminModel, {
+FisherModel.belongsTo(UserModel, {
     foreignKey: 'id_user',
     targetKey: 'id_user'
 });

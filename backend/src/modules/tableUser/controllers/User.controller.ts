@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import UserModel from '../model/User.model';
 import UserService from '../services/User.service';
 
@@ -21,61 +22,61 @@ export class UserController {
         }
     };
 
-    public findById = async (_req: Request, _res: Response): Promise<void> => {
+    public findById = async (req: Request, res: Response): Promise<void> => {
         try {
-            const { id } = _req.params;
+            const { id } = req.params;
             const user = await this.userService.findById(Number(id));
             if (!user) {
-                _res.status(404).json({ message: 'User not found' });
+                res.status(404).json({ message: 'User not found' });
             } else {
-                _res.status(200).json(user);
+                res.status(200).json(user);
             }
         } catch (error: Error | any) {
-            _res.status(500).json({
+            res.status(500).json({
                 message: 'An error occurred on the server.',
                 error: error.message
             });
         }
     };
 
-    public createUser = async (_req: Request, _res: Response) => {
+    public createUser = async (req: Request, res: Response) => {
         try {
-            const user: UserModel = _req.body as UserModel;
+            const user: UserModel = req.body as UserModel;
             const createdUser = await this.userService.create(user);
-            _res.status(201).json(createdUser);
+            res.status(201).json(createdUser);
         } catch (error: Error | any) {
-            _res.status(500).json({
+            res.status(500).json({
                 message: 'An error occurred on the server.',
                 error: error.message
             });
         }
     };
 
-    public updateUser = async (_req: Request, _res: Response) => {
+    public updateUser = async (req: Request, res: Response) => {
         try {
-            const { id } = _req.params;
-            const user: UserModel = _req.body as UserModel;
+            const { id } = req.params;
+            const user: UserModel = req.body as UserModel;
             const updatedUser = await this.userService.update(Number(id), user);
             if (!updatedUser) {
-                _res.status(404).json({ message: 'User not found' });
+                res.status(404).json({ message: 'User not found' });
             } else {
-                _res.status(200).json(updatedUser);
+                res.status(200).json(updatedUser);
             }
         } catch (error: Error | any) {
-            _res.status(500).json({
+            res.status(500).json({
                 message: 'An error occurred on the server.',
                 error: error.message
             });
         }
     };
 
-    public deleteUser = async (_req: Request, _res: Response) => {
+    public deleteUser = async (req: Request, res: Response) => {
         try {
-            const { id } = _req.params;
+            const { id } = req.params;
             await this.userService.delete(Number(id));
-            _res.status(204).json();
+            res.status(204).json();
         } catch (error: Error | any) {
-            _res.status(500).json({
+            res.status(500).json({
                 message: 'An error occurred on the server.',
                 error: error.message
             });

@@ -29,10 +29,20 @@ UserModel.init(
         },
         name: {
             type: DataType.STRING,
+            validate: {
+                notEmpty: true,
+                min: 4,
+                max: 100
+            },
             allowNull: false
         },
         last_name: {
             type: DataType.STRING,
+            validate: {
+                notEmpty: true,
+                min: 4,
+                max: 100
+            },
             allowNull: false
         },
         email: {
@@ -42,6 +52,10 @@ UserModel.init(
         },
         password: {
             type: DataType.STRING,
+            validate: {
+                notEmpty: true,
+                min: 6
+            },
             allowNull: false
         },
         role: {
@@ -53,4 +67,4 @@ UserModel.init(
 );
 
 UserModel.hasOne(AdminModel, { foreignKey: 'id_user', sourceKey: 'id_user' });
-UserModel.hasMany(FisherModel, { foreignKey: 'id_user', sourceKey: 'id_user' });
+UserModel.hasOne(FisherModel, { foreignKey: 'id_user' });

@@ -1,6 +1,5 @@
 import  data from "../../assets/mapPoints.json";
 import MapComponent from "../../components/map/MapComponent";
-
 import InfoPeces from "../../components/infoPeces/InfoPeces";
 
 const MapPage = () => {

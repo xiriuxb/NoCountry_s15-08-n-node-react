@@ -1,6 +1,6 @@
 const InfoPeces = () => {
     return (
-        <div className='bg-black w-full h-full p-1'>
+        <div className='w-full h-full p-1'>
             <div className='flex'>
                 <div className='flex w-full p-3 text-center text-white justify-center'>
                     <div className='w-20'>

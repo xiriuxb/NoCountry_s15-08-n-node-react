@@ -9,8 +9,9 @@ const MapLayout = () => {
       <div className="bg-[#06071B]  min-h-screen flex flex-col justify-between">
         <div className="drawer drawer-end">
           <label
+          id="button-map-drawer"
             htmlFor="my-drawer-4"
-            className="drawer-button btn btn-ghost btn-primary"
+            className="hidden drawer-button btn btn-ghost btn-primary"
           >
             Open drawer
           </label>

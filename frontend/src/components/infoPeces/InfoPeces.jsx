@@ -1,10 +1,8 @@
-import React from 'react';
-
-export const InfoPeces = () => {
+const InfoPeces = () => {
     return (
-        <div className='bg-black w-1/2'>
+        <div className='bg-black w-full h-full'>
             <div className='flex'>
-                <div className='flex w-2/3 p-6 text-center text-white justify-center'>
+                <div className='flex w-full p-6 text-center text-white justify-center'>
                     <div className='m-1 w-30'>
                         <img src='./public/otoño.jpg' className='text-left pr-5' />
                     </div>
@@ -51,3 +49,4 @@ export const InfoPeces = () => {
         </div>
     )
 }
+export default InfoPeces;

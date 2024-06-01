@@ -2,7 +2,7 @@ import CardHome from "../../components/cardHome/CardHome";
 // import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/navBar/Navbar";
 const HeroPage = () => {
   const imgUrl =
     "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";

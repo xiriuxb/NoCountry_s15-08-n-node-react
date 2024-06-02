@@ -14,6 +14,17 @@ export enum Status {
     INACTIVE = 'inactive'
 }
 
+export enum expertize {
+    CASUAL = 'Casual',
+    AMATEUR = 'Amateur',
+    PROFESIONAL = 'Profesional'
+}
+
+export enum stateEvent {
+    ACTIVO = 'Activo',
+    FINALIZADO = 'Finalizado'
+}
+
 export interface Tips {
     id_tip: number,
     id_user: number,
@@ -21,3 +32,18 @@ export interface Tips {
     zone: string,
     description: string
 }
+
+export interface Event {
+    id_event: number,
+    id_point_interest: number,
+    id_usert: number,
+    name: string,
+    edition: string,
+    description: string,
+    expertize: expertize,
+    date: Date,
+    state: stateEvent,
+    schedule: string,
+    sponsor: string
+}
+

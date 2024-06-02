@@ -1,9 +1,13 @@
 import express from 'express';
-import TipsServices from './TipsServices';
+import TipsController from './TipsController';
 
 const router = express.Router();
-const services = new TipsServices();
+const controller = new TipsController();
 
-router.get('/', services.findAll);
+router.get('/', controller.findAll);
+router.get('/:id', controller.findAll);
+router.post('/', controller.createTip); //solo accede el admin
+router.put('/:id', controller.updateTip); //solo accede el admin
+router.delete('/:id', controller.deleteTip); //solo accede el admin
 
 export default router;

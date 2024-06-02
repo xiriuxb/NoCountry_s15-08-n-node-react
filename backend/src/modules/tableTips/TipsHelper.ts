@@ -1,12 +1,11 @@
-import {ZodError, z} from 'zod';
-import {Tips} from '@utils/types';
+import { ZodError, z } from 'zod';
+import { Tips } from '@utils/types';
 
 export default class TipsHelper {
 
     private arrError = ['usuario','pez','zona','descripcion','invalido']
 
-    tipSchema = z.object(
-        {
+    tipSchema = z.object({
         id_user:
         z.number({
             invalid_type_error: `${this.arrError[0]} ${this.arrError[ this.arrError.length-1 ] }`,
@@ -21,8 +20,9 @@ export default class TipsHelper {
             invalid_type_error: `${this.arrError[1]} ${this.arrError[ this.arrError.length-1 ] }`,
             required_error: `${this.arrError[1]} ${this.arrError[ this.arrError.length-1 ] }`
         })
-        .min(0,{message:`${this.arrError[1]} ${this.arrError[this.arrError.length-1]}`})                      
-        .max(100000000,{message:`${this.arrError[1]} ${this.arrError[this.arrError.length-1]}`}),
+        .min(1,{message:`${this.arrError[1]} ${this.arrError[this.arrError.length-1]}`})                      
+        .max(100000000,{message:`${this.arrError[1]} ${this.arrError[this.arrError.length-1]}`})
+        .nullable(),
 
         zone: 
         z.string({
@@ -47,15 +47,17 @@ export default class TipsHelper {
         }
     )
 
-    public verifyTips = (tips: any): {success: true; data: Tips} | {success: false; data: ZodError<any>} =>
-        {
-            try {
-                const isValidTips = this.tipSchema.parse(tips);
-                return {success: true, data: isValidTips as Tips}
-            } catch (error) {
-                return {success: false, data: error as ZodError<any>};
-            }
+    public verifyTips = (tips: any): {success: true; data: Tips} | {success: false; error: ZodError<any>} =>
+    {
+        try {
+            const isValidTips = this.tipSchema.parse(tips);
+            return {success: true, data: isValidTips as Tips}
+        } catch (error) {
+            return {success: false, error: error as ZodError<any>};
         }
+    }
+
+    public verifyId = (id: any):boolean => {return !isNaN(id) && id > 0 && id < 100000000}
 
 
 }

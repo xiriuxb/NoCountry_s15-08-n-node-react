@@ -42,7 +42,7 @@ export default class TipsHelper {
         .min(4,{message: `La descripcion debe contener como minimo 3 caracteres.`})
         .max(500, {message: `La descripcion no debe superar los 500 caracteres.`})
         .trim()
-        .regex(/^[0-9a-zA-Z\s]+$/, {message: "La descripcion debe contener entre 3 y 500 caracteres"}),
+        .regex(/^[0-9a-zA-Z\s]+$/, {message: "La descripcion puede contener numeros, espacios y letras"}),
 
         }
     )

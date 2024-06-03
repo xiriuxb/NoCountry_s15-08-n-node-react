@@ -2,6 +2,10 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '@database/db';
 import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
+import { Expertise, stateEvent } from '@/utils/types';
+
+const expertizeEvents = Object.values(Expertise) as string[];
+const stateEvents = Object.values(stateEvent) as string[];
 
 class EventModel extends Model {}
 
@@ -34,7 +38,7 @@ EventModel.init(
             allowNull: false
         },
         expertize: {
-            type: DataTypes.ENUM,
+            type: DataTypes.ENUM(...expertizeEvents),
             allowNull: false
         },
         date: {
@@ -42,7 +46,7 @@ EventModel.init(
             allowNull: false
         },
         state: {
-            type: DataTypes.ENUM,
+            type: DataTypes.ENUM(...stateEvents),
             allowNull: false
         },
         schedule: {

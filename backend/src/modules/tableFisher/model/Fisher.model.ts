@@ -1,40 +1,57 @@
-import { Table, Model, DataType } from 'sequelize-typescript';
-import { sequelize } from '@database/db';
-import AdminModel from '@/modules/tableAdmin/model/AdminModel';
-import { Expertise } from '@utils/types';
+import { Model } from 'sequelize';
+import { DataType } from 'sequelize-typescript';
+import { ForeignKey, InferAttributes, InferCreationAttributes } from 'sequelize';
+import { mySqlSequelize } from '@database/db';
 
-export default class FisherModel extends Model {
-    public id_fisher!: number;
+import { Expertise } from '@utils/types';
+import UserModel from '@/modules/tableUser/model/User.model';
+
+export default class FisherModel extends Model<
+    InferAttributes<FisherModel>,
+    InferCreationAttributes<FisherModel>
+> {
+    constructor() {
+        super();
+    }
     public id_user!: number;
     public address!: string;
     public expertise!: Expertise;
-}
 
-FisherModel.init(
-    {
-        id_user: {
-            type: DataType.INTEGER,
-            primaryKey: true,
-            allowNull: false
-        },
-        address: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        expertise: {
-            type: DataType.ENUM(...Object.values(Expertise)),
-            allowNull: false
-        }
-    },
-    {
-        sequelize,
-        freezeTableName: true,
-        tableName: 'fisher',
-        timestamps: false
+    public static associate() {
+        FisherModel.belongsTo(UserModel, {
+            foreignKey: 'id_user',
+            targetKey: 'id_user'
+        });
     }
-);
 
-FisherModel.belongsTo(AdminModel, {
-    foreignKey: 'id_user',
-    targetKey: 'id_user'
-});
+    public static initModel(sequelize: typeof mySqlSequelize) {
+        FisherModel.init(
+            {
+                id_user: {
+                    type: DataType.INTEGER,
+                    primaryKey: true,
+                    allowNull: false
+                },
+                address: {
+                    type: DataType.STRING,
+                    validate: {
+                        notEmpty: true,
+                        min: 4,
+                        max: 500
+                    },
+                    allowNull: false
+                },
+                expertise: {
+                    type: DataType.ENUM(...Object.values(Expertise)),
+                    allowNull: false
+                }
+            },
+            {
+                sequelize,
+                freezeTableName: true,
+                tableName: 'fisher',
+                timestamps: false
+            }
+        );
+    }
+}

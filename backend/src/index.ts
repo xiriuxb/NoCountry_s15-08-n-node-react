@@ -1,19 +1,9 @@
 import app from '@/app/App';
-import { connection, sequelize } from '@database/db';
+import { connection } from '@database/db';
+
 const port = process.env.PORT || 3000;
 
-connection()
-    .then(async () => {
-        try {
-            await sequelize.sync({ force: true });
-            console.log('Tablas sincronizadas');
-        } catch (error) {
-            console.error('Not possible to sync database', error);
-        }
-    })
-    .catch((error) => {
-        console.error('Unable to connect to the database:', error);
-    });
+connection();
 
 app.listen(port, () => {
     console.log(

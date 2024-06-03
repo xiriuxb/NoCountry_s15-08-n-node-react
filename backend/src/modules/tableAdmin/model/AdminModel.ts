@@ -1,37 +1,41 @@
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '@database/db';
+import { mySqlSequelize } from '@database/db';
 
-class AdminModel extends Model {}
+class AdminModel extends Model {
+    public static associate() {}
 
-AdminModel.init(
-    {
-        id_user: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            allowNull: false
-        },
-        contact: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
-    },
-    {
-        sequelize,
-        freezeTableName: true,
-        createdAt: false,
-        timestamps: false,
-        tableName: 'admin'
+    public static initModel(sequelize: typeof mySqlSequelize) {
+        AdminModel.init(
+            {
+                id_user: {
+                    type: DataTypes.INTEGER,
+                    autoIncrement: true,
+                    primaryKey: true,
+                    allowNull: false
+                },
+                contact: {
+                    type: DataTypes.STRING,
+                    allowNull: true
+                },
+                address: {
+                    type: DataTypes.STRING,
+                    allowNull: true
+                },
+                description: {
+                    type: DataTypes.STRING,
+                    allowNull: true
+                }
+            },
+            {
+                sequelize,
+                freezeTableName: true,
+                createdAt: false,
+                timestamps: false,
+                tableName: 'admin'
+            }
+        );
     }
-);
+}
 
 //despues de que se sincronize quiero que haga lo siguiente
 // Admin.addHook('afterSync', async()=>{
@@ -42,6 +46,5 @@ AdminModel.init(
 //         );
 //     }
 // })
-
 
 export default AdminModel;

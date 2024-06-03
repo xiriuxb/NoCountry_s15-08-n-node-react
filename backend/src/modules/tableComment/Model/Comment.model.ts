@@ -1,8 +1,7 @@
-import { Table, Model, DataType } from 'sequelize-typescript';
-import { sequelize } from '@database/db';
+import { Model, DataTypes } from 'sequelize';
+import { mySqlSequelize } from '@database/db';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 import PublicationModel from '@modules/tablePublication/Model/Publication.model';
-
 
 export default class CommentModel extends Model {
     public id_comment!: number;
@@ -10,46 +9,50 @@ export default class CommentModel extends Model {
     public id_publication!: number;
     public description!: string;
     public createdAt!: Date;
-}
 
-CommentModel.init(
-    {
-        id_comment: {
-            type: DataType.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        id_user: {
-            type: DataType.INTEGER,
-            allowNull: false
-        },
-        id_publication: {
-            type: DataType.INTEGER,
-            allowNull: false
-        },
-        description: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataType.DATE,
-            allowNull: false,
-            defaultValue: DataType.NOW
-        }
-    },
-    {
-        sequelize,
-        freezeTableName: true,
-        tableName: 'comments',
-        timestamps: false
+    public static associate() {
+        CommentModel.belongsTo(AdminModel, {
+            foreignKey: 'id_user',
+            targetKey: 'id_user'
+        });
+        CommentModel.belongsTo(PublicationModel, {
+            foreignKey: 'id_publication',
+            targetKey: 'id_publication'
+        });
     }
-);
 
-CommentModel.belongsTo(AdminModel, { 
-    foreignKey: 'id_user', 
-    targetKey: 'id_user' 
-});
-CommentModel.belongsTo(PublicationModel, { 
-    foreignKey: 'id_publication', 
-    targetKey: 'id_publication' 
-});
+    public static initModel(sequelize: typeof mySqlSequelize) {
+        CommentModel.init(
+            {
+                id_comment: {
+                    type: DataTypes.INTEGER,
+                    primaryKey: true,
+                    autoIncrement: true
+                },
+                id_user: {
+                    type: DataTypes.INTEGER,
+                    allowNull: false
+                },
+                id_publication: {
+                    type: DataTypes.INTEGER,
+                    allowNull: false
+                },
+                description: {
+                    type: DataTypes.STRING,
+                    allowNull: false
+                },
+                createdAt: {
+                    type: DataTypes.DATE,
+                    allowNull: false,
+                    defaultValue: DataTypes.NOW
+                }
+            },
+            {
+                sequelize,
+                freezeTableName: true,
+                tableName: 'comments',
+                timestamps: false
+            }
+        );
+    }
+}

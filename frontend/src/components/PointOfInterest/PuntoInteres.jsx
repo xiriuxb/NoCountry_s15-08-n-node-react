@@ -1,37 +1,41 @@
-import "./PuntoInteres.css"
-// import "../../assets/gps-on-phone.jpg" 
 const PuntoInteres = () => {
     return (
-        <div className="point">
-                <div className="box1">
-                    <h1>Lugares mas Visitados en esta temporada</h1>
+        <div className='flex bg-slate-900 p-4 w-full pl-20' >
+            <div className="columns-1 w-3/4">
+                <h1 className="text-xl pt-2 pb-2">Lugares mas Visitados en esta temporada</h1>
+                <div className="flex flex-col text-white pl-4 pb-6">
+                    <h2 className="text-base">Copy White, Copy White, Copy White</h2>
+                    <h2 className="text-base">Copy White</h2>
+                    <h2 className="text-base">Copy White</h2>
                 </div>
-
-                <br />
-
-                <div className="box2">
-                    <h2>Copy White, Copy White, Copy White</h2>
-                    <h2>Copy White</h2>
-                    <h2>Copy White</h2>
+                <div className="flex text-black bg-white mb-4 rounded-xl ml-4">
+                    <div className="columns-1 w-full">
+                        <h2 className="text-lg pt-4 pl-4 font-bold">Rio Negro</h2>
+                        <p className="text-base ml-4 pb-4">50 Publicaciones sobre este lugar</p>
+                    </div>
+                    <div className="flex columns-2 justify-end pr-4 pt-4">
+                        <button className="rounded-lg bg-black w-14 items-center h-12">
+                            <p className="text-center text-white">Ver</p>
+                        </button>
+                    </div>
                 </div>
-
-                <br />
-                <br />
-
-                <div className="box3">
-                    <h2>Rio Negro</h2>
-                    <button className="boton">Ver</button>
-                    <p>50 Publicaciones sobre este lugar</p>
+                <div className="flex text-black bg-white mb-4 rounded-xl ml-4">
+                    <div className="columns-1 w-full">
+                        <h2 className="text-lg text-left pt-4 pl-4 font-bold">Buenos Aires</h2>
+                        <p className="text-base ml-4 pb-4">20 Publicaciones sobre este lugar</p>
+                    </div>
+                    <div className="flex columns-2 justify-end pr-4 pt-4">
+                        <button className="rounded-lg bg-black w-14 items-center h-12">
+                            <p className="text-center text-white">Ver</p>
+                        </button>
+                    </div>
                 </div>
-
-                <br />
-
-                <div className="box4">
-                    <h2>Buenos Aires</h2>
-                    <button className="boton2">Ver</button>
-                    <p>20 Publicaciones sobre este lugar</p>
+            </div>
+            <div className="columns-2 w-1/2 pl-10 justify-end">
+                <div className='w-full'>
+                    <img src="/imagenGPS.jpg" alt="imagen" />
                 </div>
-                {/* <img src="" alt="imagen" /> */}
+            </div>
         </div>
     )
 }

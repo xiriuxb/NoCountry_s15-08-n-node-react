@@ -1,7 +1,7 @@
 import HeroPage from "./views/home/HeroPage";
 import { Form, RouterProvider } from "react-router-dom";
 import appRoutes from "./routes/appRoutes";
-import PuntoInteres from "./components/PointOfInterest/PuntoInteres";
+import MapPage from "./views/map/MapPage";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       {/* <HeroPage /> */}
       {/* <FormLogin/> */}
       {/* <RouterProvider router={appRoutes} /> */}
-      <PuntoInteres/>
+      <MapPage/>
     </>
   );
 }

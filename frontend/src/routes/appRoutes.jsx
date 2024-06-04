@@ -3,6 +3,7 @@ import HomeLayout from "../layout/HomeLayout";
 import AuthLayout from "../layout/AuthLayout";
 import homeRoutes from "./homeRoutes";
 import authRoutes from "./authRoutes";
+import MapLayout from "../layout/MapLayout";
 
 const appRoutes = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const appRoutes = createBrowserRouter([
     path: "/auth",
     element: <AuthLayout />,
     children: authRoutes,
+  },
+  {
+    path: "/map",
+    element: <MapLayout />,
   },
 ]);
 

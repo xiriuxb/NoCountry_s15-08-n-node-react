@@ -3,6 +3,7 @@ import { mySqlSequelize } from '@database/db';
 import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
 import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
+import ImageModel from '@/modules/tableImages/Model/Image.model';
 
 export default class PublicationModel extends Model<
     InferAttributes<PublicationModel>,
@@ -27,6 +28,11 @@ export default class PublicationModel extends Model<
             foreignKey: 'id_point_interest',
             targetKey: 'id_point_interest'
         });
+
+        PublicationModel.hasMany(ImageModel, {
+            foreignKey: 'id_publication',
+            sourceKey: 'id_publication'
+        });
     }
 
     public static initModel(sequelize: typeof mySqlSequelize) {
@@ -46,7 +52,7 @@ export default class PublicationModel extends Model<
                     allowNull: false
                 },
                 description: {
-                    type: DataTypes.STRING,
+                    type: DataTypes.TEXT,
                     allowNull: false
                 },
                 createdAt: {

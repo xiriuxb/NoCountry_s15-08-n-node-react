@@ -22,7 +22,7 @@ const SectionPost = () => {
             </div>
           </div>
           <div className="w-full h-[40%] flex justify-center items-center">
-            <div className="w-[80%] h-full bg-red-400 rounded-lg">
+            <div className="w-[80%] h-full rounded-lg">
               <img className="w-full h-full object-cover rounded-lg" src="https://billiken.lat/wp-content/uploads/2022/01/rio-de-la-plata-20-1024x768.jpeg" alt="Rio de la Plata" />
             </div>
           </div>

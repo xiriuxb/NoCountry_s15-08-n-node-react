@@ -41,3 +41,8 @@ export interface Event {
     sponsor: string
 }
 
+export interface Competitor {
+    id_competitor: number,
+    id_event: number,
+    id_user: number
+}

@@ -11,7 +11,7 @@ export default class TipsHelper {
             invalid_type_error: `${this.arrError[0]} ${this.arrError[ this.arrError.length-1 ] }`,
             required_error: `${this.arrError[0]} ${this.arrError[ this.arrError.length-1 ] }`
         })
-        .min(0,{message:`${this.arrError[0]} ${this.arrError[this.arrError.length-1]}`})                      
+        .min(1,{message:`${this.arrError[0]} ${this.arrError[this.arrError.length-1]}`})                      
         .max(100000000,{message:`${this.arrError[0]} ${this.arrError[this.arrError.length-1]}`}),
 
         /* Tener en cuenta que puede ser NULL */

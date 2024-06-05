@@ -1,52 +1,70 @@
-import CardPost from "./CardPost";
-import { FaArrowRight } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa6";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useMapStore } from "../../context/mapStore";
+import BestPostsComponent from "./BestPostsComponent";
+import PointPostsComponents from "./PointPostsComponents";
 
-const SectionPost = () => {
+const SectionPost = ({ isHidden, setIsHidden }) => {
+  const selectedPoint = useMapStore((state) => state.selectedPoint);
+
+  const handleHideButtonClick = (e) => {
+    setIsHidden((prev) => !prev);
+  };
+
   return (
-    <main className="w-full min-h-screen flex items-center justify-center">
-      <div className="w-[500px] min-h-screen flex flex-col items-center bg-black p-2 gap-2">
-        <div className="w-[90%] h-[400px]  flex flex-col  ">
-          <div className="w-full h-[30%] flex  ">
-            <div className="w-[80%] h-full flex justify-center items-center gap-2 ">
-              <h3 className="text-white text-3xl font-bold font-playfair">
-                Rio de la Plata
-              </h3>
-            </div>
-            <div className="w-[30%] h-full  flex justify-center items-center">
-              <div className="avatar">
-                <div className="w-20 rounded-full">
-                  <img src="https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg?lm=1" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full h-[40%] flex justify-center items-center">
-            <div className="w-[80%] h-full bg-red-400 rounded-lg">
-              <img className="w-full h-full object-cover rounded-lg" src="https://billiken.lat/wp-content/uploads/2022/01/rio-de-la-plata-20-1024x768.jpeg" alt="Rio de la Plata" />
-            </div>
-          </div>
-          <div className="w-full h-[30%]  flex flex-col justify-center items-center">
-            <h3 className="text-white text-lg font-bold font-playfair">
-              Agregar una publicacion
-            </h3>
-            <button className="btn bg-slate-600 w-full">
-              <FaPlus />
-            </button>
+    <section className="w-full h-full text-white">
+      <div className="flex flex-col items-center bg-black p-2 gap-1 h-full">
+        <div className={`flex w-full ${isHidden ? "flex-col" : "flex-row"}`}>
+          <button
+            id="button-map-drawer"
+            onClick={handleHideButtonClick}
+            className="btn max-w-11 bg-slate-600"
+          >
+            {isHidden ? (
+              <FaArrowLeft fill="#fff" />
+            ) : (
+              <FaArrowRight fill="#fff" />
+            )}
+          </button>
+          <div className="w-full">
+            <UserInfoComponent isHidden={isHidden} />
           </div>
         </div>
-        <div className="w-[90%] h-auto flex flex-col gap-4">
-          <h3 className="text-white text-lg font-bold font-playfair">
-            Ultimas publicaciones
-          </h3>
-          <CardPost />
-          <CardPost />
-          <CardPost />
-          <CardPost />
-        </div>
+        {!isHidden && selectedPoint && (
+          <div className="w-full flex flex-col p-1 overflow-hidden">
+            <PointPostsComponents />
+          </div>
+        )}
+        {!isHidden && !selectedPoint && (
+          <div className="flex flex-col overflow-hidden">
+            <BestPostsComponent />
+          </div>
+        )}
       </div>
-    </main>
+    </section>
   );
 };
 
 export default SectionPost;
+
+const UserInfoComponent = ({ isHidden }) => {
+  return (
+    <div
+      className={`flex justify-end w-full ${
+        isHidden ? "flex-col-reverse" : "flex-row"
+      }`}
+    >
+      <h3
+        className={`font-bold font-playfair px-3 ${
+          isHidden ? "text-sm" : "text-3xl"
+        }`}
+      >
+        Leo
+      </h3>
+      <div className="avatar">
+        <div className="max-w-12 rounded-full">
+          <img src="https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg?lm=1" />
+        </div>
+      </div>
+    </div>
+  );
+};

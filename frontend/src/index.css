@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* For Webkit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748; /* Dark background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #718096; /* Gray thumb */
+  border-radius: 10px;
+  border: 3px solid #2d3748; /* Adds space around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0; /* Lighter gray thumb on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #718096 #2d3748;
+}
+
+*::-webkit-scrollbar {
+  scrollbar-color: #a0aec0 #2d3748;
+}
+
+@layer utilities {
+  .text-ellipsis-nowrap {
+    @apply text-ellipsis whitespace-nowrap overflow-hidden;
+  }
+}

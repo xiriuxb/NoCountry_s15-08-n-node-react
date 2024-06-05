@@ -1,0 +1,130 @@
+[
+  {
+    "id_publication": "1",
+    "id_point_interest": "123",
+    "id_user": "1",
+    "description": "Buenos peces en la zona",
+    "rating": 1,
+    "image": "",
+    "user": {
+      "name": "Juan",
+      "last_name": "Pérez"
+    }
+  },
+  {
+    "id_publication": "2",
+    "id_point_interest": "124",
+    "id_user": "2",
+    "description": "Excelentes lugares para pescar truchas",
+    "rating": 5,
+    "image": "",
+    "user": {
+      "name": "Ana",
+      "last_name": "García",
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }
+  },
+  {
+    "id_publication": "3",
+    "id_point_interest": "125",
+    "id_user": "3",
+    "description": "El río está lleno de dorados",
+    "rating": 4,
+    "image": "",
+    "user": {
+      "name": "Carlos",
+      "last_name": "Ramírez",
+      "image": "https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg"
+    }
+  },
+  {
+    "id_publication": "4",
+    "id_point_interest": "126",
+    "id_user": "4",
+    "description": "Buena pesca en el lago",
+    "rating": 3,
+    "image": "",
+    "user": {
+      "name": "María",
+      "last_name": "López",
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }
+  },
+  {
+    "id_publication": "5",
+    "id_point_interest": "127",
+    "id_user": "5",
+    "description": "Muchos bagres en la zona",
+    "rating": 2,
+    "image": "",
+    "user": {
+      "name": "Luis",
+      "last_name": "Martínez"
+    }
+  },
+  {
+    "id_publication": "6",
+    "id_point_interest": "128",
+    "id_user": "6",
+    "description": "Gran variedad de peces",
+    "rating": 4,
+    "image": "",
+    "user": {
+      "name": "Laura",
+      "last_name": "Hernández",
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }
+  },
+  {
+    "id_publication": "7",
+    "id_point_interest": "129",
+    "id_user": "7",
+    "description": "Ideal para pescar en familia",
+    "rating": 5,
+    "image": "https://images.pexels.com/photos/20497829/pexels-photo-20497829/free-photo-of-mar-playa-perro-mascota.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "user": {
+      "name": "Roberto",
+      "last_name": "González",
+      "image": "https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg"
+    }
+  },
+  {
+    "id_publication": "8",
+    "id_point_interest": "130",
+    "id_user": "8",
+    "description": "Lugar tranquilo y buena pesca",
+    "rating": 3,
+    "image": "https://images.pexels.com/photos/20508100/pexels-photo-20508100/free-photo-of-pescando-mar-ciudad-puesta-de-sol.jpeg",
+    "user": {
+      "name": "Marta",
+      "last_name": "Sánchez",
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }
+  },
+  {
+    "id_publication": "9",
+    "id_point_interest": "131",
+    "id_user": "9",
+    "description": "Abundante pesca de carpas",
+    "rating": 4,
+    "image": "",
+    "user": {
+      "name": "Diego",
+      "last_name": "Torres",
+      "image": "https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg"
+    }
+  },
+  {
+    "id_publication": "10",
+    "id_point_interest": "132",
+    "id_user": "10",
+    "description": "Pesca variada y buen ambiente. Puedes preparar los peces en el lugar, poseen las instalaciones necesarias.",
+    "rating": 5,
+    "image": "",
+    "user": {
+      "name": "Elena",
+      "last_name": "Flores",
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    }
+  }
+]

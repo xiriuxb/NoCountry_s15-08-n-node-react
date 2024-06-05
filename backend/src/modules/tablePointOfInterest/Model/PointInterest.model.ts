@@ -33,7 +33,13 @@ export default class PointInterestModel extends Model {
                 },
                 name: {
                     type: DataTypes.STRING,
-                    allowNull: false
+                    allowNull: false,
+                    unique: true,
+                    validate: {
+                        notEmpty: true,
+                        min: 4,
+                        max: 100
+                    }
                 },
                 description: {
                     type: DataTypes.STRING,
@@ -53,7 +59,8 @@ export default class PointInterestModel extends Model {
                 },
                 createdAt: {
                     type: DataTypes.DATE,
-                    allowNull: false
+                    allowNull: false,
+                    defaultValue: DataTypes.NOW
                 },
                 rating: {
                     type: DataTypes.INTEGER,

@@ -86,6 +86,11 @@ export class PublicationController {
         const { id } = req.params;
 
         try {
+            const publication = await this.publicationService.findById(Number(id));
+            if (!publication) {
+                res.status(404).json({ message: 'Publication not found' });
+            }
+
             await this.publicationService.delete(Number(id));
             res.status(204).json();
         } catch (error) {

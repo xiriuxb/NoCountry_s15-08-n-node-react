@@ -42,7 +42,7 @@ export default class EventController{
             const event = await this.servicesE.findOne(req.params.id);
 
             if(event === null){
-                res.status(404).json({message: `No se encontró el Evento con el id ${req.params.id}.`})
+                res.status(404).json({message: `No se encontró el Evento.`})
                 return;
             }
 
@@ -119,7 +119,7 @@ export default class EventController{
             const event = await this.servicesE.updateEvent(req.params.id, body);
 
             if(event === null){
-                res.status(404).json({message: `No se pudo modificar el evento con el ID ${req.params.id}`})
+                res.status(404).json({message: `No se pudo modificar el evento`})
                 return;
             }
 
@@ -141,14 +141,14 @@ export default class EventController{
             const event = await this.servicesE.deleteEvent(req.params.id);
 
             if (event === null){
-                res.status(400).json({mesagge: `No se pudo eliminar el evento con el ID ${req.params.id}`});
+                res.status(400).json({mesagge: `No se pudo eliminar el evento`});
                 return;
             }
 
             res.status(200).json(event);
 
         }catch (error) {
-
+            res.status(500).json({error: 'Hubo un problema con el servidor'});
         }
     };
 }

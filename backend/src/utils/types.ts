@@ -46,3 +46,11 @@ export interface Competitor {
     id_event: number,
     id_user: number
 }
+
+export interface Comment {
+    id_comment: number,
+    id_user: number,
+    id_publication: number,
+    description: string,
+    createdAt: Date
+}

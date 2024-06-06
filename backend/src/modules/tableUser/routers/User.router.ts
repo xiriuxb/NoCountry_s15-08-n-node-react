@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import UserController from '../controllers/User.controller';
+import { validateID } from '@/middlewares/Validator.middleware';
 
-const router = Router();
+const UserRouter = Router();
 
-router.get('/', UserController.findAll);
-router.get('/:id', UserController.findById);
-router.post('/', UserController.createUser);
-router.put('/:id', UserController.updateUser);
-router.delete('/:id', UserController.deleteUser);
+UserRouter.get('/', UserController.findAll);
+UserRouter.get('/:id', validateID, UserController.findById);
+UserRouter.post('/', UserController.createUser);
+UserRouter.put('/:id', validateID, UserController.updateUser);
+UserRouter.delete('/:id', validateID, UserController.deleteUser);
 
-export default router;
+export default UserRouter;

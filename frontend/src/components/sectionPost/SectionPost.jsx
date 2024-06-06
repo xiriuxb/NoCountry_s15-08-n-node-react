@@ -12,8 +12,8 @@ const SectionPost = ({ isHidden, setIsHidden }) => {
 
   return (
     <section className="w-full h-full text-white">
-      <div className="flex flex-col items-center bg-black p-2 gap-1 h-full">
-        <div className={`flex w-full ${isHidden ? "flex-col" : "flex-row"}`}>
+      <div className="flex flex-col items-center p-2 gap-1 h-full">
+        <div className={`flex w-full ${isHidden ? "flex-col" : "flex-row-reverse"}`}>
           <button
             id="button-map-drawer"
             onClick={handleHideButtonClick}
@@ -30,7 +30,7 @@ const SectionPost = ({ isHidden, setIsHidden }) => {
           </div>
         </div>
         {!isHidden && selectedPoint && (
-          <div className="w-full flex flex-col p-1 overflow-hidden">
+          <div className="w-screen sm:w-[26rem] flex flex-col p-1 overflow-hidden">
             <PointPostsComponents />
           </div>
         )}
@@ -49,13 +49,13 @@ export default SectionPost;
 const UserInfoComponent = ({ isHidden }) => {
   return (
     <div
-      className={`flex justify-end w-full ${
-        isHidden ? "flex-col-reverse" : "flex-row"
+      className={`flex justify-end w-full items-center ${
+        isHidden ? "flex-col-reverse py-2 " : "flex-row px-2"
       }`}
     >
       <h3
-        className={`font-bold font-playfair px-3 ${
-          isHidden ? "text-sm" : "text-3xl"
+        className={`font-bold font-playfair ${
+          isHidden ? "text-sm" : "text-3xl px-3"
         }`}
       >
         Leo

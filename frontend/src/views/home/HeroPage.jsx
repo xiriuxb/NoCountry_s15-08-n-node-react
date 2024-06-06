@@ -2,12 +2,11 @@ import CardHome from "../../components/cardHome/CardHome";
 // import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
-import Navbar from "../../components/navBar/Navbar";
+const imgUrl =
+  "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";
+const imgUrl1 =
+  "https://www.nps.gov/subjects/fishing/images/27374286534_f699a7a8e3_o.jpg?maxwidth=1300&autorotate=false&quality=78&format=webp";
 const HeroPage = () => {
-  const imgUrl =
-    "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";
-  const imgUrl1 =
-    "https://www.nps.gov/subjects/fishing/images/27374286534_f699a7a8e3_o.jpg?maxwidth=1300&autorotate=false&quality=78&format=webp";
   return (
     <main className="w-full bg-fondo bg-cover min-h-screen text-white flex flex-col pt-20">
       <div className="w-full h-[85vh] flex flex-col items-center justify-between ">

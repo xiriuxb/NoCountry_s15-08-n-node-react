@@ -1,44 +1,38 @@
+const mostVisitedPlaces = [
+    {
+        name: "Buenos Aires",
+        postsNumber: 20
+    },
+    {
+        name: "Rio Negro",
+        postsNumber: 50
+    },
+    {
+        name: "Rio de la Plata",
+        postsNumber: 50
+    }
+]
+
 const PuntoInteres = () => {
     return (
-        <div className="flex columns-2 bg-slate-900  w-full h-full font-playfair rounded-xl">
-            <div className=" w-full p-2 flex flex-col items-center">
-                <h1 className="text-white text-xl pt-2 pb-2">
+        <div className="flex bg-slate-900 rounded-xl">
+            <div className="py-2 px-4 flex flex-col items-center flex-1">
+                <h4 className="text-white text-lg pb-2 text-center">
                     Lugares mas Visitados en esta temporada
-                </h1>
-                <div className="flex flex-col text-white pl-4 pb-6">
-                    <p className="text-base">Lorem ipsum dolor sit amet.</p>
+                </h4>
+                <div className="flex flex-col text-white pb-1">
+                    <p className="text-sm text-center">¿Qué esperas para visitarlos?.</p>
                 </div>
-                <div className="flex text-black bg-white mb-4 rounded-xl ml-4">
-                    <div className=" w-full">
-                        <h2 className="text-lg pt-4 pl-4 font-bold">Rio Negro</h2>
-                        <p className="text-base ml-4 pb-4">
-                            50 Publicaciones sobre este lugar
-                        </p>
-                    </div>
-                    <div className="flex columns-2 justify-end pr-4 pt-4">
-                        <button className="rounded-lg bg-black w-14 items-center h-12">
-                            <p className="text-center text-white">Ver</p>
-                        </button>
-                    </div>
-                </div>
-                <div className="flex text-black bg-white mb-4 rounded-xl ml-4">
-                    <div className="columns-1 w-full">
-                        <h2 className="text-lg text-left pt-4 pl-4 font-bold">
-                            Buenos Aires
-                        </h2>
-                        <p className="text-base ml-4 pb-4">
-                            20 Publicaciones sobre este lugar
-                        </p>
-                    </div>
-                    <div className="flex columns-2 justify-end pr-4 pt-4">
-                        <button className="rounded-lg bg-black w-14 items-center h-12">
-                            <p className="text-center text-white">Ver</p>
-                        </button>
-                    </div>
-                </div>
+                {
+                    mostVisitedPlaces.map(place=>{
+                        return (
+                            <MostVisitedPlaceCard placeInfo={place}/>
+                        )
+                    })
+                }
             </div>
-            <div className="flex w-full justify-center items-center py-2 ">
-                <div className="w-[80%] h-full">
+            <div className="hidden lg:flex lg:w-40 max-w-40 justify-center items-center ">
+                <div className="w-full h-full">
                     <img
                         className="w-full h-96 object-cover rounded-xl"
                         src="/imagenGPS.jpg"
@@ -50,3 +44,21 @@ const PuntoInteres = () => {
     );
 };
 export default PuntoInteres;
+
+const MostVisitedPlaceCard = ({placeInfo}) => {
+    return(
+        <div className="flex w-full text-gray-200 bg-zinc-600/35 mb-4 rounded-xl px-3 py-2">
+            <div className="pr-2 flex-1">
+                <h5 className="text-lg font-bold">{placeInfo.name}</h5>
+                <p className="text-sm">
+                    {`${placeInfo.postsNumber} Publicaciones`}
+                </p>
+            </div>
+            <div className="flex items-center">
+                <button className="rounded-lg bg-black w-14 items-center h-12">
+                    <p className="text-center text-white">Ver</p>
+                </button>
+            </div>
+        </div>
+    )
+}

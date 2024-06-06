@@ -37,7 +37,7 @@ const PuntoInteres = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center ">
+            <div className="flex w-full justify-center items-center py-2 ">
                 <div className="w-[80%] h-full">
                     <img
                         className="w-full h-96 object-cover rounded-xl"

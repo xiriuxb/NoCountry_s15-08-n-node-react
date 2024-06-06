@@ -3,12 +3,12 @@ import Navbar from "../components/navBar/Navbar";
 
 const HomeLayout = () => {
   return (
-    <>
-      <header className="text-white w-full h-[80px] absolute">
+    <main className="bg-[#06071B] flex justify-center">
+      <header className="text-white w-full h-16 absolute content-center">
         <Navbar />
       </header>
       <Outlet />
-    </>
+    </main>
   );
 };
 

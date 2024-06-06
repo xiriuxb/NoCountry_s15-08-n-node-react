@@ -8,6 +8,10 @@ const PointPostsComponents = () => {
   const setSelectedPoint = useMapStore((state) => state.setSelectedPoint);
   const divRef = useRef();
 
+  const handleOpenModal = () => {
+    document.getElementById("user_modal_open").click();
+  };
+
   useEffect(() => {
     if (divRef && divRef.current) {
       divRef.current.scrollTop = 0;
@@ -41,7 +45,10 @@ const PointPostsComponents = () => {
       >
         <PlaceInfoComponent />
       </div>
-      <button className="btn bg-slate-600 text-white w-[95%] self-center my-1">
+      <button
+        onClick={handleOpenModal}
+        className="btn bg-slate-600 text-white w-[95%] self-center my-1"
+      >
         Nueva Publicación
       </button>
     </div>

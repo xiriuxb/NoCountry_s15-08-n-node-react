@@ -4,6 +4,7 @@ import InfoPeces from "../../components/infoPeces/InfoPeces";
 import SectionPost from "../../components/sectionPost/SectionPost";
 import { useState } from "react";
 import { useMapStore } from "../../context/mapStore";
+import CreatePostComponent from "../../components/sectionPost/CreatePostComponent";
 
 const MapPage = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
@@ -42,6 +43,11 @@ const MapPage = () => {
       >
         <SectionPost isHidden={isHidden} setIsHidden={setIsHidden} />
       </section>
+      {selectedPoint && (
+        <>
+          <CreatePostComponent />
+        </>
+      )}
     </main>
   );
 };

@@ -5,6 +5,7 @@ import SectionPost from "../../components/sectionPost/SectionPost";
 import { useState } from "react";
 import { useMapStore } from "../../context/mapStore";
 import CreatePostComponent from "../../components/sectionPost/CreatePostComponent";
+import PuntoInteres from "../../components/PointOfInterest/PuntoInteres";
 
 const MapPage = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
@@ -32,7 +33,7 @@ const MapPage = () => {
           <InfoPeces />
         </div>
         <div className="col-span-2 row-span-2 col-start-3 row-start-4 bg-gray-300">
-          10
+         <PuntoInteres />
         </div>
       </section>
       <section

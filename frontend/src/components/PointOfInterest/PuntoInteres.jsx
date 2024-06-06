@@ -1,6 +1,6 @@
 const PuntoInteres = () => {
     return (
-        <div className='flex bg-slate-900 p-4 w-full pl-20' >
+        <div className='flex bg-slate-900 p-4 w-full pl-4 font-playfair' >
             <div className="columns-1 w-3/4">
                 <h1 className="text-xl pt-2 pb-2">Lugares mas Visitados en esta temporada</h1>
                 <div className="flex flex-col text-white pl-4 pb-6">
@@ -31,8 +31,8 @@ const PuntoInteres = () => {
                     </div>
                 </div>
             </div>
-            <div className="columns-2 w-1/2 pl-10 justify-end">
-                <div className='w-full'>
+            <div className="flex w-full pl-4 justify-center items-center bg-white">
+                <div className='flex w-full h-80'>
                     <img src="/imagenGPS.jpg" alt="imagen" />
                 </div>
             </div>

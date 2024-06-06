@@ -51,8 +51,8 @@ export default class TipsController {
     public createTip = async (req: Request, res: Response): Promise<any> => {
         try {
             const body = {
-                idU: req.body.id_user, // puedo setearlo a 1
-                idF: req.body.id_fish, // puede ser NULL, 1 ... 100000000
+                id_user: req.body.id_user, // puedo setearlo a 1
+                id_fish: req.body.id_fish, // puede ser NULL, 1 ... 100000000
                 zone: req.body.zone,
                 description: req.body.description
             }
@@ -88,8 +88,8 @@ export default class TipsController {
             }
 
             const body = {
-                idU: req.body.id_user, // puedo setearlo a uno
-                idF: req.body.id_fish, // puede ser NULL, 1 ... 100000000
+                id_user: req.body.id_user, // puedo setearlo a uno
+                id_fish: req.body.id_fish, // puede ser NULL, 1 ... 100000000
                 zone: req.body.zone,
                 description: req.body.description
             }

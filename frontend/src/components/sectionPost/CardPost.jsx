@@ -5,7 +5,7 @@ import RatingComponent from "./RatingComponent";
 
 const CardPost = ({ post }) => {
   return (
-    <div className="bg-black/50 shadow-sm shadow-white max-w-[26rem] w-[26rem] max-h-[250px] h-[250px] rounded-lg p-2 mx-2 my-1">
+    <div className="bg-zinc-500/25 max-w-screen-sm w-screen sm:max-w-[26rem] sm:w-[26rem] max-h-[250px] h-[250px] rounded-lg p-2 mx-2 my-1">
       <div className="h-full max-h-full flex flex-col">
         <div className="flex items-center mb-1">
           <CardPostUserInfo

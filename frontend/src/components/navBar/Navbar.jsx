@@ -14,8 +14,8 @@ const navItems = [
     route: "/map",
   },
   {
-    name: "iniciar",
-    route: "",
+    name: "registrarse",
+    route: "/auth/register",
   },
 ];
 

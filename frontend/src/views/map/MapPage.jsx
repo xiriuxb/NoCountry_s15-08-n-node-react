@@ -25,21 +25,21 @@ const MapPage = () => {
 
   return (
     <main className="w-full h-screen max-w-screen-2xl pt-16 flex flex-row overflow-hidden">
-      <section className="grid grid-cols-4 grid-rows-5 gap-4 w-2/3 h-full flex-1">
-        <div id="map-container" className="col-span-4 row-span-3">
+      <section className="grid grid-cols-4 grid-rows-5 gap-4 w-2/3 h-full flex-1 overflow-y-auto overflow-x-hidden">
+        <div id="map-container" className="col-span-4 row-span-5 md:row-span-3">
           <MapComponent data={data} onMarkerClic={handleSelectMarker} />
         </div>
-        <div className="col-span-2 row-span-2 col-start-1 row-start-4 bg-slate-700">
+        <div className="hidden md:block md:col-span-2 md:row-span-2 md:col-start-1 md:row-start-4">
           <InfoPeces />
         </div>
-        <div className="col-span-2 row-span-2 col-start-3 row-start-4 bg-gray-300">
+        <div className="hidden md:block md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-4">
          <PuntoInteres />
         </div>
       </section>
       <section
         style={{ transition: "width 0.3s ease" }}
         className={`overflow-hidden max-h-[calc(100vh-4rem)] ${
-          isHidden ? "w-16" : "w-[30rem]"
+          isHidden ? "w-16" : "w-screen sm:w-[28rem]"
         }`}
       >
         <SectionPost isHidden={isHidden} setIsHidden={setIsHidden} />

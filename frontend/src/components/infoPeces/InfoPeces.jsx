@@ -1,52 +1,94 @@
+const tools = [
+    {
+        name: "Caña Madera",
+        description: "Más rústico para peces rápidos",
+        img:"/caña.jpg"
+    },
+    {
+        name: "Botas de ule",
+        description: "Resistentes al agua",
+        img:"/botas.jpg"
+    },
+    {
+        name: "Anzuelo",
+        description: "Pieza de madera con olor para atraer peces",
+        img:"/anzuelo.jpg"
+    }
+];
+
+const fishes = [
+    {
+        name: "Salmon",
+        description: "En Rio Negro",
+        img:"/Salmon.jpg"
+    },
+    {
+        name: "Carite",
+        description: "En Pilar",
+        img:"/carite.jpg"
+    }
+]
+
 const InfoPeces = () => {
     return (
-        <div className='w-full h-full p-1'>
-            <div className='flex'>
-                <div className='flex w-full p-3 text-center text-white justify-center'>
-                    <div className='w-20'>
-                        <img src='/otoño.jpg' className='text-left' />
+        <div className='p-4 bg-slate-800 rounded-xl text-white'>
+            <div className='flex flex-col md:flex-row'>
+                <div className='flex p-2 bg-zinc-500/15 rounded-md'>
+                    <div>
+                        <img src='/otoño.jpg' className="rounded-md h-full object-cover" />
                     </div>
-                    <div className='w-8/4 flex-col pl-2'>
-                        <h2 className='text-lg text-left'>Otoño</h2>
-                        <p className='text-sm text-left w-1/2'>La mejor temporada de pesca de salmon </p>
+                    <div className='flex-col pl-2'>
+                        <h4 className='text-lg text-left font-bold'>Otoño</h4>
+                        <p className='text-sm text-left'>La mejor temporada de pesca de salmon </p>
                     </div>
                 </div>
-                <div className='w-2/4 pt-1 pr-1 flex'>
-                    <div className='w-3/4 p-2 '>
-                        <img src='/Salmon.jpg' className='w-full h-10' />
-                        <p className='text-lg text-center'>Salmon</p>
-                        <p className='text-sm text-center'>Encontrada en Rio Negro</p>
-                    </div>
-                    <div className='w-3/4 p-2 pl-6'>
-                        <img src='/carite.jpg' className='w-full h-10' />
-                        <p className='text-lg text-center'>Carite</p>
-                        <p className='text-sm text-center'>Encontrada en Pilar</p>
-                    </div>
+                <div className='flex flex-1 items-center'>
+                    {
+                        fishes.map(fish=>{
+                            return(
+                                <FishDescComponent fishInfo={fish}/>
+                            )
+                        })
+                    }
                 </div>
             </div>
-            <div className='w-3/4'>
-                <div className='mx-10'>
-                    <h3 className="text-lg text-left">Las herramientas más usadas para estas especies</h3>
+            <div className='w-full'>
+                <div>
+                    <h3 className="py-2 text-lg font-bold text-center">Las herramientas más usadas para estas especies</h3>
                 </div>
-                <div className='flex w-full ml-10 justify-betweem'>
-                    <div className='w-1/3 pt-4 flex-col mx-10'>
-                        <img src='/caña.jpg' className='w-20 h-24 ml-8'/>
-                        <h3 className='pt-4 text-center text-lg'>Caña Madera</h3>
-                        <p className='text-sm text-center w-30'>Más rústico para peces rápidos</p>
-                    </div>
-                    <div className='flex-col w-1/3 pt-4 mx-10'>
-                        <img src='/botas.jpg' className= 'w-20 h-24 ml-8'/>
-                        <h3 className='pt-4 text-center text-lg'>Botas de ule</h3>
-                        <p className='text-sm text-center'>Resistentes al agua</p>
-                    </div>
-                    <div className='flex-col pt-4 ml-10 w-1/3'>
-                        <img src='/anzuelo.jpg' className='w-20 h-24 ml-8'/>
-                        <h3 className='pt-4 text-center text-lg'>Anzuelo</h3>
-                        <p className='text-sm text-center'>Pieza de madera con olor para atraer peces</p>
-                    </div>
+                <div className='flex w-full flex-wrap justify-around'>
+                {
+                    tools.map(tool => {
+                        return (
+                            <ToolDescComponent toolInfo={tool} />
+                        )
+                    })
+                }
                 </div>
             </div>
         </div>
     )
 }
 export default InfoPeces;
+
+const ToolDescComponent = ({toolInfo}) => {
+    return (
+        <div className='flex flex-col sm:flex-row md:flex-col justify-start p-1 w-full md:w-1/2 md:max-w-40 md:min-w-40 bg-zinc-500/10 rounded-md'>
+            <img src={toolInfo.img} className='rounded-md h-24 max-h-24'/>
+            <div className="flex flex-col p-1 w-full">
+                <h5 className='text-center text-lg font-bold'>{toolInfo.name}</h5>
+                <p className='text-sm text-center'>{toolInfo.description}</p>
+            </div>
+        </div>
+    )
+}
+
+const FishDescComponent = ({fishInfo}) => {
+    return (
+        <div className='w-3/4 px-2'>
+            <img src={fishInfo.img ? fishInfo.img : "/Salmon.jpg"} className='w-full h-14' />
+            <p className='text-sm font-bold text-center'>{fishInfo.name}</p>
+            <p className='text-sm text-center'>{fishInfo.description}</p>
+        </div>
+    )
+}

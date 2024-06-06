@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import UserSignUp from "../components/userSignUp/UserSignUp";
+import UserLogIn from "../components/userSignUp/UserLogIn";
 
 const authRoutes = [
   {
@@ -8,7 +9,11 @@ const authRoutes = [
   },
   {
     path: "register",
-    element: <UserSignUp />,
+    element: <UserSignUp loginPath="/auth/login" />,
+  },
+  {
+    path: "login",
+    element: <UserLogIn registerPath="/auth/register" />,
   },
 ];
 

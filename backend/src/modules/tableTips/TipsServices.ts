@@ -33,8 +33,8 @@ export default class TipsServices {
         try {
             //verificar que el id_fish existe, ya que solo ponemos 3 peces
             const tip = await TipsModel.create({
-                id_user: body.idU,
-                id_fish: body.idF,
+                id_user: body.id_user,
+                id_fish: body.id_fish,
                 zone: body.zone,
                 description: body.description
             });
@@ -55,8 +55,8 @@ export default class TipsServices {
 
             /*verificar que el id_fish sea 1, 2 o 3 */
             await tip.update({
-                id_user: body.idU,
-                id_fish: body.idF,
+                id_user: body.id_user,
+                id_fish: body.id_fish,
                 zone: body.zone,
                 description: body.description
             });

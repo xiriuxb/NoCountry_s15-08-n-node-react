@@ -40,7 +40,7 @@ const PuntoInteres = () => {
       <div className="flex w-full justify-center items-center ">
         <div className="w-[80%] h-full">
           <img
-            className="w-full  object-cover rounded-lg"
+            className="w-full  object-cover rounded-xl"
             src="/imagenGPS.jpg"
             alt="imagen"
           />

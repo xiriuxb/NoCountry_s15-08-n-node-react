@@ -4,6 +4,7 @@ import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
 import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
 import ImageModel from '@/modules/tableImages/Model/Image.model';
+import CommentModel from '@/modules/tableComment/Model/Comment.model';
 
 export default class PublicationModel extends Model<
     InferAttributes<PublicationModel>,
@@ -27,6 +28,11 @@ export default class PublicationModel extends Model<
         PublicationModel.belongsTo(PointInterestModel, {
             foreignKey: 'id_point_interest',
             targetKey: 'id_point_interest'
+        });
+
+        PublicationModel.hasMany(CommentModel, {
+            foreignKey: 'id_publication',
+            sourceKey: 'id_publication'
         });
 
         PublicationModel.hasMany(ImageModel, {

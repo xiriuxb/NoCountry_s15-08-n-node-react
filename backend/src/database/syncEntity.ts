@@ -9,6 +9,7 @@ import CommentModel from '@/modules/tableComment/Model/Comment.model';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 import CompetitorModel from '@/modules/tableCompetitor/model/CompetitorModel';
 import { Sequelize } from 'sequelize';
+import ImageModel from '@/modules/tableImages/Model/Image.model';
 
 interface ModelTable {
     associate?: () => void;
@@ -24,7 +25,8 @@ const models: ModelTable[] = [
     CompetitorModel,
     PublicationModel,
     CommentModel,
-    PointInterestModel
+    PointInterestModel,
+    ImageModel
 ];
 export const initializeModels = async (sequelize: Sequelize): Promise<void> => {
     models.forEach((model) => model.initModel(sequelize));

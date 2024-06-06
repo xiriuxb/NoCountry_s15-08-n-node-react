@@ -32,7 +32,7 @@ const MapPage = () => {
         <div className="col-span-2 row-span-2 col-start-1 row-start-4 bg-slate-700">
           <InfoPeces />
         </div>
-        <div className="col-span-2 row-span-2 col-start-3 row-start-4 bg-gray-300">
+        <div className="col-span-2 row-span-2 col-start-3 row-start-4 ">
          <PuntoInteres />
         </div>
       </section>

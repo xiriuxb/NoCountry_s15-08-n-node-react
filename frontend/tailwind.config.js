@@ -6,7 +6,7 @@ export default {
     extend: {
       backgroundImage: {
         "fondo":
-          "url('/src/assets/Background.jpg')",
+          "url('/Background.jpg')",
       },
       fontFamily: {
         poetsen: ["Poetsen One", "sans-serif"],

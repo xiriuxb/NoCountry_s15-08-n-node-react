@@ -3,6 +3,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 
 const SectionPost = () => {
+  const handleOpenModal = () => {
+    document.getElementById("user_modal_open").click();
+  };
+
   return (
     <main className="w-full min-h-screen flex items-center justify-center">
       <div className="w-[500px] min-h-screen flex flex-col items-center bg-black p-2 gap-2">
@@ -30,7 +34,10 @@ const SectionPost = () => {
             <h3 className="text-white text-lg font-bold font-playfair">
               Agregar una publicacion
             </h3>
-            <button className="btn bg-slate-600 w-full">
+            <button
+              className="btn bg-slate-600 w-full"
+              onClick={handleOpenModal}
+            >
               <FaPlus />
             </button>
           </div>

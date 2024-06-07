@@ -20,6 +20,10 @@ const navItems = [
 ];
 
 const Navbar = () => {
+  const handleClickBtn = () => {
+    document.getElementById("drawer-btn").click();
+  };
+
   return (
     <>
       <div className="drawer z-30">
@@ -29,6 +33,7 @@ const Navbar = () => {
           <div className="navbar w-full">
             <div className="flex-none lg:hidden">
               <label
+                id="drawer-btn"
                 htmlFor="my-drawer-3"
                 aria-label="open sidebar"
                 className="btn btn-square btn-ghost"
@@ -78,6 +83,15 @@ const Navbar = () => {
             className="drawer-overlay"
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-[#06071B] gap-3 ">
+            <li>
+              <Link
+                onClick={handleClickBtn}
+                className="text-2xl text-white font-playfair"
+                to={"/"}
+              >
+                FishSeason
+              </Link>
+            </li>
             {/* Sidebar content here */}
             {navItems.map((item) => {
               return (
@@ -85,6 +99,7 @@ const Navbar = () => {
                   <Link
                     className="btn btn-md btn-outline text-base text-white mx-3 uppercase"
                     to={item.route}
+                    onClick={handleClickBtn}
                   >
                     {item.name}
                   </Link>

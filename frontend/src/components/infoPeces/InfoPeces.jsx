@@ -31,10 +31,10 @@ const fishes = [
 
 const InfoPeces = () => {
     return (
-        <div className='p-4 bg-slate-800 rounded-xl text-white'>
+        <div className='p-6 text-white'>
             <div className='flex flex-col md:flex-row'>
-                <div className='flex p-2 bg-zinc-500/15 rounded-md'>
-                    <div>
+                <div className='flex p-2 bg-zinc-900/50 rounded-md items-end w-5/12'>
+                    <div className="h-full">
                         <img src='/otoño.jpg' className="rounded-md h-full object-cover" />
                     </div>
                     <div className='flex-col pl-2'>

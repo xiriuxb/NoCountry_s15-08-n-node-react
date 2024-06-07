@@ -16,12 +16,12 @@ const AuthLayout = () => {
               <div className="text-white absolute w-[80%] h-[80%] p-4  ">
                 <div className=" flex justify-center">
                   <Link to={"/"}>
-                    <h1 className="font-playfair text-white text-7xl drop-shadow-md">
+                    <h1 className="font-playfair text-white text-5xl 2xl:text-7xl drop-shadow-md">
                       FishSeason
                     </h1>
                   </Link>
                 </div>
-                <div className="absolute top-40 p-4 w-[90%] h-[90%] ">
+                <div className="absolute top-40 p-4 w-[80%] h-[80%] ">
                   <div className="flex flex-col pt-6  gap-24 w-full h-full">
                   <motion.div
                       variants={fadeIn("left", 0.6)}

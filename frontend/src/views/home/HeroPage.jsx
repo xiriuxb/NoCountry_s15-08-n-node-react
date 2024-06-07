@@ -2,6 +2,7 @@ import CardHome from "../../components/cardHome/CardHome";
 // import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/variants";
+import { Link } from "react-router-dom";
 const imgUrl =
   "https://www.nps.gov/subjects/fishing/images/Mississippi-recreational-area-fishing-canoe-NPS.jpg?maxwidth=650&autorotate=false&quality=78&format=webp";
 const imgUrl1 =
@@ -24,15 +25,17 @@ const HeroPage = () => {
               <br />
               es la clave a la paz de uno mismo
             </motion.h1>
-            <motion.button
-              variants={fadeIn("left", 0.7)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.7 }}
-              className="btn  btn-secondary mt-4 font-playfair text-xl"
-            >
-              Unete a la comunidad de pescadores
-            </motion.button>
+            <Link to={"/auth/register"}>
+              <motion.button
+                variants={fadeIn("left", 0.7)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: false, amount: 0.7 }}
+                className="btn  btn-secondary mt-4 font-playfair text-xl"
+              >
+                Unete a la comunidad de pescadores
+              </motion.button>
+            </Link>
           </section>
         </article>
         <footer className=" w-full h-[40%] flex justify-start px-20 py-6  ">

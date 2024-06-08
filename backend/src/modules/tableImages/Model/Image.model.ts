@@ -2,11 +2,13 @@ import { mySqlSequelize } from '@/database/db';
 import PublicationModel from '@/modules/tablePublication/Model/Publication.model';
 import { DataTypes, Model, Sequelize } from 'sequelize';
 
-class ImageModel extends Model {
-    public id_image!: number;
-    public id_publication!: number;
-    public url!: string;
+export type ImageModelType = {
+    id_image: number;
+    id_publication: number;
+    url: string;
+};
 
+class ImageModel extends Model {
     public static associate(): void {
         ImageModel.belongsTo(PublicationModel, {
             foreignKey: 'id_publication',

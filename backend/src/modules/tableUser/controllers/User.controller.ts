@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import UserModel from '../model/User.model';
+import { UserModelType } from '../model/User.model';
 import UserService from '../services/User.service';
 
 export class UserController {
@@ -23,8 +23,8 @@ export class UserController {
     };
 
     public findById = async (req: Request, res: Response): Promise<void> => {
+        const { id } = req.params;
         try {
-            const { id } = req.params;
             const user = await this.userService.findById(Number(id));
             if (!user) {
                 res.status(404).json({ message: 'User not found' });
@@ -40,9 +40,11 @@ export class UserController {
     };
 
     public createUser = async (req: Request, res: Response) => {
+        const user: UserModelType = req.body as UserModelType;
+
         try {
-            const user: UserModel = req.body as UserModel;
             const createdUser = await this.userService.create(user);
+
             res.status(201).json(createdUser);
         } catch (error: Error | any) {
             res.status(500).json({
@@ -53,9 +55,10 @@ export class UserController {
     };
 
     public updateUser = async (req: Request, res: Response) => {
+        const { id } = req.params;
+        const user: UserModelType = req.body as UserModelType;
+
         try {
-            const { id } = req.params;
-            const user: UserModel = req.body as UserModel;
             const updatedUser = await this.userService.update(Number(id), user);
             if (!updatedUser) {
                 res.status(404).json({ message: 'User not found' });

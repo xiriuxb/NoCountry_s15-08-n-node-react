@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import PublicationService from '../services/Publication.service';
+import { PublicationModelType } from '../Model/Publication.model';
 
 export class PublicationController {
     private publicationService: PublicationService;
@@ -59,8 +60,11 @@ export class PublicationController {
     };
 
     public create = async (req: Request, res: Response): Promise<void> => {
+        const dataPublication = req.body;
+
         try {
-            const publication = await this.publicationService.create(req.body);
+            const publication = await this.publicationService.create(dataPublication);
+
             res.status(201).json(publication);
         } catch (error) {
             res.status(500).json({ error: 'An error occurred on the server.' });
@@ -69,7 +73,7 @@ export class PublicationController {
 
     public update = async (req: Request, res: Response): Promise<void> => {
         const { id } = req.params;
-        const dataPublication = req.body;
+        const dataPublication = req.body as PublicationModelType;
 
         try {
             const publication = await this.publicationService.update(Number(id), dataPublication);

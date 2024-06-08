@@ -2,23 +2,22 @@ import { Model, DataTypes } from 'sequelize';
 import { mySqlSequelize } from '@database/db';
 import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
-import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
+
 import ImageModel from '@/modules/tableImages/Model/Image.model';
 import CommentModel from '@/modules/tableComment/Model/Comment.model';
 
-export default class PublicationModel extends Model<
-    InferAttributes<PublicationModel>,
-    InferCreationAttributes<PublicationModel>
-> {
-    public id_publication!: CreationOptional<number>;
-    public id_point_interest!: number;
-    public id_user!: number;
-    public description!: string;
-    public createdAt!: Date;
-    public updatedAt!: Date;
-    public is_edit!: boolean;
-    public rating!: number;
+export type PublicationModelType = {
+    id_publication: number;
+    id_point_interest: number;
+    id_user: number;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+    is_edited: boolean;
+    rating: number;
+};
 
+export default class PublicationModel extends Model {
     public static associate() {
         PublicationModel.belongsTo(FisherModel, {
             foreignKey: 'id_user',
@@ -73,7 +72,7 @@ export default class PublicationModel extends Model<
                 },
                 is_edit: {
                     type: DataTypes.BOOLEAN,
-                    allowNull: false
+                    defaultValue: false
                 },
                 rating: {
                     type: DataTypes.INTEGER,

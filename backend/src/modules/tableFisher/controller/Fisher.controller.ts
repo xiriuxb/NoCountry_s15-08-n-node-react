@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import FisherService from '../services/Fisher.service';
 import UserService from '@/modules/tableUser/services/User.service';
-import FisherModel from '../model/Fisher.model';
+import FisherModel, { FisherModelType } from '../model/Fisher.model';
 
 export class FisherController {
     private fisherService: FisherService;
@@ -67,7 +67,7 @@ export class FisherController {
         if (!fisher) return;
 
         try {
-            const updatedFisher: FisherModel = req.body as FisherModel;
+            const updatedFisher: FisherModelType = req.body as FisherModelType;
             await this.fisherService.update(Number(id), updatedFisher);
 
             res.status(200).json(updatedFisher);
@@ -84,7 +84,7 @@ export class FisherController {
 
         try {
             await this.fisherService.delete(Number(id));
-            await this.userService.delete(fisher.id_user);
+            await this.userService.delete(fisher.dataValues.id_user);
 
             res.status(204).json();
         } catch {

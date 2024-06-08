@@ -6,17 +6,13 @@ import { mySqlSequelize } from '@database/db';
 import { Expertise } from '@utils/types';
 import UserModel from '@/modules/tableUser/model/User.model';
 
-export default class FisherModel extends Model<
-    InferAttributes<FisherModel>,
-    InferCreationAttributes<FisherModel>
-> {
-    constructor() {
-        super();
-    }
-    public id_user!: number;
-    public address!: string;
-    public expertise!: Expertise;
+export type FisherModelType = {
+    id_user: number;
+    address: string;
+    expertise: Expertise;
+};
 
+export default class FisherModel extends Model {
     public static associate() {
         FisherModel.belongsTo(UserModel, {
             foreignKey: 'id_user',
@@ -43,7 +39,8 @@ export default class FisherModel extends Model<
                 },
                 expertise: {
                     type: DataType.ENUM(...Object.values(Expertise)),
-                    allowNull: false
+                    allowNull: false,
+                    defaultValue: Expertise.BEGINNER
                 }
             },
             {

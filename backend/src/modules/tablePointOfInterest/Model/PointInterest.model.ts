@@ -2,16 +2,18 @@ import { Model, DataTypes } from 'sequelize';
 import { mySqlSequelize } from '@database/db';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
-export default class PointInterestModel extends Model {
-    public id_point_interest!: number;
-    public id_user!: number;
-    public name!: string;
-    public description!: string;
-    public latitude!: string;
-    public longitude!: string;
-    public state!: string;
-    public rating!: number;
+export type PointInterestType = {
+    id_point_interest: number;
+    id_user: number;
+    name: string;
+    description: string;
+    latitude: string;
+    longitude: string;
+    state: string;
+    rating: number;
+};
 
+export default class PointInterestModel extends Model {
     public static associate() {
         PointInterestModel.belongsTo(AdminModel, {
             foreignKey: 'id_user',

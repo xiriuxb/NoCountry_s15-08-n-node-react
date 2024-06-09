@@ -28,7 +28,7 @@ export interface Tips {
 }
 
 export interface Event {
-    id_event: number;
+    id_event?: number;
     id_point_interest: number;
     id_user: number;
     name: string;
@@ -38,7 +38,7 @@ export interface Event {
     date: Date;
     state: stateEvent;
     schedule: string;
-    sponsor: string;
+    sponsor: string | null;
 }
 
 export interface Competitor {

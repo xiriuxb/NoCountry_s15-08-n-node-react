@@ -7,11 +7,12 @@ import AdminModel, { AdminType } from '@/modules/tableAdmin/model/AdminModel';
 export type UserExtendType = FisherModelType | AdminType;
 
 export type UserModelType = {
+    id_user?: number;
     name: string;
     last_name: string;
     email: string;
-    password: string;
-    role: Role;
+    password?: string;
+    role?: Role;
     details: UserExtendType;
 };
 

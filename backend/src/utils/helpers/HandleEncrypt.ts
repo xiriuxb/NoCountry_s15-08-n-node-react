@@ -5,10 +5,16 @@ import bcrypt from 'bcrypt';
  * @param password - Password to encrypt
  * @returns Promise<string> - Encrypted password
  */
-export const encrypt = async (password: string): Promise<string> => {
-    const salt = await bcrypt.genSalt(15);
-    const hash = await bcrypt.hash(password, salt);
-    return hash;
+export const encrypt = async (password?: string): Promise<string> => {
+    try {
+        if (!password) throw Error('Password is required');
+
+        const salt = await bcrypt.genSalt(15);
+        const hash = await bcrypt.hash(password, salt);
+        return hash;
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -17,6 +23,11 @@ export const encrypt = async (password: string): Promise<string> => {
  * @param hash - Encrypted password
  * @returns Promise<boolean> - True if password is valid
  */
-export const compare = async (passwordPlain: string, hash: string): Promise<boolean> => {
-    return await bcrypt.compare(passwordPlain, hash);
+export const compare = async (passwordPlain?: string, hash?: string): Promise<boolean> => {
+    try {
+        if (!passwordPlain || !hash) throw new Error('passwordPlain or hash is required');
+        return await bcrypt.compare(passwordPlain, hash);
+    } catch (error) {
+        throw error;
+    }
 };

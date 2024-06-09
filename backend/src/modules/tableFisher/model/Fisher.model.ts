@@ -7,9 +7,9 @@ import { Expertise } from '@utils/types';
 import UserModel from '@/modules/tableUser/model/User.model';
 
 export type FisherModelType = {
-    id_user: number;
+    id_user?: number;
     address: string;
-    expertise: Expertise;
+    expertise?: Expertise;
 };
 
 export default class FisherModel extends Model {

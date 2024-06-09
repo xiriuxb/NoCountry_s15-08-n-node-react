@@ -3,10 +3,10 @@ import { mySqlSequelize } from '@database/db';
 import UserModel from '@/modules/tableUser/model/User.model';
 
 export type AdminType = {
-    id_user: number;
-    contact: string;
-    address: string;
-    description: string;
+    id_user?: number;
+    contact?: string;
+    address?: string;
+    description?: string;
 };
 
 class AdminModel extends Model {

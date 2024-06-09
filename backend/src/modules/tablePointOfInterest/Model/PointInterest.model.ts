@@ -3,14 +3,14 @@ import { mySqlSequelize } from '@database/db';
 import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 
 export type PointInterestType = {
-    id_point_interest: number;
+    id_point_interest?: number;
     id_user: number;
     name: string;
     description: string;
     latitude: string;
     longitude: string;
-    state: string;
-    rating: number;
+    state?: boolean;
+    rating?: number;
 };
 
 export default class PointInterestModel extends Model {

@@ -7,6 +7,9 @@ import AdminService from '@/modules/tableAdmin/services/Admin.service';
 import { FisherModelType } from '@/modules/tableFisher/model/Fisher.model';
 import { AdminType } from '@/modules/tableAdmin/model/AdminModel';
 import { mySqlSequelize } from '@/database/db';
+import { userSchema } from '../schema/User.schema';
+import { fisherSchema } from '@/modules/tableFisher/schema/Fisher.schema';
+import { AdminSchema } from '@/modules/tableAdmin/schema/Admin.schema';
 
 export default class UserService implements CRUDService<UserModel, UserModelType> {
     private static servicesFisher: FisherService = new FisherService();
@@ -40,34 +43,64 @@ export default class UserService implements CRUDService<UserModel, UserModelType
     }
 
     async update(userId: number, entity: UserModelType): Promise<UserModel | null> {
-        const user = await UserModel.findByPk(userId);
-        if (!user) {
-            return null;
-        }
-        if (entity.password) {
-            await updatePasswordIfNeeded(entity, user);
-        }
+        try {
+            const user = await UserModel.findByPk(userId);
+            if (!user) {
+                return null;
+            }
+            if (entity.password) {
+                await updatePasswordIfNeeded(entity, user);
+            }
 
-        return await user.update({ ...entity });
+            return await user.update({ ...entity });
+        } catch (error) {
+            throw error;
+        }
     }
 
     async delete(id: number): Promise<void> {
         await UserModel.destroy({ where: { id_user: id } });
     }
 
-    async createEntityByRole(entity: UserModelType): Promise<void> {
-        const details = entity.details;
+    async createEntityByRole(user: UserModelType): Promise<void> {
+        switch (user.role?.toString()) {
+            case Role.USER.toString():
+                await this.createFisher(user.details);
+                break;
 
-        switch (entity.role.toString()) {
-            case 'USER':
-                UserService.servicesFisher.create(details as FisherModelType);
+            case Role.ADMIN.toString():
+                await this.createAdmin(user.details);
                 break;
-            case 'ADMIN':
-                UserService.servicesAdmin.create(details as AdminType);
+
             default:
-                entity.role = Role.USER;
-                break;
+                throw new Error('Invalid role');
         }
+    }
+
+    private async createFisher(details: any): Promise<void> {
+        const validDetails = await this.validateFisherDetails(details);
+        await UserService.servicesFisher.create(validDetails);
+    }
+
+    private async createAdmin(details: any): Promise<void> {
+        const validDetails = await this.validateAdminDetails(details);
+        await UserService.servicesAdmin.create(validDetails);
+    }
+
+    private async validateFisherDetails(details: any): Promise<FisherModelType> {
+        const parsedDetails = fisherSchema.safeParse(details);
+        if (!parsedDetails.success) {
+            throw new Error(parsedDetails.error.message);
+        }
+        return parsedDetails.data;
+    }
+
+    private async validateAdminDetails(details: any): Promise<AdminType> {
+        const parsedDetails = AdminSchema.safeParse(details);
+        if (!parsedDetails.success) {
+            throw new Error('Invalid Admin details');
+        }
+        return parsedDetails.data;
     }
 }
 

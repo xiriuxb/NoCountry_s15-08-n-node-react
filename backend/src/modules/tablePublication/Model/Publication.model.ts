@@ -7,14 +7,14 @@ import ImageModel from '@/modules/tableImages/Model/Image.model';
 import CommentModel from '@/modules/tableComment/Model/Comment.model';
 
 export type PublicationModelType = {
-    id_publication: number;
+    id_publication?: number;
     id_point_interest: number;
     id_user: number;
     description: string;
-    createdAt: Date;
-    updatedAt: Date;
-    is_edited: boolean;
-    rating: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    is_edited?: boolean;
+    rating?: number;
 };
 
 export default class PublicationModel extends Model {

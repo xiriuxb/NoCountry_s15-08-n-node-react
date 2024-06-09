@@ -1,12 +1,15 @@
 import { mySqlSequelize } from '@/database/db';
 import PublicationModel from '@/modules/tablePublication/Model/Publication.model';
-import { DataTypes, Model, Sequelize } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
-class ImageModel extends Model {
-    public id_image!: number;
-    public id_publication!: number;
-    public url!: string;
+export type ImageModelType = {
+    id_image?: number;
+    id_publication: number;
+    public_id: string;
+    url: string;
+};
 
+export class ImageModel extends Model {
     public static associate(): void {
         ImageModel.belongsTo(PublicationModel, {
             foreignKey: 'id_publication',
@@ -26,9 +29,20 @@ class ImageModel extends Model {
                     type: DataTypes.INTEGER,
                     allowNull: false
                 },
+                public_id: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                    unique: true,
+                    validate: {
+                        notEmpty: true
+                    }
+                },
                 url: {
                     type: DataTypes.STRING,
-                    allowNull: false
+                    allowNull: false,
+                    validate: {
+                        notEmpty: true
+                    }
                 }
             },
             {

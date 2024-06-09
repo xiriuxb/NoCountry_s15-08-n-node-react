@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PointInterestType } from '../Model/PointInterest.model';
 
 const arrError = [
     'id_point_interest',
@@ -12,7 +13,7 @@ const arrError = [
     'invalido'
 ];
 
-export const pointOfInterestSchema = z.object({
+export const pointOfInterestSchema: z.ZodType<PointInterestType> = z.object({
     id_point_interest: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,
@@ -44,7 +45,7 @@ export const pointOfInterestSchema = z.object({
         .min(4, { message: `La descripción debe contener como mínimo 4 caracteres.` })
         .max(500, { message: `La descripción no debe superar los 500 caracteres.` })
         .trim(),
-    latitud: z
+    latitude: z
         .string({
             invalid_type_error: `${arrError[4]} ${arrError[arrError.length - 1]}`,
             required_error: `${arrError[4]} ${arrError[arrError.length - 1]}`
@@ -55,7 +56,7 @@ export const pointOfInterestSchema = z.object({
         .regex(/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/, {
             message: 'La latitud debe ser un número.'
         }),
-    longitud: z
+    longitude: z
         .string({
             invalid_type_error: `${arrError[5]} ${arrError[arrError.length - 1]}`,
             required_error: `${arrError[5]} ${arrError[arrError.length - 1]}`

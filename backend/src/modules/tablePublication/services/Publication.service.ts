@@ -1,7 +1,9 @@
 import CRUDService from '@/utils/interface/CRUDService';
-import PublicationModel from '../Model/Publication.model';
+import PublicationModel, { PublicationModelType } from '../Model/Publication.model';
 
-export default class PublicationService implements CRUDService<PublicationModel> {
+export default class PublicationService
+    implements CRUDService<PublicationModel, PublicationModelType>
+{
     async findAll(): Promise<PublicationModel[]> {
         const publications = await PublicationModel.findAll();
         return publications;
@@ -22,16 +24,22 @@ export default class PublicationService implements CRUDService<PublicationModel>
         return publications;
     }
 
-    async create(entity: PublicationModel): Promise<PublicationModel> {
-        return await PublicationModel.create(entity);
+    async create(entity: PublicationModelType): Promise<PublicationModel> {
+        try {
+            const publication = await PublicationModel.create({ ...entity });
+            return publication;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
-    async update(id: number, entity: PublicationModel): Promise<PublicationModel | null> {
+    async update(id: number, entity: PublicationModelType): Promise<PublicationModel | null> {
         const publication = await PublicationModel.findByPk(id);
         if (!publication) {
             return null;
         }
-        return await publication.update(entity);
+        return await publication.update({ ...entity });
     }
 
     async delete(id: number): Promise<void> {

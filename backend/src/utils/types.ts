@@ -1,6 +1,6 @@
 export enum Role {
-    USER = 'user',
-    ADMIN = 'admin'
+    USER = 'USER',
+    ADMIN = 'ADMIN'
 }
 
 export enum Expertise {
@@ -40,17 +40,17 @@ export interface Tips {
 }
 
 export interface Event {
-    id_event: number;
+    id_event?: number;
     id_point_interest: number;
     id_user: number;
     name: string;
     edition: string;
     description: string;
-    expertiz: Expertise;
+    expertize: Expertise;
     date: Date;
     state: stateEvent;
     schedule: string;
-    sponsor: string;
+    sponsor: string | null;
 }
 
 export interface Competitor {

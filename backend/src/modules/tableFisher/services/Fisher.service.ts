@@ -1,27 +1,49 @@
 import CRUDService from '@/utils/interface/CRUDService';
-import FisherModel from '../model/Fisher.model';
+import FisherModel, { FisherModelType } from '../model/Fisher.model';
+import { Expertise } from '@/utils/types';
 
-export default class FisherService implements CRUDService<FisherModel> {
+export default class FisherService implements CRUDService<FisherModel, FisherModelType> {
     async findAll(): Promise<FisherModel[]> {
         const fishers = FisherModel.findAll();
         return fishers;
     }
 
     async findById(id: number): Promise<FisherModel | null> {
-        const fisher = FisherModel.findByPk(id);
-        return fisher;
-    }
-
-    async create(entity: FisherModel): Promise<FisherModel> {
-        return await FisherModel.create(entity);
-    }
-
-    async update(id: number, entity: FisherModel): Promise<FisherModel | null> {
-        const fisher = await FisherModel.findByPk(id);
-        if (!fisher) {
+        try {
+            const fisher = await FisherModel.findByPk(id);
+            return fisher;
+        } catch (error) {
             return null;
         }
-        return await fisher.update(entity);
+    }
+
+    async create(entity: FisherModelType): Promise<FisherModel> {
+        try {
+            if (!entity.id_user) {
+                throw new Error('id_user is required');
+            }
+
+            if (!entity.expertise) {
+                entity.expertise = Expertise.BEGINNER;
+            }
+
+            const fisher = await FisherModel.create({ ...entity });
+            return fisher;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async update(id: number, entity: FisherModelType): Promise<FisherModel | null> {
+        try {
+            const fisher = await FisherModel.findByPk(id);
+            if (!fisher) {
+                return null;
+            }
+            return await fisher.update({ ...entity });
+        } catch (error) {
+            throw error;
+        }
     }
 
     async delete(id: number): Promise<void> {

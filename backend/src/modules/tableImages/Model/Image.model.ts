@@ -9,7 +9,7 @@ export type ImageModelType = {
     url: string;
 };
 
-export class ImageModel extends Model {
+class ImageModel extends Model {
     public static associate(): void {
         ImageModel.belongsTo(PublicationModel, {
             foreignKey: 'id_publication',

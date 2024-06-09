@@ -1,9 +1,21 @@
 import { Role } from '@/utils/types';
 import { z } from 'zod';
+import { UserModelType } from '../model/User.model';
+import { fisherSchema } from '@/modules/tableFisher/schema/Fisher.schema';
+import { AdminSchema } from '@/modules/tableAdmin/schema/Admin.schema';
 
-const arrError = ['id_user', 'name', 'last_name', 'email', 'password', 'role', 'invalido'];
+const arrError = [
+    'id_user',
+    'name',
+    'last_name',
+    'email',
+    'password',
+    'role',
+    'details',
+    'invalido'
+];
 
-export const userSchema = z.object({
+export const userSchema: z.ZodType<UserModelType> = z.object({
     id_user: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,
@@ -44,9 +56,9 @@ export const userSchema = z.object({
         })
         .min(6, { message: `La contraseña debe contener como mínimo 6 caracteres.` })
         .trim()
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/, {
+        .regex(/^(?=.*[a-záéíóúüñ])(?=.*[A-ZÁÉÍÓÚÜÑ])(?=.*\d)[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\d]{6,}$/, {
             message:
-                'La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.'
+                'La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número.'
         }),
     role: z
         .enum([Role.ADMIN, Role.USER], {
@@ -54,4 +66,6 @@ export const userSchema = z.object({
             required_error: `${arrError[5]} ${arrError[arrError.length - 1]}`
         })
         .optional()
+        .default(Role.USER),
+    details: z.union([fisherSchema, AdminSchema])
 });

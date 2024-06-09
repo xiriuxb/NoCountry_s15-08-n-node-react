@@ -1,8 +1,8 @@
-interface CRUDService<T> {
+interface CRUDService<T, S> {
     findAll(): Promise<T[]>;
     findById(id: number): Promise<T | null>;
-    create(entity: T): Promise<T>;
-    update(id: number, entity: T): Promise<T | null>;
+    create(entity: S): Promise<T>;
+    update(id: number, entity: S): Promise<T | null>;
     delete(id: number): Promise<void>;
 }
 

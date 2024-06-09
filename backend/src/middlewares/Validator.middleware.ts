@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
-import cloudinary from 'cloudinary';
 import { ImageFormat } from '@/utils/types';
-import { ZodSchema } from 'zod';
+import { Schema, ZodParsedType, ZodSchema, z } from 'zod';
+import { PublicationModelType } from '@/modules/tablePublication/Model/Publication.model';
+import path from 'path';
 
 export const validateID = (req: Request, res: Response, next: NextFunction): void => {
     const id = req.params?.id;
@@ -24,8 +25,24 @@ export const validateID = (req: Request, res: Response, next: NextFunction): voi
  * @param schema - Zod schema
  * @returns  - Express middleware
  */
-export function validateSchema(schema: ZodSchema<any>) {
+export function validateSchema(schema: z.AnyZodObject) {
     return (req: Request, res: Response, next: NextFunction): void => {
+        console.log(req.body);
+        if (req.body) {
+            const data = req.body as Record<string, ZodParsedType>;
+
+            Object.keys(data).forEach((key) => {
+                if (
+                    (schema.shape[key]?._def.typeName === 'ZodNumber' ||
+                        schema.shape[key]?._def?.innerType?._def.typeName === 'ZodNumber') &&
+                    typeof data[key] === 'string'
+                ) {
+                    const transformedValue = parseInt(data[key] as string, 10);
+                    req.body[key] = transformedValue;
+                }
+            });
+        }
+
         try {
             const result = schema.safeParse(req.body);
 
@@ -47,29 +64,46 @@ export function validateSchema(schema: ZodSchema<any>) {
         }
     };
 }
+
 const imageFilter = (
     req: Request,
     file: Express.Multer.File,
     callback: multer.FileFilterCallback
 ): void => {
-    file.mimetype.startsWith('image/') &&
-    ImageFormat.includes(file.originalname.split('.').pop() as string)
-        ? callback(null, true)
-        : callback(null, false);
+    console.log(file);
+
+    if (
+        file.mimetype.startsWith('image/') &&
+        ImageFormat.includes(file.originalname.split('.').pop() as string)
+    ) {
+        console.log('File accepted');
+        callback(null, true);
+    } else {
+        callback(null, false);
+    }
 };
 
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, '../uploads'),
+    filename: (req, file, callback) => {
+        callback(null, new Date().getTime() + file.originalname.trim());
+    }
+});
+
 const upload = multer({
-    storage: multer.memoryStorage(),
+    storage: storage,
     fileFilter: imageFilter,
-    limits: { fileSize: 10 * 1024 * 1024 }
+    limits: { fileSize: 5 * 1024 * 1024 }
 });
 
 export const validateImage = (req: Request, res: Response, next: NextFunction): void => {
-    upload.single('image')(req, res, async (err) => {
+    upload.fields([{ name: 'image', maxCount: 1 }])(req, res, async (err) => {
         if (err instanceof multer.MulterError) {
             switch (err.code) {
                 case 'LIMIT_FILE_SIZE':
                     return res.status(400).json({ message: 'Image file is too large' });
+                case 'LIMIT_UNEXPECTED_FILE':
+                    return res.status(400).json({ message: 'Unexpected file' });
                 default:
                     return res.status(400).json({ message: 'Invalid image' });
             }

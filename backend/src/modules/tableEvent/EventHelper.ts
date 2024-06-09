@@ -16,7 +16,7 @@ export default class EventHelper {
         'invalido'
     ];
 
-    eventSchema: z.ZodType<Event> = z.object({
+    eventSchema = z.object({
         id_event: z.number().optional(),
         id_point_interest: z
             .number({

@@ -4,11 +4,15 @@ import UserRouter from '@/modules/tableUser/routers/User.router';
 import FisherRouter from '@/modules/tableFisher/routers/Fisher.router';
 import PublicationRouter from '@/modules/tablePublication/routers/Publication.router';
 import PointInterestRouter from '@/modules/tablePointOfInterest/routers/PointOfInterest.router';
+import { validateImage } from '@/middlewares/Validator.middleware';
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
+// middlewares
 app.use(cors());
+app.use(validateImage);
 
 // routes
 app.use('/api/user', UserRouter);

@@ -3,7 +3,7 @@ import { AdminType } from '../model/AdminModel';
 
 const arrError = ['id_user', 'contact', 'address', 'description', 'invalido'];
 
-export const AdminSchema: z.ZodType<AdminType> = z.object({
+export const AdminSchema = z.object({
     id_user: z
         .number({
             invalid_type_error: 'id_user invalido',

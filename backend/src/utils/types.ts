@@ -71,3 +71,7 @@ export interface ImageUpload {
     public_id: string;
     url: string;
 }
+
+export interface MulterRequest extends Express.Request {
+    file: Express.Multer.File;
+}

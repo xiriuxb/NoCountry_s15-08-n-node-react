@@ -1,6 +1,8 @@
 import cloudinary from '@/Config/Cloudinary.config';
 import ImageModel, { ImageModelType } from '../Model/Image.model';
 import { ImageUpload } from '@/utils/types';
+import { Transaction } from 'sequelize';
+import fs from 'fs';
 
 export class ImagesServices {
     async findAll() {}
@@ -16,6 +18,11 @@ export class ImagesServices {
             const result = await cloudinary.uploader.upload(file.path, {
                 folder: 'FishSeason'
             });
+
+            fs.unlink(file.path, (err) => {
+                if (err) throw err;
+            });
+
             return {
                 public_id: result.public_id,
                 url: result.secure_url
@@ -25,10 +32,14 @@ export class ImagesServices {
         }
     }
 
-    async create(file: ImageModelType) {
+    async create(file: ImageModelType, transaction?: Transaction) {
         try {
-            return await ImageModel.create(file);
+            const image = await ImageModel.create(file);
+            await transaction?.commit();
+            return image;
         } catch (error) {
+            await transaction?.rollback();
+            this.deleteImagesByPublic_id(file.public_id);
             throw new Error('Error creating image');
         }
     }
@@ -45,6 +56,14 @@ export class ImagesServices {
             throw new Error('Error deleting image from Cloudinary');
         }
         return Promise.resolve();
+    }
+
+    async deleteImagesByPublic_id(public_id: string) {
+        try {
+            await cloudinary.uploader.destroy(public_id);
+        } catch (error) {
+            throw new Error('Error deleting image from Cloudinary');
+        }
     }
 }
 

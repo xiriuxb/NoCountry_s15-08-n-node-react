@@ -3,7 +3,7 @@ import { mySqlSequelize } from '@database/db';
 import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointInterest.model';
 
-import ImageModel from '@/modules/tableImages/Model/Image.model';
+import ImageModel, { ImageModelType } from '@/modules/tableImages/Model/Image.model';
 import CommentModel from '@/modules/tableComment/Model/Comment.model';
 
 export type PublicationModelType = {
@@ -15,6 +15,7 @@ export type PublicationModelType = {
     updatedAt?: Date;
     is_edited?: boolean;
     rating?: number;
+    urls?: ImageModelType[] | null;
 };
 
 export default class PublicationModel extends Model {

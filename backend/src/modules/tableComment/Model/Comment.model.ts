@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { mySqlSequelize } from '@database/db';
-import AdminModel from '@/modules/tableAdmin/model/AdminModel';
 import PublicationModel from '@modules/tablePublication/Model/Publication.model';
+import FisherModel from '@/modules/tableFisher/model/Fisher.model';
 
 export default class CommentModel extends Model {
     public id_comment!: number;
@@ -11,7 +11,7 @@ export default class CommentModel extends Model {
     public createdAt!: Date;
 
     public static associate() {
-        CommentModel.belongsTo(AdminModel, {
+        CommentModel.belongsTo(FisherModel, {
             foreignKey: 'id_user',
             targetKey: 'id_user'
         });

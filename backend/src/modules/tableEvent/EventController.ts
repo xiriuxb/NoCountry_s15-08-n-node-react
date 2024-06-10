@@ -53,6 +53,8 @@ export default class EventController {
 
     public createEvent = async (req: Request, res: Response): Promise<any> => {
         try {
+            const createdDate = new Date(req.body.date)
+
             const body = {
                 id_point_interest: req.body.id_point_interest,
                 id_user: req.body.id_user,
@@ -60,7 +62,7 @@ export default class EventController {
                 edition: req.body.edition,
                 description: req.body.description,
                 expertize: req.body.expertize,
-                date: req.body.date,
+                date: createdDate,
                 state: req.body.state,
                 schedule: req.body.schedule,
                 sponsor: req.body.sponsor //puede ser NULL
@@ -94,6 +96,7 @@ export default class EventController {
                 res.status(400).json({ message: 'No se pudo modificar el evento, ID inválido.' });
                 return;
             }
+            const createdDate = new Date(req.body.date)
 
             const body = {
                 id_point_interest: req.body.id_point_interest,
@@ -101,8 +104,8 @@ export default class EventController {
                 name: req.body.name,
                 edition: req.body.edition,
                 description: req.body.description,
-                expertiz: req.body.expertiz,
-                date: req.body.date,
+                expertize: req.body.expertize,
+                date: createdDate,
                 state: req.body.state,
                 schedule: req.body.schedule,
                 sponsor: req.body.sponsor

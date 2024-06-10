@@ -1,7 +1,7 @@
 import app from '@/app/App';
 import { connection } from '@database/db';
 
-const port = process.env.PORT || 3000;
+const port = process.env.SERVER_PORT || 3000;
 
 connection();
 

@@ -51,11 +51,13 @@ class CommentController {
 
     public createComment = async(req: Request, res: Response): Promise<any> => {
         try {
+            const createdDate = new Date(req.body.createdAt)
+
             const body = {
                 id_user: req.body.id_user,
                 id_publication: req.body.id_publication,
                 description: req.body.description,
-                createdAt: req.body.createdAt
+                createdAt: createdDate
             }
 
             const cleanComment = this.helperC.verifyComment(body);
@@ -88,11 +90,13 @@ class CommentController {
                 return;
             }
 
+            const createdDate = new Date(req.body.createdAt)
+
             const body = {
                 id_user: req.body.id_user,
                 id_publication: req.body.id_publication,
                 description: req.body.description,
-                createdAt: req.body.createdAt
+                createdAt: createdDate
             }
 
             const cleanComment = this.helperC.verifyComment(body);

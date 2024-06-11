@@ -15,7 +15,7 @@ export default function UserLogIn({registerPath = "/"}) {
             className="input input-bordered input-sm w-full text-slate-400"
             type="text"
             id="mail"
-            placeholder="Email"
+            placeholder="admin@gmail.com"
           />
         </div>
         <div className="mt-2">
@@ -26,7 +26,7 @@ export default function UserLogIn({registerPath = "/"}) {
             className="input input-bordered input-sm w-full text-slate-400"
             type="password"
             id="password"
-            placeholder="Contraseña"
+            placeholder="12345Clave"
           />
         </div>
         <button

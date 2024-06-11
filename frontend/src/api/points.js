@@ -1,6 +1,6 @@
 import appApi from "./axios";
 
-const URI_PATH = "pointOfInterest";
+const URI_PATH = "pointInterest";
 
 export const getPointsData = async () => {
   try {

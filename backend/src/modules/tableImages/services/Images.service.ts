@@ -2,7 +2,6 @@ import cloudinary from '@/Config/Cloudinary.config';
 import ImageModel, { ImageModelType } from '../Model/Image.model';
 import { ImageUpload } from '@/utils/types';
 import { Transaction } from 'sequelize';
-import fs from 'fs';
 
 export class ImagesServices {
     async findAll() {}
@@ -17,10 +16,6 @@ export class ImagesServices {
         try {
             const result = await cloudinary.uploader.upload(file.path, {
                 folder: 'FishSeason'
-            });
-
-            fs.unlink(file.path, (err) => {
-                if (err) throw err;
             });
 
             return {

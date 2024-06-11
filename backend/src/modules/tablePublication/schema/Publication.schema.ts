@@ -56,6 +56,5 @@ export const publicationSchema = z.object({
         })
         .min(0, { message: `${arrError[5]} ${arrError[arrError.length - 1]}` })
         .max(5, { message: `${arrError[5]} ${arrError[arrError.length - 1]}` })
-        .optional(),
-    image: z.object({}).optional()
+        .optional()
 });

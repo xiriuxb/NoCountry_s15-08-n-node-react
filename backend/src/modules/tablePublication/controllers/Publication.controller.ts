@@ -3,6 +3,7 @@ import PublicationService from '../services/Publication.service';
 import { PublicationModelType } from '../Model/Publication.model';
 import multer from 'multer';
 import { Expertise } from '@/utils/types';
+import { EntityInvalid, EntityNotFound } from '@/Error/Exception';
 
 export class PublicationController {
     private publicationService: PublicationService;
@@ -96,8 +97,15 @@ export class PublicationController {
             );
 
             res.status(201).json(publication);
-        } catch (error) {
-            res.status(500).json({ error: 'An error occurred on the server.' });
+        } catch (error: Error | any) {
+            if (error instanceof EntityNotFound) {
+                res.status(400).json({ error: error.message });
+                return;
+            }
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
 
@@ -110,10 +118,15 @@ export class PublicationController {
 
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
+                return;
             }
+
             res.status(200).json(publication);
-        } catch (error) {
-            res.status(500).json({ error: 'An error occurred on the server.' });
+        } catch (error: Error | any) {
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
     public delete = async (req: Request, res: Response): Promise<void> => {
@@ -123,12 +136,16 @@ export class PublicationController {
             const publication = await this.publicationService.findById(Number(id));
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
+                return;
             }
 
             await this.publicationService.delete(Number(id));
             res.status(204).json();
-        } catch (error) {
-            res.status(500).json({ error: 'An error occurred on the server.' });
+        } catch (error: Error | any) {
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
 }

@@ -27,7 +27,6 @@ export const validateID = (req: Request, res: Response, next: NextFunction): voi
  */
 export function validateSchema(schema: z.AnyZodObject) {
     return (req: Request, res: Response, next: NextFunction): void => {
-        console.log(req.body);
         if (req.body) {
             const data = req.body as Record<string, ZodParsedType>;
 
@@ -70,8 +69,6 @@ const imageFilter = (
     file: Express.Multer.File,
     callback: multer.FileFilterCallback
 ): void => {
-    console.log(file);
-
     if (
         file.mimetype.startsWith('image/') &&
         ImageFormat.includes(file.originalname.split('.').pop() as string)

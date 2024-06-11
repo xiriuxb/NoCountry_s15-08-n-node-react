@@ -13,7 +13,7 @@ export default class FisherService implements CRUDService<FisherModel, FisherMod
             const fisher = await FisherModel.findByPk(id);
             return fisher;
         } catch (error) {
-            return null;
+            throw error;
         }
     }
 

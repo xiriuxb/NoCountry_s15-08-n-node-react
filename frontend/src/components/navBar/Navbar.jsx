@@ -7,7 +7,7 @@ const navItems = [
   },
   {
     name: "tienda",
-    route: "",
+    route: "https://www.curricanes.com/",
   },
   {
     name: "mapa",

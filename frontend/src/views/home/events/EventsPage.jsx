@@ -59,7 +59,7 @@ const EventPromoComponent = () => {
           Torneo anual de pesca Salinas Yacht Club 2024 (Catch and Release)
         </h3>
         <h4>Días:</h4>
-        <p>Junio 24 del 20204</p>
+        <p>Junio 24 del 2024</p>
         <h4>Premios:</h4>
         <p>
           <b>Primer Lugar:</b> $400 <b>Segundo Lugar:</b> $400{" "}

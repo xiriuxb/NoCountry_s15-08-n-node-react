@@ -32,6 +32,7 @@ app.use('/api/pointInterest', PointInterestRouter);
 app.use('/api/tips', TipsRouter);
 app.use('/api/event', EventRouter);
 app.use('/api/competitor', CompetitorRouter);
+app.use('/api/pointOfInterest', PointInterestRouter);
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {

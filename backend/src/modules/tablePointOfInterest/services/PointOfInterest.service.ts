@@ -5,7 +5,12 @@ export default class PointOfInterestService
     implements CRUDService<PointInterestModel, PointInterestType>
 {
     async findAll(): Promise<PointInterestModel[]> {
-        throw new Error('Method not implemented.');
+        try {
+            return await PointInterestModel.findAll();
+        } catch (error) {
+            console.log(error);
+            throw new Error('Method not implemented.');
+        }
     }
     async findById(id: number): Promise<PointInterestModel | null> {
         throw new Error('Method not implemented.');

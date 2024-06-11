@@ -18,5 +18,5 @@ export const connection = async () => {
         .catch((error) => {
             console.error('Unable to connect to the database:', error);
         });
-    mySqlSequelize.sync();
+    mySqlSequelize.sync({ alter: true });
 };

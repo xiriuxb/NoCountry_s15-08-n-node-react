@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        'custom-gray': '#222224',
+        'custom-dark': '#252527'
+      },
       backgroundImage: {
         "fondo":
           "url('/Background.jpg')",

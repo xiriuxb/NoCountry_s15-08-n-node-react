@@ -25,11 +25,8 @@ const PointPostsComponents = () => {
   return (
     <div className="w-full flex flex-col bg-slate-800 rounded-2xl overflow-hidden">
       <div className="flex flex-row w-full justify-between items-center py-1 px-3 shadow-[#4a4a4a3b_0px_13px_8px_-4px]">
-        <h3
-          title={selectedPoint.descripcion}
-          className="flex-1 text-ellipsis-nowrap"
-        >
-          {selectedPoint.descripcion}
+        <h3 title={selectedPoint.name} className="flex-1 text-ellipsis-nowrap">
+          {selectedPoint.name}
         </h3>
         <button
           title="close"
@@ -61,7 +58,7 @@ const PlaceInfoComponent = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
   return (
     <>
-      <h3>{selectedPoint.nombreLugar}</h3>
+      <h3>{selectedPoint.description}</h3>
       <img
         className="w-[70%] h-40 object-cover rounded-lg"
         src="https://billiken.lat/wp-content/uploads/2022/01/rio-de-la-plata-20-1024x768.jpeg"

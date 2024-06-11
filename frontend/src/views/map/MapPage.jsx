@@ -1,19 +1,31 @@
-import data from "../../assets/mapPoints.json";
+import dataPoints from "../../assets/mapPoints.json";
 import MapComponent from "../../components/map/MapComponent";
 import InfoPeces from "../../components/infoPeces/InfoPeces";
 import SectionPost from "../../components/sectionPost/SectionPost";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMapStore } from "../../context/mapStore";
 import CreatePostComponent from "../../components/sectionPost/CreatePostComponent";
 import PuntoInteres from "../../components/PointOfInterest/PuntoInteres";
+import { getPointsData } from "../../api/points";
 
 const MapPage = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
   const [isHidden, setIsHidden] = useState(true);
+  const [data, setData] = useState(dataPoints);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const points = await getPointsData();
+    setData((prev) => [...prev, ...points]);
+  };
 
   const handleSelectMarker = () => {
     if (selectedPoint && !isHidden) return;
     if (selectedPoint && isHidden) {
+      console.log(selectedPoint);
       setIsHidden(false);
       return;
     }
@@ -33,7 +45,7 @@ const MapPage = () => {
           <InfoPeces />
         </div>
         <div className="hidden md:block md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-4">
-         <PuntoInteres />
+          <PuntoInteres />
         </div>
       </section>
       <section

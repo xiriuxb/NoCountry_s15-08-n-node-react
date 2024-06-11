@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 const navItems = [
   {
     name: "eventos",
-    route: "",
+    route: "/events",
   },
   {
     name: "tienda",
@@ -62,7 +62,7 @@ const Navbar = () => {
               <ul className="menu menu-horizontal px-7 gap-x-3">
                 {navItems.map((item) => {
                   return (
-                    <li>
+                    <li key={item.route}>
                       <NavLink
                         className="w-full btn btn-sm btn-outline text-base text-white px-4 uppercase"
                         to={item.route}
@@ -95,7 +95,7 @@ const Navbar = () => {
             {/* Sidebar content here */}
             {navItems.map((item) => {
               return (
-                <li>
+                <li key={item.route}>
                   <Link
                     className="btn btn-md btn-outline text-base text-white mx-3 uppercase"
                     to={item.route}

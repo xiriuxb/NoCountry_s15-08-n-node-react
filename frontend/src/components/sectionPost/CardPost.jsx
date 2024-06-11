@@ -20,9 +20,9 @@ const CardPost = ({ post }) => {
               <p
                 className="text-white mx-1 text-ellipsis whitespace-normal overflow-hidden"
                 style={{
-                  "-webkit-box-orient": "vertical",
+                  WebkitBoxOrient: "vertical",
                   display: "-webkit-box",
-                  "-webkit-line-clamp": "6",
+                  WebKitLineClamp: "6",
                 }}
               >
                 {post.description}

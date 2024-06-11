@@ -15,8 +15,8 @@ export enum Status {
 }
 
 export enum stateEvent {
-    ACTIVO = 'Active',
-    FINALIZADO = 'Finished'
+    ACTIVO = 'active',
+    FINALIZADO = 'inactive'
 }
 
 export const ImageFormat: string[] = [

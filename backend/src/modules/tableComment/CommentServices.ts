@@ -37,7 +37,7 @@ class CommentServices {
 
             return comment;
         } catch (error) {
-            return null;
+            return error;
         }
     }
 

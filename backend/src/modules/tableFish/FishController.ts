@@ -27,7 +27,7 @@ class FishController {
     public findOne = async(req: Request, res: Response): Promise<any> => {
         try {
             //luego ver si lo toma o no, cuando se hagan los tests
-            if (!isNaN(parseInt(req.params.id)) && parseInt(req.params.id) > 1 && parseInt(req.params.id) < 100000000) {
+            if (isNaN(parseInt(req.params.id)) || parseInt(req.params.id) < 1 || parseInt(req.params.id) > 100000000) {
                 res.status(400).json({message: 'No se pudo encontrar el pez, ID inválido'});
                 return;
             }

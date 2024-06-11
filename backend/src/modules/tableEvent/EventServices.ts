@@ -34,7 +34,7 @@ export default class EventServices {
                 name: body.name,
                 edition: body.edition,
                 description: body.description,
-                expertiz: body.expertiz,
+                expertize: body.expertize,
                 date: body.date,
                 state: body.state,
                 schedule: body.schedule,
@@ -44,7 +44,7 @@ export default class EventServices {
             return event;
 
         }catch (error) {
-            return null;
+            return error;
         }
     };
 
@@ -62,7 +62,7 @@ export default class EventServices {
                 name: body.name,
                 edition: body.edition,
                 description: body.description,
-                expertiz: body.expertiz,
+                expertize: body.expertize,
                 date: body.date,
                 state: body.state,
                 schedule: body.schedule,

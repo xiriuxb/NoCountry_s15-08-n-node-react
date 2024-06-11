@@ -9,7 +9,7 @@ const BestPostsComponent = () => {
       </h3>
       <div className="flex flex-col overflow-y-scroll">
         {postsData.map((post) => {
-          return <CardPost post={post} />;
+          return <CardPost key={post.id_publication} post={post} />;
         })}
       </div>
     </>

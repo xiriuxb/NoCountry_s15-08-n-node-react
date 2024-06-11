@@ -1,0 +1,1235 @@
+[
+  {
+    "id_user": "caa97fa4-e261-440f-b7f2-cf2622a52229",
+    "name": "Garza",
+    "last_name": "Short",
+    "email": "garzashort@phormula.com",
+    "clientPhone": "+1 (869) 473-2421",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "c993a84b-31c7-4ffb-a415-8fe406416b64",
+    "name": "Mckay",
+    "last_name": "Larson",
+    "email": "mckaylarson@phormula.com",
+    "clientPhone": "+1 (999) 596-3339",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "2a81810b-e50e-4d0e-a99b-886ab0aa4e45",
+    "name": "Page",
+    "last_name": "Myers",
+    "email": "pagemyers@phormula.com",
+    "clientPhone": "+1 (892) 504-2717",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "64e81715-6399-4b1d-a186-4efb9858ded5",
+    "name": "Mccarthy",
+    "last_name": "Rodriguez",
+    "email": "mccarthyrodriguez@phormula.com",
+    "clientPhone": "+1 (858) 410-2213",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3c3ed3b4-04a2-4ed3-8ac1-52758f8f9807",
+    "name": "Ada",
+    "last_name": "Valentine",
+    "email": "adavalentine@phormula.com",
+    "clientPhone": "+1 (992) 455-3583",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "0cdbdc71-aadc-4344-922f-8732ec92a172",
+    "name": "Head",
+    "last_name": "Cross",
+    "email": "headcross@phormula.com",
+    "clientPhone": "+1 (826) 532-2654",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "5502b43a-5df8-48f8-9a1c-d31a9f9b4df4",
+    "name": "Laverne",
+    "last_name": "Butler",
+    "email": "lavernebutler@phormula.com",
+    "clientPhone": "+1 (894) 587-3520",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "0d2ba04f-e550-4f48-a56e-37aa23830be5",
+    "name": "Garner",
+    "last_name": "Guy",
+    "email": "garnerguy@phormula.com",
+    "clientPhone": "+1 (935) 499-2092",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "82e6f749-adbf-4a3b-8e9a-b2ebbeeef252",
+    "name": "Maynard",
+    "last_name": "Hardin",
+    "email": "maynardhardin@phormula.com",
+    "clientPhone": "+1 (965) 528-2102",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e0901583-fd1d-46dd-a048-338dc6b4d431",
+    "name": "Roberson",
+    "last_name": "Giles",
+    "email": "robersongiles@phormula.com",
+    "clientPhone": "+1 (923) 558-2058",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "7f2ab257-3e7e-41ce-af30-45d7c4701ef3",
+    "name": "Hampton",
+    "last_name": "Ross",
+    "email": "hamptonross@phormula.com",
+    "clientPhone": "+1 (891) 451-3267",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "81c3ef23-5e55-4a1b-987e-17647342d2b9",
+    "name": "Bonita",
+    "last_name": "Cantu",
+    "email": "bonitacantu@phormula.com",
+    "clientPhone": "+1 (922) 500-3345",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "6922f347-aa58-49db-a68d-01a967a8e645",
+    "name": "Sally",
+    "last_name": "Lindsay",
+    "email": "sallylindsay@phormula.com",
+    "clientPhone": "+1 (862) 556-3887",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "177a743e-b40e-4c03-a590-08d5d2f86ccf",
+    "name": "Schultz",
+    "last_name": "Nolan",
+    "email": "schultznolan@phormula.com",
+    "clientPhone": "+1 (971) 512-3565",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b825d772-9d23-47f5-a730-7038ceef96d0",
+    "name": "Lakisha",
+    "last_name": "Lynn",
+    "email": "lakishalynn@phormula.com",
+    "clientPhone": "+1 (923) 509-3117",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "38558ddd-6d21-421e-8775-2b7d1c1542f2",
+    "name": "Carrie",
+    "last_name": "Wright",
+    "email": "carriewright@phormula.com",
+    "clientPhone": "+1 (892) 434-3279",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "571fc702-bda8-4091-a8a9-790c9876d684",
+    "name": "Rivers",
+    "last_name": "Allen",
+    "email": "riversallen@phormula.com",
+    "clientPhone": "+1 (881) 553-2281",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "427d1294-1ac0-4294-96f5-7cdd7e9797a0",
+    "name": "Berger",
+    "last_name": "Roberson",
+    "email": "bergerroberson@phormula.com",
+    "clientPhone": "+1 (866) 529-2228",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b7471528-e1e0-4ebd-9a7b-ba6bcdc6af3f",
+    "name": "Kris",
+    "last_name": "Montgomery",
+    "email": "krismontgomery@phormula.com",
+    "clientPhone": "+1 (982) 410-3720",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e81f6c96-7545-4f9a-a714-07d384279c40",
+    "name": "Sheryl",
+    "last_name": "Snow",
+    "email": "sherylsnow@phormula.com",
+    "clientPhone": "+1 (886) 529-3091",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3c7dc863-ed7a-40db-97fb-ed7f3867c4e8",
+    "name": "Kinney",
+    "last_name": "Delaney",
+    "email": "kinneydelaney@phormula.com",
+    "clientPhone": "+1 (973) 599-2717",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "c46308e8-f15b-4072-92f6-ccb162316c2c",
+    "name": "Cheryl",
+    "last_name": "Livingston",
+    "email": "cheryllivingston@phormula.com",
+    "clientPhone": "+1 (830) 559-2516",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "c9754b92-019e-4900-8e77-c90d7af6e27a",
+    "name": "Dixon",
+    "last_name": "Woodward",
+    "email": "dixonwoodward@phormula.com",
+    "clientPhone": "+1 (947) 466-3915",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b5c94386-2bc0-4188-9833-8954df493878",
+    "name": "Elisabeth",
+    "last_name": "Houston",
+    "email": "elisabethhouston@phormula.com",
+    "clientPhone": "+1 (898) 436-2682",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "142a4692-b4c0-444e-b59a-061331d64858",
+    "name": "Nieves",
+    "last_name": "Bates",
+    "email": "nievesbates@phormula.com",
+    "clientPhone": "+1 (901) 450-2247",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "80c1d525-7de0-41d7-b5a9-4530fc6533dd",
+    "name": "Morton",
+    "last_name": "Valenzuela",
+    "email": "mortonvalenzuela@phormula.com",
+    "clientPhone": "+1 (989) 476-3589",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "50e747f2-1dca-4883-843c-08f7cb040634",
+    "name": "Haney",
+    "last_name": "Moody",
+    "email": "haneymoody@phormula.com",
+    "clientPhone": "+1 (831) 518-2703",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "68b5b05a-7d85-4674-ba92-d7b42bffe2d1",
+    "name": "Cox",
+    "last_name": "Ramsey",
+    "email": "coxramsey@phormula.com",
+    "clientPhone": "+1 (888) 579-2814",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "c33432e2-e582-425a-b072-2ea35c46719b",
+    "name": "Ingram",
+    "last_name": "Collier",
+    "email": "ingramcollier@phormula.com",
+    "clientPhone": "+1 (825) 492-3588",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b9b33d52-10f6-4a58-af1b-d8d43497e3fc",
+    "name": "Johnson",
+    "last_name": "Blanchard",
+    "email": "johnsonblanchard@phormula.com",
+    "clientPhone": "+1 (977) 565-2654",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "fdf617a8-034a-4b0d-aa3c-6da1a6d4e417",
+    "name": "Olsen",
+    "last_name": "Perry",
+    "email": "olsenperry@phormula.com",
+    "clientPhone": "+1 (939) 556-3884",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "a09875e7-a1c8-4b42-bd2f-bc893dc20e06",
+    "name": "Reynolds",
+    "last_name": "Cameron",
+    "email": "reynoldscameron@phormula.com",
+    "clientPhone": "+1 (880) 427-3001",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "13b4959e-1f4d-4446-a425-b84fb38d5283",
+    "name": "Gertrude",
+    "last_name": "Hayden",
+    "email": "gertrudehayden@phormula.com",
+    "clientPhone": "+1 (825) 584-3612",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4dc868e8-70c8-4548-961b-eca0b45e93a4",
+    "name": "Hodge",
+    "last_name": "Dean",
+    "email": "hodgedean@phormula.com",
+    "clientPhone": "+1 (926) 585-2665",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "163342a0-5005-4b6e-a676-c5579c4071bd",
+    "name": "Hendrix",
+    "last_name": "Davenport",
+    "email": "hendrixdavenport@phormula.com",
+    "clientPhone": "+1 (893) 595-3963",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "30396a7e-45a6-4737-8e3d-defc0a8cd099",
+    "name": "Davidson",
+    "last_name": "Montoya",
+    "email": "davidsonmontoya@phormula.com",
+    "clientPhone": "+1 (833) 556-2803",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b6b9a2f9-c7b4-4e20-b45e-97d2b73cf96b",
+    "name": "Floyd",
+    "last_name": "Duncan",
+    "email": "floydduncan@phormula.com",
+    "clientPhone": "+1 (938) 542-3643",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f5b7414c-b4bc-492b-9f39-fe30c52aeb6a",
+    "name": "Kristi",
+    "last_name": "Grimes",
+    "email": "kristigrimes@phormula.com",
+    "clientPhone": "+1 (913) 541-2842",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "119f2892-f9bb-43c6-adba-40ecfb66fd30",
+    "name": "Trina",
+    "last_name": "Cotton",
+    "email": "trinacotton@phormula.com",
+    "clientPhone": "+1 (891) 549-2448",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "444a2228-aa54-4b20-830b-5ef2fd3f8722",
+    "name": "Mattie",
+    "last_name": "Small",
+    "email": "mattiesmall@phormula.com",
+    "clientPhone": "+1 (968) 485-2837",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "86e9650b-fdf0-404b-9db4-7fa2436ebd42",
+    "name": "Sampson",
+    "last_name": "Ferguson",
+    "email": "sampsonferguson@phormula.com",
+    "clientPhone": "+1 (833) 456-3520",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e375eb91-1f63-4a11-81ef-592475d03514",
+    "name": "Tricia",
+    "last_name": "Obrien",
+    "email": "triciaobrien@phormula.com",
+    "clientPhone": "+1 (816) 481-2706",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "bbe050e8-4aa5-43bc-a773-3423f495a4e3",
+    "name": "Hodges",
+    "last_name": "Wade",
+    "email": "hodgeswade@phormula.com",
+    "clientPhone": "+1 (921) 504-2041",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "a9259927-ccf6-4d5d-8d12-0c3d19579d56",
+    "name": "Shelton",
+    "last_name": "Meyers",
+    "email": "sheltonmeyers@phormula.com",
+    "clientPhone": "+1 (930) 423-2082",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "d7f22f49-ef1e-456f-bb67-3946d115b53a",
+    "name": "Sanford",
+    "last_name": "Reese",
+    "email": "sanfordreese@phormula.com",
+    "clientPhone": "+1 (842) 508-3041",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "8fb3caf1-c60d-4f9c-b0cf-027e84b6b714",
+    "name": "Howard",
+    "last_name": "Gardner",
+    "email": "howardgardner@phormula.com",
+    "clientPhone": "+1 (951) 599-2272",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3e86595a-dd3d-4ea0-8a45-5a5c63b1f343",
+    "name": "Brandie",
+    "last_name": "Thomas",
+    "email": "brandiethomas@phormula.com",
+    "clientPhone": "+1 (827) 556-2206",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "121a17e0-0565-47fa-ab6c-5281c5fca6fc",
+    "name": "Frank",
+    "last_name": "Maldonado",
+    "email": "frankmaldonado@phormula.com",
+    "clientPhone": "+1 (996) 529-2892",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "6cc46f72-fa17-4d05-b8a9-6b39150d2173",
+    "name": "Hammond",
+    "last_name": "Blake",
+    "email": "hammondblake@phormula.com",
+    "clientPhone": "+1 (999) 599-2574",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f37b1050-ca01-47a9-8b37-6d52b71d33b0",
+    "name": "Burnett",
+    "last_name": "Duffy",
+    "email": "burnettduffy@phormula.com",
+    "clientPhone": "+1 (933) 429-3263",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "5fccad96-f526-40be-9eb8-71b63d43739c",
+    "name": "Wooten",
+    "last_name": "Kline",
+    "email": "wootenkline@phormula.com",
+    "clientPhone": "+1 (993) 468-2591",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "32d64b9a-648a-43c1-8abf-891b19a9ede8",
+    "name": "Flowers",
+    "last_name": "Berg",
+    "email": "flowersberg@phormula.com",
+    "clientPhone": "+1 (895) 417-2955",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e8d2e68c-1a78-49d6-bd44-289dacd00920",
+    "name": "Heidi",
+    "last_name": "Hodges",
+    "email": "heidihodges@phormula.com",
+    "clientPhone": "+1 (815) 549-3543",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "9dc930a7-8ac6-4aca-8f27-b223d24c5d2f",
+    "name": "Melinda",
+    "last_name": "Webb",
+    "email": "melindawebb@phormula.com",
+    "clientPhone": "+1 (858) 466-2499",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "9a3c3ed5-2e7b-444b-bb1c-61d747ff4be3",
+    "name": "Villarreal",
+    "last_name": "Cole",
+    "email": "villarrealcole@phormula.com",
+    "clientPhone": "+1 (999) 573-2573",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "7ea2051a-92ac-4859-9525-1b5c00459c24",
+    "name": "Morales",
+    "last_name": "Kerr",
+    "email": "moraleskerr@phormula.com",
+    "clientPhone": "+1 (813) 469-3567",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "a11b5a50-4c78-4b76-9e20-96b2e03da321",
+    "name": "Kathrine",
+    "last_name": "Velazquez",
+    "email": "kathrinevelazquez@phormula.com",
+    "clientPhone": "+1 (958) 410-3119",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "7b22862f-607f-4bf3-8ded-45dea917634e",
+    "name": "Campos",
+    "last_name": "Shaw",
+    "email": "camposshaw@phormula.com",
+    "clientPhone": "+1 (917) 406-3539",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "617302ed-8d13-4067-8fcd-f71692ad5d1f",
+    "name": "Celeste",
+    "last_name": "Goff",
+    "email": "celestegoff@phormula.com",
+    "clientPhone": "+1 (900) 477-2457",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f3b3a125-a92e-4048-bef0-251b6a79dcf1",
+    "name": "Rosalie",
+    "last_name": "House",
+    "email": "rosaliehouse@phormula.com",
+    "clientPhone": "+1 (893) 457-3773",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e470e7a6-0a12-4b74-ae5a-2dd5b3afdd60",
+    "name": "Nadine",
+    "last_name": "Holder",
+    "email": "nadineholder@phormula.com",
+    "clientPhone": "+1 (843) 484-3291",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "59904d9d-2fdd-415f-a015-2cfd5e182364",
+    "name": "Aguirre",
+    "last_name": "Terrell",
+    "email": "aguirreterrell@phormula.com",
+    "clientPhone": "+1 (950) 515-2972",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "ad02c7cf-836c-43b4-83c9-00db6fa1d8a9",
+    "name": "Marla",
+    "last_name": "Olsen",
+    "email": "marlaolsen@phormula.com",
+    "clientPhone": "+1 (895) 410-2418",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "75976b9d-d5d9-4787-b244-9b942ccc613e",
+    "name": "Valenzuela",
+    "last_name": "Dodson",
+    "email": "valenzueladodson@phormula.com",
+    "clientPhone": "+1 (915) 517-2218",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "37c095dc-d055-45ea-82c0-c243dff96ff9",
+    "name": "Holt",
+    "last_name": "Chang",
+    "email": "holtchang@phormula.com",
+    "clientPhone": "+1 (805) 599-3392",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "0eeeb368-f070-463d-8b4b-7114c41be83d",
+    "name": "Willa",
+    "last_name": "Dunlap",
+    "email": "willadunlap@phormula.com",
+    "clientPhone": "+1 (813) 502-2132",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3f7be758-427a-4e6d-a68b-22657b1b136b",
+    "name": "Guzman",
+    "last_name": "Fulton",
+    "email": "guzmanfulton@phormula.com",
+    "clientPhone": "+1 (954) 511-3055",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4872ebb0-a933-490f-bb02-b987ac5a6c22",
+    "name": "Blanchard",
+    "last_name": "Cooper",
+    "email": "blanchardcooper@phormula.com",
+    "clientPhone": "+1 (950) 559-3381",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4f847d00-68d3-4947-8a6e-46e4894c3511",
+    "name": "Jennie",
+    "last_name": "Strong",
+    "email": "jenniestrong@phormula.com",
+    "clientPhone": "+1 (844) 506-3846",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "8b5a1648-da19-4d01-a1c4-a0e3a627ca8b",
+    "name": "Harrell",
+    "last_name": "Thornton",
+    "email": "harrellthornton@phormula.com",
+    "clientPhone": "+1 (971) 597-3745",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "5fdf1411-4fa4-4bc4-9a59-682b4b7717d4",
+    "name": "Jeanette",
+    "last_name": "Richardson",
+    "email": "jeanetterichardson@phormula.com",
+    "clientPhone": "+1 (816) 403-2162",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "70ad3659-e670-4130-8ad9-1dd896374779",
+    "name": "Hayden",
+    "last_name": "Serrano",
+    "email": "haydenserrano@phormula.com",
+    "clientPhone": "+1 (950) 486-3190",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e6725fbb-acf8-433e-82d2-a4782e702be7",
+    "name": "Carolyn",
+    "last_name": "Macdonald",
+    "email": "carolynmacdonald@phormula.com",
+    "clientPhone": "+1 (981) 448-2126",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b69cc177-7229-4007-87eb-71ea9b3a99d9",
+    "name": "Selena",
+    "last_name": "Chandler",
+    "email": "selenachandler@phormula.com",
+    "clientPhone": "+1 (882) 575-3841",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "ceb3a34d-f548-4400-8b0a-54490bc09785",
+    "name": "Goff",
+    "last_name": "Eaton",
+    "email": "goffeaton@phormula.com",
+    "clientPhone": "+1 (903) 407-3586",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "29b67def-56f4-4c76-bc84-9b2c04e4a8d1",
+    "name": "Powell",
+    "last_name": "Spencer",
+    "email": "powellspencer@phormula.com",
+    "clientPhone": "+1 (951) 491-3360",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "2f07f42d-3ade-4f10-a832-1160a53b4271",
+    "name": "Hinton",
+    "last_name": "Noel",
+    "email": "hintonnoel@phormula.com",
+    "clientPhone": "+1 (938) 449-2817",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "0ccc95ba-375f-4b93-95c0-93bb4f4b9b08",
+    "name": "April",
+    "last_name": "Swanson",
+    "email": "aprilswanson@phormula.com",
+    "clientPhone": "+1 (961) 500-3010",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f147537d-5eb9-438f-98f9-4b611e63c094",
+    "name": "Adrienne",
+    "last_name": "Moreno",
+    "email": "adriennemoreno@phormula.com",
+    "clientPhone": "+1 (903) 476-3966",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "51b1a370-5bed-48ca-a338-e9f09048432d",
+    "name": "Heather",
+    "last_name": "Frank",
+    "email": "heatherfrank@phormula.com",
+    "clientPhone": "+1 (885) 523-2460",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "699d9585-acb1-4c8d-a9d2-5caa5a5d10b9",
+    "name": "Mcneil",
+    "last_name": "Mcmahon",
+    "email": "mcneilmcmahon@phormula.com",
+    "clientPhone": "+1 (864) 537-2127",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "643e5c4d-973f-4abc-9a55-252330a4777f",
+    "name": "Wynn",
+    "last_name": "Bernard",
+    "email": "wynnbernard@phormula.com",
+    "clientPhone": "+1 (986) 509-3392",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4f91d894-af3c-4395-aa32-7489e825a66a",
+    "name": "Pruitt",
+    "last_name": "Howe",
+    "email": "pruitthowe@phormula.com",
+    "clientPhone": "+1 (837) 457-2312",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "49084017-d27a-45f7-8f92-efd6167f2b4b",
+    "name": "Berg",
+    "last_name": "Lowe",
+    "email": "berglowe@phormula.com",
+    "clientPhone": "+1 (940) 525-2653",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "983cf48a-4fdc-47ff-9972-479fef668086",
+    "name": "Lucia",
+    "last_name": "Bryan",
+    "email": "luciabryan@phormula.com",
+    "clientPhone": "+1 (976) 429-3237",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "18624663-3caa-41c5-89bc-f2169ccd8087",
+    "name": "Rhea",
+    "last_name": "Barton",
+    "email": "rheabarton@phormula.com",
+    "clientPhone": "+1 (843) 477-3600",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "22f6d4d8-b94c-48a5-9f65-cceaeba1c331",
+    "name": "Phoebe",
+    "last_name": "Conner",
+    "email": "phoebeconner@phormula.com",
+    "clientPhone": "+1 (919) 434-2770",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e256e8dc-b22d-4d1e-abe3-8f9ab6470e63",
+    "name": "Luna",
+    "last_name": "Rasmussen",
+    "email": "lunarasmussen@phormula.com",
+    "clientPhone": "+1 (890) 437-3505",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "16b38519-f85b-495f-8e20-5b1f896ccdbd",
+    "name": "Phyllis",
+    "last_name": "Chaney",
+    "email": "phyllischaney@phormula.com",
+    "clientPhone": "+1 (862) 593-3815",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "1faf8d8c-f1a0-496d-8611-56e88a0a60c6",
+    "name": "Lindsey",
+    "last_name": "Callahan",
+    "email": "lindseycallahan@phormula.com",
+    "clientPhone": "+1 (893) 533-3198",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "abb56b27-2615-4896-ae06-4f85a06bcdef",
+    "name": "Morgan",
+    "last_name": "Meyer",
+    "email": "morganmeyer@phormula.com",
+    "clientPhone": "+1 (850) 411-3478",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b030ab1f-de0b-4498-9b0d-c47ddc4fcb98",
+    "name": "Christine",
+    "last_name": "Mcdonald",
+    "email": "christinemcdonald@phormula.com",
+    "clientPhone": "+1 (867) 535-3729",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f65e5006-4bc8-4dd9-8275-c6dcc2bf0d2e",
+    "name": "Ophelia",
+    "last_name": "Bishop",
+    "email": "opheliabishop@phormula.com",
+    "clientPhone": "+1 (832) 493-3719",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "7bdf36d1-b2a3-4362-95b7-cbd598fc74c6",
+    "name": "Ratliff",
+    "last_name": "Mccarthy",
+    "email": "ratliffmccarthy@phormula.com",
+    "clientPhone": "+1 (806) 483-3440",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "0dea2697-b62f-4b57-b643-a3272d65dd82",
+    "name": "Benton",
+    "last_name": "Sherman",
+    "email": "bentonsherman@phormula.com",
+    "clientPhone": "+1 (928) 411-3922",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "117816e6-061e-4cb5-8290-84f56aeb32a0",
+    "name": "Rosalind",
+    "last_name": "Stein",
+    "email": "rosalindstein@phormula.com",
+    "clientPhone": "+1 (888) 407-2736",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "61cbd1b0-10ad-431e-b90b-853848722318",
+    "name": "Lily",
+    "last_name": "Deleon",
+    "email": "lilydeleon@phormula.com",
+    "clientPhone": "+1 (819) 485-2414",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "a5918524-1442-4e57-9f38-b1087e98d126",
+    "name": "Aurelia",
+    "last_name": "Duke",
+    "email": "aureliaduke@phormula.com",
+    "clientPhone": "+1 (892) 449-2020",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "825f2f6d-2ef2-404c-aaca-fe541f60ea1c",
+    "name": "Mathews",
+    "last_name": "Burt",
+    "email": "mathewsburt@phormula.com",
+    "clientPhone": "+1 (866) 474-2580",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "5d2fe621-80c6-43fc-bdbd-bf55ce801f34",
+    "name": "Lourdes",
+    "last_name": "Salazar",
+    "email": "lourdessalazar@phormula.com",
+    "clientPhone": "+1 (997) 519-3134",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "241d42c0-3d50-4c53-ad6b-b6cacac7f6cb",
+    "name": "Chelsea",
+    "last_name": "Walls",
+    "email": "chelseawalls@phormula.com",
+    "clientPhone": "+1 (828) 494-2017",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "ffb73d2d-c5a0-4f10-869f-5eae143bb67a",
+    "name": "Hillary",
+    "last_name": "Becker",
+    "email": "hillarybecker@phormula.com",
+    "clientPhone": "+1 (951) 418-2924",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "b4259073-4cea-47fe-85ae-992b36216386",
+    "name": "Jo",
+    "last_name": "Underwood",
+    "email": "jounderwood@phormula.com",
+    "clientPhone": "+1 (850) 553-2552",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "e4272089-cb80-4f55-b150-4076652f8bf4",
+    "name": "Savannah",
+    "last_name": "Donaldson",
+    "email": "savannahdonaldson@phormula.com",
+    "clientPhone": "+1 (921) 560-2601",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "534e1513-0340-4152-95cb-5fef452d31f5",
+    "name": "Pratt",
+    "last_name": "Morrison",
+    "email": "prattmorrison@phormula.com",
+    "clientPhone": "+1 (896) 417-2244",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "caebf977-02d2-46e8-8368-e59175e73b22",
+    "name": "Mullins",
+    "last_name": "Scott",
+    "email": "mullinsscott@phormula.com",
+    "clientPhone": "+1 (956) 512-3409",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "facfbc63-4157-47ad-bf4a-877aff515a0d",
+    "name": "Wolf",
+    "last_name": "Kramer",
+    "email": "wolfkramer@phormula.com",
+    "clientPhone": "+1 (986) 499-2419",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4b568265-5dbf-4016-878f-d0ef33fd41f6",
+    "name": "Thelma",
+    "last_name": "Haynes",
+    "email": "thelmahaynes@phormula.com",
+    "clientPhone": "+1 (801) 412-3103",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f2d2c345-3f72-4f2c-bdfd-e018ff2297f5",
+    "name": "Gilliam",
+    "last_name": "Kane",
+    "email": "gilliamkane@phormula.com",
+    "clientPhone": "+1 (979) 510-2235",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "2c728557-d5a9-4546-a1e2-9febc4ca8e52",
+    "name": "Donovan",
+    "last_name": "Estrada",
+    "email": "donovanestrada@phormula.com",
+    "clientPhone": "+1 (879) 492-2179",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "9375d2aa-5c4e-49d6-aa6c-e90cf5b232e8",
+    "name": "Larsen",
+    "last_name": "Torres",
+    "email": "larsentorres@phormula.com",
+    "clientPhone": "+1 (862) 401-2317",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f2649ee4-f08d-4fac-8dbd-5fb38547be78",
+    "name": "Mona",
+    "last_name": "Decker",
+    "email": "monadecker@phormula.com",
+    "clientPhone": "+1 (887) 417-2834",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "60742352-b1f1-42fa-ba20-1870ed8e092d",
+    "name": "Orr",
+    "last_name": "Craft",
+    "email": "orrcraft@phormula.com",
+    "clientPhone": "+1 (848) 424-4000",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3811ba14-d28c-44ae-ab87-ce4b3bd4fa43",
+    "name": "Saundra",
+    "last_name": "Whitley",
+    "email": "saundrawhitley@phormula.com",
+    "clientPhone": "+1 (996) 525-3918",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "236bb9cc-4158-42e4-979b-4d5feac0233c",
+    "name": "Tami",
+    "last_name": "Alexander",
+    "email": "tamialexander@phormula.com",
+    "clientPhone": "+1 (920) 566-2094",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "51f4780b-f162-4306-958e-cfc1c58d2cb3",
+    "name": "Hale",
+    "last_name": "Campos",
+    "email": "halecampos@phormula.com",
+    "clientPhone": "+1 (902) 401-3146",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "c10c7b55-2c75-499d-a3ce-49b5fa690e99",
+    "name": "Susie",
+    "last_name": "Rush",
+    "email": "susierush@phormula.com",
+    "clientPhone": "+1 (933) 409-2888",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "7ac77567-ee37-40fc-80fa-3e4538c6c95c",
+    "name": "Lorie",
+    "last_name": "Stafford",
+    "email": "loriestafford@phormula.com",
+    "clientPhone": "+1 (948) 430-3731",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "5b11c970-c100-4a4b-bcf9-fde412233d0d",
+    "name": "Benita",
+    "last_name": "Noble",
+    "email": "benitanoble@phormula.com",
+    "clientPhone": "+1 (821) 577-3807",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f793629d-c658-49cb-b898-78d0d66b6b2f",
+    "name": "Hudson",
+    "last_name": "Dejesus",
+    "email": "hudsondejesus@phormula.com",
+    "clientPhone": "+1 (899) 539-3584",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "81f03de9-754e-4e5f-88d1-0f8395021491",
+    "name": "Mcgee",
+    "last_name": "Page",
+    "email": "mcgeepage@phormula.com",
+    "clientPhone": "+1 (825) 453-3790",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "31f73124-f57b-439d-b7ca-e1bb0d6c3422",
+    "name": "Julie",
+    "last_name": "England",
+    "email": "julieengland@phormula.com",
+    "clientPhone": "+1 (881) 483-2381",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "18bf2bc8-5f8e-474e-b7d3-06b8d64088ac",
+    "name": "Diann",
+    "last_name": "Andrews",
+    "email": "diannandrews@phormula.com",
+    "clientPhone": "+1 (910) 494-3886",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "d50e8e7b-77f8-488e-9190-2f3e10b2ca0f",
+    "name": "Huffman",
+    "last_name": "Booth",
+    "email": "huffmanbooth@phormula.com",
+    "clientPhone": "+1 (886) 566-2061",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "99f4d5f4-511f-41f2-8475-e9bfed867db2",
+    "name": "Holmes",
+    "last_name": "Nelson",
+    "email": "holmesnelson@phormula.com",
+    "clientPhone": "+1 (920) 594-3904",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "f336d01a-dfaf-4f07-95b9-581f3dc64405",
+    "name": "Katy",
+    "last_name": "Mason",
+    "email": "katymason@phormula.com",
+    "clientPhone": "+1 (830) 593-3283",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "84603692-cfa5-48ac-91a8-92aa4de309d0",
+    "name": "Rosemarie",
+    "last_name": "Holloway",
+    "email": "rosemarieholloway@phormula.com",
+    "clientPhone": "+1 (994) 525-3889",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "ee1d6027-2ea9-4d44-80db-ae43ff85e2b1",
+    "name": "Cook",
+    "last_name": "Guthrie",
+    "email": "cookguthrie@phormula.com",
+    "clientPhone": "+1 (997) 577-3228",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "ce4ed33b-74cf-498b-b34b-832cb9b729a8",
+    "name": "Brenda",
+    "last_name": "Owens",
+    "email": "brendaowens@phormula.com",
+    "clientPhone": "+1 (992) 509-2564",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "4d09c492-5077-4458-8ef3-bea6adf4f521",
+    "name": "Sykes",
+    "last_name": "Walton",
+    "email": "sykeswalton@phormula.com",
+    "clientPhone": "+1 (946) 551-3449",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "3fa13989-9933-46a0-8581-42a6e531df07",
+    "name": "Wright",
+    "last_name": "Rice",
+    "email": "wrightrice@phormula.com",
+    "clientPhone": "+1 (942) 464-2082",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "53b14677-982b-4858-a7ec-6a4aebdef1a3",
+    "name": "Clark",
+    "last_name": "Jacobson",
+    "email": "clarkjacobson@phormula.com",
+    "clientPhone": "+1 (958) 482-3047",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "33079e59-ec51-45f7-9ce5-ceeba8c38895",
+    "name": "Pamela",
+    "last_name": "Stevenson",
+    "email": "pamelastevenson@phormula.com",
+    "clientPhone": "+1 (975) 560-2312",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "65c45ada-ca72-4fdd-9d61-533775cf701c",
+    "name": "Latonya",
+    "last_name": "Mcfarland",
+    "email": "latonyamcfarland@phormula.com",
+    "clientPhone": "+1 (807) 527-2707",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "71bfc218-804d-430e-be91-cb0fc4d97a4f",
+    "name": "Beth",
+    "last_name": "Reed",
+    "email": "bethreed@phormula.com",
+    "clientPhone": "+1 (999) 513-3747",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "d7f11844-28a0-49d5-96cf-bfb3b91232d3",
+    "name": "Liza",
+    "last_name": "Skinner",
+    "email": "lizaskinner@phormula.com",
+    "clientPhone": "+1 (860) 548-2784",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "id_user": "89987b5f-d96f-4869-9cf1-98ac1ee8642c",
+    "name": "Baldwin",
+    "last_name": "Gross",
+    "email": "baldwingross@phormula.com",
+    "clientPhone": "+1 (907) 467-3567",
+    "password": 123456,
+    "role": "user"
+  }
+]

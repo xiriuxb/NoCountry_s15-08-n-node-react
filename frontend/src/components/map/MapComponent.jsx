@@ -70,7 +70,7 @@ const MapComponent = ({ data, onMarkerClic, onNewPointCick }) => {
       const duration = 700;
 
       mapRef.current.easeTo({
-        center: [selectedPoint.longitud, selectedPoint.latitud],
+        center: [selectedPoint.longitude, selectedPoint.latitude],
         duration,
         easing: (t) => Math.pow(t, ease),
       });
@@ -110,7 +110,7 @@ const MapComponent = ({ data, onMarkerClic, onNewPointCick }) => {
             <PointMarkerComponent
               point={point}
               zoomBreakpoint={zoomBreakpoint}
-              key={point.id}
+              key={point.id_point_interest}
               onClick={onMarkerClic}
             />
           );

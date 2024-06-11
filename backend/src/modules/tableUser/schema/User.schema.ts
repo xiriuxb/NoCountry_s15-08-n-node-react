@@ -15,7 +15,7 @@ const arrError = [
     'invalido'
 ];
 
-export const userSchema: z.ZodType<UserModelType> = z.object({
+export const userSchema = z.object({
     id_user: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,

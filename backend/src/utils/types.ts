@@ -19,6 +19,18 @@ export enum stateEvent {
     FINALIZADO = 'inactive'
 }
 
+export const ImageFormat: string[] = [
+    'png',
+    'jpg',
+    'jpeg',
+    'gif',
+    'webp',
+    'avif',
+    'svg',
+    'bmp',
+    'tiff'
+];
+
 export interface Tips {
     id_tip: number;
     id_user: number;
@@ -53,4 +65,13 @@ export interface Comment {
     id_publication: number;
     description: string;
     createdAt: Date;
+}
+
+export interface ImageUpload {
+    public_id: string;
+    url: string;
+}
+
+export interface MulterRequest extends Express.Request {
+    file: Express.Multer.File;
 }

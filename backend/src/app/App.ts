@@ -1,5 +1,8 @@
 import express from 'express';
+
 import cors from 'cors';
+import { validateImage } from '@/middlewares/Validator.middleware';
+
 import UserRouter from '@/modules/tableUser/routers/User.router';
 import FisherRouter from '@/modules/tableFisher/routers/Fisher.router';
 import PublicationRouter from '@/modules/tablePublication/routers/Publication.router';
@@ -8,12 +11,16 @@ import TipsRouter from '@modules/tableTips/TipsRouter';
 import FishRouter from '@modules/tableFish/FishRouter';
 import CommentRouter from '@modules/tableComment/CommentRouter';
 import EventRouter from '@modules/tableEvent/EventRouter';
-import CompetitorRouter from '@modules/tableCompetitor/CompetitorRouter'
+import CompetitorRouter from '@modules/tableCompetitor/CompetitorRouter';
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
+
+// middlewares
 app.use(cors());
+app.use(validateImage);
 
 // routes
 app.use('/api/user', UserRouter);

@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import PublicationService from '../services/Publication.service';
 import { PublicationModelType } from '../Model/Publication.model';
+import multer from 'multer';
+import { Expertise } from '@/utils/types';
+import { EntityInvalid, EntityNotFound } from '@/Error/Exception';
 
 export class PublicationController {
     private publicationService: PublicationService;
@@ -60,14 +63,49 @@ export class PublicationController {
     };
 
     public create = async (req: Request, res: Response): Promise<void> => {
-        const dataPublication = req.body;
+        const dataPublication = req.body as PublicationModelType;
 
         try {
+            if (!dataPublication) {
+                throw new Error('Data not found');
+            }
             const publication = await this.publicationService.create(dataPublication);
 
             res.status(201).json(publication);
         } catch (error) {
             res.status(500).json({ error: 'An error occurred on the server.' });
+        }
+    };
+
+    public createWithImage = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const dataPublication = req.body;
+            const FilesMulter = req.files as { [fieldname: string]: Express.Multer.File[] };
+
+            if (!FilesMulter || !FilesMulter.image) {
+                console.log('File not found');
+                const createdPublication = await this.publicationService.create(
+                    dataPublication as PublicationModelType
+                );
+                res.status(201).json(createdPublication);
+                return;
+            }
+
+            const publication = await this.publicationService.createWithImage(
+                dataPublication as PublicationModelType,
+                FilesMulter.image[0]
+            );
+
+            res.status(201).json(publication);
+        } catch (error: Error | any) {
+            if (error instanceof EntityNotFound) {
+                res.status(400).json({ error: error.message });
+                return;
+            }
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
 
@@ -80,10 +118,15 @@ export class PublicationController {
 
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
+                return;
             }
+
             res.status(200).json(publication);
-        } catch (error) {
-            res.status(500).json({ error: 'An error occurred on the server.' });
+        } catch (error: Error | any) {
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
     public delete = async (req: Request, res: Response): Promise<void> => {
@@ -93,12 +136,16 @@ export class PublicationController {
             const publication = await this.publicationService.findById(Number(id));
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
+                return;
             }
 
             await this.publicationService.delete(Number(id));
             res.status(204).json();
-        } catch (error) {
-            res.status(500).json({ error: 'An error occurred on the server.' });
+        } catch (error: Error | any) {
+            res.status(500).json({
+                error: 'An error occurred on the server.',
+                message: error.message
+            });
         }
     };
 }

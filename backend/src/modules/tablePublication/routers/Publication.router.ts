@@ -1,7 +1,10 @@
 import { Router } from 'express';
 
 import PublicationController from '../controllers/Publication.controller';
-import { validateID } from '@/middlewares/Validator.middleware';
+import { validateID, validateImage, validateSchema } from '@/middlewares/Validator.middleware';
+import { publicationSchema } from '../schema/Publication.schema';
+import multer from 'multer';
+import { multipartFormDataHandler } from '@/middlewares/FormData.middleware';
 
 const PublicationRouter = Router();
 
@@ -13,7 +16,11 @@ PublicationRouter.get(
     validateID,
     PublicationController.findByPointInterestId
 );
-PublicationRouter.post('/', PublicationController.create);
+PublicationRouter.post(
+    '/',
+    validateSchema(publicationSchema),
+    PublicationController.createWithImage
+);
 PublicationRouter.put('/:id', validateID, PublicationController.update);
 PublicationRouter.delete('/:id', validateID, PublicationController.delete);
 

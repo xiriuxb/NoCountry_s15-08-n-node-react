@@ -13,7 +13,7 @@ const arrError = [
     'invalido'
 ];
 
-export const pointOfInterestSchema: z.ZodType<PointInterestType> = z.object({
+export const pointOfInterestSchema = z.object({
     id_point_interest: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,

@@ -11,7 +11,7 @@ const arrError = [
     'invalido'
 ];
 
-export const publicationSchema: z.ZodType<PublicationModelType> = z.object({
+export const publicationSchema = z.object({
     id_publication: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,
@@ -56,6 +56,5 @@ export const publicationSchema: z.ZodType<PublicationModelType> = z.object({
         })
         .min(0, { message: `${arrError[5]} ${arrError[arrError.length - 1]}` })
         .max(5, { message: `${arrError[5]} ${arrError[arrError.length - 1]}` })
-        .default(0)
         .optional()
 });

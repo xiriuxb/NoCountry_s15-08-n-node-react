@@ -4,7 +4,7 @@ import { FisherModelType } from '../model/Fisher.model';
 
 const arrError = ['id_user', 'address', 'expertise', 'invalido'];
 
-export const fisherSchema: z.ZodType<FisherModelType> = z.object({
+export const fisherSchema = z.object({
     id_user: z
         .number({
             invalid_type_error: `${arrError[0]} ${arrError[arrError.length - 1]}`,

@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../context/useAuth";
 
 const navItems = [
   {
@@ -13,15 +14,25 @@ const navItems = [
     name: "mapa",
     route: "/map",
   },
-  {
-    name: "registrarse",
-    route: "/auth/register",
-  },
 ];
 
 const Navbar = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const setIsAuth = useAuthStore((state) => state.setIsAuth);
+  const navigate = useNavigate();
+
   const handleClickBtn = () => {
     document.getElementById("drawer-btn").click();
+  };
+
+  const handleLoginLogout = () => {
+    if (isAuth) {
+      localStorage.removeItem("user:auth");
+      setIsAuth(false);
+      navigate("/", { replace: true });
+      return;
+    }
+    navigate("/auth");
   };
 
   return (
@@ -78,6 +89,16 @@ const Navbar = () => {
                     </li>
                   );
                 })}
+                {
+                  <li>
+                    <button
+                      className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
+                      onClick={handleLoginLogout}
+                    >
+                      {isAuth ? "logout" : "registrarse"}
+                    </button>
+                  </li>
+                }
               </ul>
             </div>
           </div>

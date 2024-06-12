@@ -2,6 +2,7 @@ import { useState } from "react";
 import { postNewPoint } from "../../api/points";
 import { useForm } from "../../hooks/useForm";
 import PostButtonComponent from "../general/PostButtonComponent";
+import { POINT_TYPE } from "../../utils/enums";
 
 const ADMIN_ID = import.meta.env.VITE_ADMIN_ID || 1;
 
@@ -25,13 +26,22 @@ const PointFormComponent = ({ point, setData, onCancel }) => {
   );
   const [backError, setBackError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [type, setType] = useState("fishing");
+
+  const handleChangeType = (e) => {
+    setType(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setBackError(null);
     const newPoint = {
-      ...formState,
+      name:
+        type === POINT_TYPE["fish"]
+          ? formState["name"]
+          : JSON.stringify({ type, name: formState["name"] }),
+      description: formState["description"],
       latitude: point.lat,
       longitude: point.lng,
       id_user: ADMIN_ID,
@@ -74,6 +84,18 @@ const PointFormComponent = ({ point, setData, onCancel }) => {
       )}
       <form method="dialog">
         <div>
+          <div className="label">
+            <span className="label-text">Tipo:</span>
+          </div>
+          <select
+            value={type}
+            onChange={handleChangeType}
+            className="select select-bordered w-full"
+          >
+            {Object.keys(POINT_TYPE).map((kry) => {
+              return <option value={POINT_TYPE[kry]}>{POINT_TYPE[kry]}</option>;
+            })}
+          </select>
           <div className="label">
             <span className="label-text">Name:</span>
           </div>

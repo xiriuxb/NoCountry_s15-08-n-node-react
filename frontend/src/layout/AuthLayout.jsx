@@ -1,11 +1,13 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/variants";
+import { useAuthStore } from "../context/useAuth";
 
 const AuthLayout = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
   return (
     <>
-      {import.meta.env.VITE_APP_IS_LOGGED === "true" ? (
+      {isAuth ? (
         <Navigate to={"/"} replace />
       ) : (
         <main className="w-ful h-screen flex flex-col overflow-hidden bg-slate-900">
@@ -23,16 +25,16 @@ const AuthLayout = () => {
                 </div>
                 <div className="absolute top-40 p-4 w-[80%] h-[80%] ">
                   <div className="flex flex-col pt-6  gap-24 w-full h-full">
-                  <motion.div
+                    <motion.div
                       variants={fadeIn("left", 0.6)}
                       initial="hidden"
                       whileInView={"show"}
                       viewport={{ once: false, amount: 0.7 }}
                       className="flex justify-start items-center w-full "
                     >
-                    <h2 className="font-poetsan font-bold  text-white text-5xl drop-shadow-md ">
-                      Explora,
-                    </h2>
+                      <h2 className="font-poetsan font-bold  text-white text-5xl drop-shadow-md ">
+                        Explora,
+                      </h2>
                     </motion.div>
                     <motion.div
                       variants={fadeIn("left", 0.8)}

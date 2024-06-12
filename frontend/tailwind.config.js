@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-gray': '#222224',
-        'custom-dark': '#252527'
+        'custom-dark': '#222224',
+        'custom-gray': '#252527'
       },
       backgroundImage: {
         "fondo":

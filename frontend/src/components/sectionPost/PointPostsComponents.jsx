@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { useMapStore } from "../../context/mapStore";
 import { getPointPublications } from "../../api/posts";
 import CardPost from "./CardPost";
 import SkeletonCardComponent from "../general/SkeletonCardComponent";
 import CreatePostComponent from "./CreatePostComponent";
+import { parsePoint } from "../../utils/functions";
 
 const PointPostsComponents = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
@@ -16,6 +17,8 @@ const PointPostsComponents = () => {
   const handleOpenModal = () => {
     document.getElementById("user_modal_open").click();
   };
+
+  const parsedPoint = useMemo(() => parsePoint(selectedPoint), [selectedPoint]);
 
   const getPostsInfo = async () => {
     setLoading(true);
@@ -53,8 +56,8 @@ const PointPostsComponents = () => {
   return (
     <div className="w-full flex flex-col rounded-2xl overflow-hidden">
       <div className="flex flex-row w-full justify-between items-center py-1 px-3 shadow-[#4a4a4a3b_0px_13px_8px_-4px]">
-        <h3 title={selectedPoint.name} className="flex-1 text-ellipsis-nowrap">
-          {selectedPoint.name}
+        <h3 title={parsedPoint.name} className="flex-1 text-ellipsis-nowrap">
+          {parsedPoint.name}
         </h3>
         <button
           title="close"

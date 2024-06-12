@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { useForm } from "../../hooks/useForm";
 import { postNewPublication } from "../../api/posts";
 import PostButtonComponent from "../general/PostButtonComponent";
+import useParsePoint from "../../hooks/useParsePoint";
 
 const FISHER_ID = import.meta.env.VITE_FISHER_ID || 1;
 
@@ -27,13 +28,14 @@ const initialValues = {
   description: "",
 };
 
-const CreatePostComponent = () => {
+const CreatePostComponent = ({ handleAfterCreate }) => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
   const [selectedImage, setSelectedImage] = useState(null);
   const [rating, setRating] = useState(1);
   const [backError, setBackError] = useState(null);
   const [loading, setLoading] = useState(false);
   const imgInputRef = useRef(null);
+  const parsedPoint = useParsePoint(selectedPoint);
   const { description, onInputChange, validForm, formState, onResetForm } =
     useForm(initialValues, formValidations);
 
@@ -66,7 +68,10 @@ const CreatePostComponent = () => {
       image: selectedImage,
     };
     try {
-      await postNewPublication(data);
+      const newPublication = await postNewPublication(data);
+      if (handleAfterCreate) {
+        handleAfterCreate(newPublication);
+      }
       handleClearFileInput();
       onResetForm();
       handleCloseModal();
@@ -104,7 +109,7 @@ const CreatePostComponent = () => {
             </button>
           </div>
           <div className="p-3 flex flex-col overflow-hidden">
-            <h4 className="py-2">{`${selectedPoint.name}`}</h4>
+            <h4 className="py-2">{`${parsedPoint.name}`}</h4>
             {backError && (
               <div role="alert" className="alert alert-error">
                 <span>{backError}</span>

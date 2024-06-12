@@ -4,6 +4,8 @@ import { useMapStore } from "../../context/mapStore";
 import { getPointPublications } from "../../api/posts";
 import CardPost from "./CardPost";
 import SkeletonCardComponent from "../general/SkeletonCardComponent";
+import CreatePostComponent from "./CreatePostComponent";
+import useParsePoint from "../../hooks/useParsePoint";
 
 const PointPostsComponents = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
@@ -11,6 +13,8 @@ const PointPostsComponents = () => {
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState([]);
   const divRef = useRef();
+
+  const parsedPoint = useParsePoint(selectedPoint);
 
   const handleOpenModal = () => {
     document.getElementById("user_modal_open").click();
@@ -35,15 +39,25 @@ const PointPostsComponents = () => {
     getPostsInfo();
   }, [selectedPoint]);
 
+  useEffect(() => {
+    if (divRef && divRef.current) {
+      divRef.current.scrollTop = 0;
+    }
+  }, [postData]);
+
   const handleCloseButton = (e) => {
     setSelectedPoint(null);
+  };
+
+  const handleAfterAddPublication = (newPublication) => {
+    setPostData([...postData, newPublication]);
   };
 
   return (
     <div className="w-full flex flex-col rounded-2xl overflow-hidden">
       <div className="flex flex-row w-full justify-between items-center py-1 px-3 shadow-[#4a4a4a3b_0px_13px_8px_-4px]">
-        <h3 title={selectedPoint.name} className="flex-1 text-ellipsis-nowrap">
-          {selectedPoint.name}
+        <h3 title={parsedPoint.name} className="flex-1 text-ellipsis-nowrap">
+          {parsedPoint.name}
         </h3>
         <button
           title="close"
@@ -61,9 +75,12 @@ const PointPostsComponents = () => {
         <div className="w-full h-screen">
           {!loading &&
             postData &&
-            postData.map((post) => {
-              return <CardPost post={post} />;
-            })}
+            postData
+              .slice()
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((post) => {
+                return <CardPost post={post} />;
+              })}
           {loading && <SkeletonCardComponent />}
         </div>
       </div>
@@ -73,6 +90,11 @@ const PointPostsComponents = () => {
       >
         Nueva Publicación
       </button>
+      {selectedPoint && (
+        <>
+          <CreatePostComponent handleAfterCreate={handleAfterAddPublication} />
+        </>
+      )}
     </div>
   );
 };

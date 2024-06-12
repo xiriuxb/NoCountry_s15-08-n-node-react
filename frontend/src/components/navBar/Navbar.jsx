@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../context/useAuth";
 
 const navItems = [
   {
@@ -13,15 +14,25 @@ const navItems = [
     name: "mapa",
     route: "/map",
   },
-  {
-    name: "registrarse",
-    route: "/auth/register",
-  },
 ];
 
 const Navbar = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const setIsAuth = useAuthStore((state) => state.setIsAuth);
+  const navigate = useNavigate();
+
   const handleClickBtn = () => {
     document.getElementById("drawer-btn").click();
+  };
+
+  const handleLoginLogout = () => {
+    if (isAuth) {
+      localStorage.removeItem("user:auth");
+      setIsAuth(false);
+      navigate("/", { replace: true });
+      return;
+    }
+    navigate("/auth");
   };
 
   return (
@@ -64,7 +75,13 @@ const Navbar = () => {
                   return (
                     <li key={item.route}>
                       <NavLink
-                        className="w-full btn btn-sm btn-outline text-base text-white px-4 uppercase"
+                        className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
+                        style={({ isActive }) => {
+                          return {
+                            textDecoration: isActive ? "underline" : "",
+                            textUnderlineOffset: isActive ? "3px" : "",
+                          };
+                        }}
                         to={item.route}
                       >
                         {item.name}
@@ -72,6 +89,16 @@ const Navbar = () => {
                     </li>
                   );
                 })}
+                {
+                  <li>
+                    <button
+                      className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
+                      onClick={handleLoginLogout}
+                    >
+                      {isAuth ? "logout" : "registrarse"}
+                    </button>
+                  </li>
+                }
               </ul>
             </div>
           </div>
@@ -96,13 +123,19 @@ const Navbar = () => {
             {navItems.map((item) => {
               return (
                 <li key={item.route}>
-                  <Link
-                    className="btn btn-md btn-outline text-base text-white mx-3 uppercase"
+                  <NavLink
+                    className="btn btn-md btn-ghost text-base text-white mx-3 uppercase"
                     to={item.route}
+                    style={({ isActive }) => {
+                      return {
+                        textDecoration: isActive ? "underline" : "",
+                        textUnderlineOffset: isActive ? "3px" : "",
+                      };
+                    }}
                     onClick={handleClickBtn}
                   >
                     {item.name}
-                  </Link>
+                  </NavLink>
                 </li>
               );
             })}

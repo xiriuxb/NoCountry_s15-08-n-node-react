@@ -28,7 +28,7 @@ const CardPost = ({ post }) => {
                 {post.description}
               </p>
             </div>
-            {post.urls.length > 0 && (
+            {post && post.urls && post.urls.length > 0 && (
               <div className="w-1/2">
                 <img
                   className="rounded-lg w-full object-cover h-full"

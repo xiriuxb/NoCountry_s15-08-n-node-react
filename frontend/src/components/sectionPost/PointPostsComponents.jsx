@@ -4,6 +4,7 @@ import { useMapStore } from "../../context/mapStore";
 import { getPointPublications } from "../../api/posts";
 import CardPost from "./CardPost";
 import SkeletonCardComponent from "../general/SkeletonCardComponent";
+import CreatePostComponent from "./CreatePostComponent";
 
 const PointPostsComponents = () => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
@@ -39,6 +40,10 @@ const PointPostsComponents = () => {
     setSelectedPoint(null);
   };
 
+  const handleAfterAddPublication = (newPublication) => {
+    setPostData([...postData, newPublication]);
+  };
+
   return (
     <div className="w-full flex flex-col rounded-2xl overflow-hidden">
       <div className="flex flex-row w-full justify-between items-center py-1 px-3 shadow-[#4a4a4a3b_0px_13px_8px_-4px]">
@@ -61,9 +66,11 @@ const PointPostsComponents = () => {
         <div className="w-full h-screen">
           {!loading &&
             postData &&
-            postData.map((post) => {
-              return <CardPost post={post} />;
-            })}
+            postData
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((post) => {
+                return <CardPost post={post} />;
+              })}
           {loading && <SkeletonCardComponent />}
         </div>
       </div>
@@ -73,6 +80,11 @@ const PointPostsComponents = () => {
       >
         Nueva Publicación
       </button>
+      {selectedPoint && (
+        <>
+          <CreatePostComponent handleAfterCreate={handleAfterAddPublication} />
+        </>
+      )}
     </div>
   );
 };

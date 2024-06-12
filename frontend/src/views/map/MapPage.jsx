@@ -55,11 +55,6 @@ const MapPage = () => {
       >
         <SectionPost isHidden={isHidden} setIsHidden={setIsHidden} />
       </section>
-      {selectedPoint && (
-        <>
-          <CreatePostComponent />
-        </>
-      )}
     </main>
   );
 };

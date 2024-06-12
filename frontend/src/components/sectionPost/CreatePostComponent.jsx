@@ -27,7 +27,7 @@ const initialValues = {
   description: "",
 };
 
-const CreatePostComponent = () => {
+const CreatePostComponent = ({ handleAfterCreate }) => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
   const [selectedImage, setSelectedImage] = useState(null);
   const [rating, setRating] = useState(1);
@@ -66,7 +66,10 @@ const CreatePostComponent = () => {
       image: selectedImage,
     };
     try {
-      await postNewPublication(data);
+      const newPublication = await postNewPublication(data);
+      if (handleAfterCreate) {
+        handleAfterCreate(newPublication);
+      }
       handleClearFileInput();
       onResetForm();
       handleCloseModal();

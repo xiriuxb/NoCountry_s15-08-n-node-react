@@ -36,6 +36,12 @@ const PointPostsComponents = () => {
     getPostsInfo();
   }, [selectedPoint]);
 
+  useEffect(() => {
+    if (divRef && divRef.current) {
+      divRef.current.scrollTop = 0;
+    }
+  }, [postData]);
+
   const handleCloseButton = (e) => {
     setSelectedPoint(null);
   };
@@ -67,6 +73,7 @@ const PointPostsComponents = () => {
           {!loading &&
             postData &&
             postData
+              .slice()
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .map((post) => {
                 return <CardPost post={post} />;

@@ -19,13 +19,12 @@ const MapPage = () => {
 
   const getData = async () => {
     const points = await getPointsData();
-    setData((prev) => [...prev, ...points]);
+    setData([...data, ...points]);
   };
 
   const handleSelectMarker = () => {
     if (selectedPoint && !isHidden) return;
     if (selectedPoint && isHidden) {
-      console.log(selectedPoint);
       setIsHidden(false);
       return;
     }

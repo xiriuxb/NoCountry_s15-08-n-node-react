@@ -26,3 +26,17 @@ export const getPointPublications = async (pointId) => {
     throw error;
   }
 };
+
+// Get all posts
+const getPublications = async () => {
+  try {
+    const publicationsData = (await appApi.get(URI_PATH)).data;
+    console.log(publicationsData);
+    return publicationsData;
+  } catch (error) {
+    console.error("Error fetching publications:", error);
+    throw error;
+  }
+};
+
+export { getPublications };

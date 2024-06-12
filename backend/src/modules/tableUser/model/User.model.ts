@@ -16,6 +16,12 @@ export type UserModelType = {
     details: UserExtendType;
 };
 
+export type UserDTO = {
+    id_user?: number;
+    name: string;
+    last_name: string;
+};
+
 export default class UserModel extends Model {
     public static associate() {
         UserModel.hasOne(AdminModel, { foreignKey: 'id_user', sourceKey: 'id_user' });

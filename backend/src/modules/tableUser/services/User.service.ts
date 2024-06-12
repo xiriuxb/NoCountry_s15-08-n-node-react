@@ -7,7 +7,6 @@ import AdminService from '@/modules/tableAdmin/services/Admin.service';
 import { FisherModelType } from '@/modules/tableFisher/model/Fisher.model';
 import { AdminType } from '@/modules/tableAdmin/model/AdminModel';
 import { mySqlSequelize } from '@/database/db';
-import { userSchema } from '../schema/User.schema';
 import { fisherSchema } from '@/modules/tableFisher/schema/Fisher.schema';
 import { AdminSchema } from '@/modules/tableAdmin/schema/Admin.schema';
 
@@ -25,7 +24,7 @@ export default class UserService implements CRUDService<UserModel, UserModelType
         return user;
     }
 
-    async create(entity: UserModelType): Promise<UserModel> {
+    async create(entity: UserModelType): Promise<UserModel | null> {
         const transaction = await mySqlSequelize.transaction();
         try {
             const encryptPassword = await encrypt(entity.password);

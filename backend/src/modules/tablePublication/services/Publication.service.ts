@@ -1,42 +1,68 @@
 import CRUDService from '@/utils/interface/CRUDService';
-import PublicationModel, { PublicationModelType } from '../Model/Publication.model';
 import { mySqlSequelize } from '@/database/db';
-import { ImagesServices } from '@/modules/tableImages/services/Images.service';
-import fs from 'fs';
+
+import PublicationModel, {
+    PublicationDTO,
+    PublicationExpandedType,
+    PublicationModelType
+} from '../Model/Publication.model';
+import publicationMapper from '../Model/Publication.helper';
+
+import UserModel from '@/modules/tableUser/model/User.model';
 import FisherService from '@/modules/tableFisher/services/Fisher.service';
-import { EntityNotFound, InvalidArgument } from '@/Error/Exception';
+import ImageModel from '@/modules/tableImages/Model/Image.model';
+import { ImagesServices } from '@/modules/tableImages/services/Images.service';
+
+import { EntityNotFound } from '@/Error/Exception';
+import fs from 'fs';
 
 export default class PublicationService
-    implements CRUDService<PublicationModel, PublicationModelType>
+    implements CRUDService<PublicationDTO, PublicationModelType>
 {
     private ImagesService: ImagesServices = new ImagesServices();
     private fisherService = new FisherService();
 
-    async findAll(): Promise<PublicationModel[]> {
+    async findAll(): Promise<PublicationDTO[]> {
         try {
-            const publications = await PublicationModel.findAll();
-            return publications;
-        } catch (error: Error | any) {
-            throw error;
-        }
-    }
+            const publications = await PublicationModel.findAll({
+                include: [
+                    {
+                        model: ImageModel,
+                        as: 'images',
+                        attributes: ['url']
+                    }
+                ]
+            });
 
-    async findById(id: number): Promise<PublicationModel | null> {
-        try {
-            const publication = await PublicationModel.findByPk(id);
-            return publication;
-        } catch (error: Error | any) {
-            throw error;
-        }
-    }
-
-    async findByUserId(id: number): Promise<PublicationModel[]> {
-        try {
-            const publications = PublicationModel.findAll({ where: { id_user: id } });
             if (!publications) {
                 throw new EntityNotFound('Publications not found');
             }
-            return publications;
+            const publicationsWithUser = await this.expandPublications(publications);
+
+            return publicationMapper.mapAll(publicationsWithUser);
+        } catch (error: Error | any) {
+            throw error;
+        }
+    }
+
+    async findById(id: number): Promise<PublicationDTO | null> {
+        try {
+            const publication = await PublicationModel.findByPk(id);
+            const publicationWithUser = await this.expandPublication(publication!);
+            return publicationMapper.map(publicationWithUser);
+        } catch (error: Error | any) {
+            throw error;
+        }
+    }
+
+    async findByUserId(id: number): Promise<PublicationDTO[]> {
+        try {
+            const publications = await PublicationModel.findAll({ where: { id_user: id } });
+            if (!publications) {
+                throw new EntityNotFound('Publications not found');
+            }
+            const publicationsWithUser = await this.expandPublications(publications);
+            return publicationMapper.mapAll(publicationsWithUser);
         } catch (error: Error | any) {
             throw error;
         }
@@ -47,7 +73,7 @@ export default class PublicationService
         return publications;
     }
 
-    async create(entity: PublicationModelType): Promise<PublicationModel> {
+    async create(entity: PublicationModelType): Promise<PublicationDTO | null> {
         try {
             const user = await this.fisherService.findById(entity.id_user);
             if (!user) {
@@ -55,7 +81,9 @@ export default class PublicationService
             }
 
             const publication = await PublicationModel.create({ ...entity });
-            return publication;
+            const publicationWithUser = await this.expandPublication(publication);
+
+            return publicationMapper.map(publicationWithUser);
         } catch (error) {
             throw error;
         }
@@ -96,7 +124,7 @@ export default class PublicationService
         }
     }
 
-    async update(id: number, entity: PublicationModelType): Promise<PublicationModel | null> {
+    async update(id: number, entity: PublicationModelType): Promise<PublicationDTO | null> {
         try {
             const publication = await PublicationModel.findByPk(id);
             if (!publication) {
@@ -104,13 +132,52 @@ export default class PublicationService
             }
             if (entity.description) entity.is_edited = true;
 
-            return await publication.update({ ...entity });
+            const publicationUpdated = await publication.update({ ...entity });
+            const publicationWithUser = await this.expandPublication(publicationUpdated);
+
+            return publicationMapper.map(publicationWithUser);
         } catch (error: Error | any) {
             throw error;
         }
     }
 
     async delete(id: number): Promise<void> {
-        await PublicationModel.destroy({ where: { id_publication: id } });
+        try {
+            const publication = await PublicationModel.findByPk(id);
+            if (!publication) {
+                throw new EntityNotFound('Publication not found');
+            }
+
+            await publication.destroy();
+        } catch (error: Error | any) {
+            throw error;
+        }
+    }
+
+    async expandPublications(publications: PublicationModel[]): Promise<PublicationExpandedType[]> {
+        const UserIds = [
+            ...new Set(publications.map((publication) => publication.dataValues.id_user))
+        ];
+
+        const usersPublicationPromise = UserModel.findAll({
+            where: { id_user: UserIds },
+            attributes: ['id_user', 'name', 'last_name']
+        });
+
+        const [usersPublication] = await Promise.all([usersPublicationPromise]);
+
+        const publicationsWithUser: PublicationExpandedType[] = publications.map((publication) => {
+            const user = usersPublication.find(
+                (user) => user.dataValues.id_user === publication.dataValues.id_user
+            );
+            return { ...publication.dataValues, user: user?.dataValues };
+        });
+
+        return publicationsWithUser;
+    }
+
+    async expandPublication(publication: PublicationModel): Promise<PublicationExpandedType> {
+        const user = await UserModel.findByPk(publication.dataValues.id_user);
+        return { ...publication.dataValues, user: user?.dataValues };
     }
 }

@@ -5,6 +5,7 @@ import PointInterestModel from '@/modules/tablePointOfInterest/Model/PointIntere
 
 import ImageModel, { ImageModelType } from '@/modules/tableImages/Model/Image.model';
 import CommentModel from '@/modules/tableComment/Model/Comment.model';
+import { UserDTO, UserModelType } from '@/modules/tableUser/model/User.model';
 
 export type PublicationModelType = {
     id_publication?: number;
@@ -18,11 +19,18 @@ export type PublicationModelType = {
     urls?: ImageModelType[] | null;
 };
 
+export type PublicationExpandedType = PublicationModel & UserModelType;
+
+export type PublicationDTO = Omit<PublicationModelType, 'id_user'> & {
+    user: UserDTO;
+};
+
 export default class PublicationModel extends Model {
     public static associate() {
         PublicationModel.belongsTo(FisherModel, {
             foreignKey: 'id_user',
-            targetKey: 'id_user'
+            targetKey: 'id_user',
+            as: 'fisher'
         });
 
         PublicationModel.belongsTo(PointInterestModel, {
@@ -37,7 +45,8 @@ export default class PublicationModel extends Model {
 
         PublicationModel.hasMany(ImageModel, {
             foreignKey: 'id_publication',
-            sourceKey: 'id_publication'
+            sourceKey: 'id_publication',
+            as: 'images'
         });
     }
 

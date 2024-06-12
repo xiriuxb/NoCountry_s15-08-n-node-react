@@ -49,6 +49,29 @@ class CommentController {
         }
     }
 
+    public findCommentPublication = async(req: Request, res: Response): Promise<any> => {
+        try {
+            const cleanId = this.helperC.verifyId(req.params.id);
+
+            if (!cleanId) {
+                res.status(400).json({message: 'No se pudo buscar el comentario, ID inválido.'});
+                return;
+            }
+
+            const comments = await this.servicesC.findCommentPublication(req.params.id);
+
+            if (comments.length === 0 || comments === null) {
+                res.status(404).json({message: 'No se encontraron comentarios relacionados con la publicacion'})
+                return;
+            }
+
+            res.status(200).json(comments);
+
+        } catch (error) {
+            res.status(500).json('Hubo un problema con el servidor');
+        }
+    }
+
     public createComment = async(req: Request, res: Response): Promise<any> => {
         try {
             const createdDate = new Date(req.body.createdAt)

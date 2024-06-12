@@ -30,7 +30,7 @@ class CommentHelper {
         .min(1,{message: `La ${this.arrError[2]} debe contener como mínimo 1 caracter.`})
         .max(200,{message: `La ${this.arrError[2]} debe contener como máximo 200 caracteres.`})
         .trim()
-        .regex(/^[0-9a-zA-Z\s]+$/, {message: `El ${this.arrError[2]} puede contener solamente numeros, espacios y letras`}),
+        .regex(/^[a-zA-Z0-9\(\)\.\:\,\"\'´!\$%\/\-_;\s]+$/, {message: `El ${this.arrError[2]} puede contener numeros, espacios, letras y algunos caracteres especiales`}),
 
         createdAt: 
         z.date()

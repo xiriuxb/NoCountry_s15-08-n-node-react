@@ -35,7 +35,7 @@ export default class TipsHelper {
             .min(4, { message: `La zona debe contener como mínimo 3 caracteres.` })
             .max(500, { message: `La zona no debe superar los 500 caracteres.` })
             .trim()
-            .regex(/^[a-zA-Z\s]+$/, { message: 'La zona debe contener entre 3 y 500 caracteres' }),
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\-_]+$/, { message: 'La zona puede contener numeros, espacios, letras y algunos caracteres especiales' }),
 
         description: z
             .string({
@@ -45,8 +45,8 @@ export default class TipsHelper {
             .min(4, { message: `La descripción debe contener como mínimo 3 caracteres.` })
             .max(500, { message: `La descripción no debe superar los 500 caracteres.` })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: 'La descripción puede contener numeros, espacios y letras'
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: 'La descripción puede contener numeros, espacios, letras y algunos caracteres especiales'
             })
     });
 

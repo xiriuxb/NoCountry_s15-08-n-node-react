@@ -6,8 +6,9 @@ const controller = new CommentController();
 
 router.get('/', controller.findAll);
 router.get('/:id', controller.findOne);
-router.post('/', controller.createComment); //solo accede el admin
-router.put('/:id', controller.updateComment); //solo accede el admin
-router.delete('/:id', controller.deleteComment); //solo accede el admin
+router.get('/publication/:id', controller.findCommentPublication); //todos los comentarios de esa publicacion
+router.post('/', controller.createComment); 
+router.put('/:id', controller.updateComment); 
+router.delete('/:id', controller.deleteComment);
 
 export default router;

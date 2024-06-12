@@ -48,8 +48,8 @@ export default class EventHelper {
                 message: `El ${this.arrError[2]} debe contener como máximo 100 caracteres.`
             })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: `El ${this.arrError[2]} puede contener solamente numeros, espacios y letras`
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: `El ${this.arrError[2]} puede contener solamente numeros, espacios, letras y algunos caracteres especiales`
             }),
 
         edition: z
@@ -60,8 +60,8 @@ export default class EventHelper {
             .min(1, { message: `La ${this.arrError[3]} debe contener como mínimo 1 carácter.` })
             .max(20, { message: `La ${this.arrError[3]} debe contener como máximo 20 caracteres.` })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: `La ${this.arrError[3]} puede contener solamente numeros, espacios y letras`
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: `La ${this.arrError[3]} puede contener solamente numeros, espacios, letras y algunos caracteres especiales`
             }),
 
         description: z
@@ -74,8 +74,8 @@ export default class EventHelper {
                 message: `La ${this.arrError[4]} debe contener como máximo 500 caracteres.`
             })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: `La ${this.arrError[4]} puede contener solamente numeros, espacios y letras`
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: `La ${this.arrError[4]} puede contener solamente numeros, espacios, letras y algunos caracteres especiales`
             }),
 
         expertize: z.enum([Expertise.BEGINNER, Expertise.INTERMEDIATE, Expertise.EXPERT], {
@@ -98,8 +98,8 @@ export default class EventHelper {
             .min(2, { message: `El ${this.arrError[8]} debe contener como mínimo 2 caracteres.` })
             .max(30, { message: `El ${this.arrError[8]} debe contener como máximo 30 caracteres.` })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: `El ${this.arrError[8]} puede contener solamente numeros, espacios y letras`
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: `El ${this.arrError[8]} puede contener solamente numeros, espacios, letras y algunos caracteres especiales`
             }),
 
         sponsor: z
@@ -112,8 +112,8 @@ export default class EventHelper {
                 message: `El ${this.arrError[9]} debe contener como máximo 100 caracteres.`
             })
             .trim()
-            .regex(/^[0-9a-zA-Z\s]+$/, {
-                message: `El ${this.arrError[9]} puede contener solamente numeros, espacios y letras`
+            .regex(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ\s\(\)\.\:\,\"\'´!\$%\/\-_;]+$/, {
+                message: `El ${this.arrError[9]} puede contener solamente numeros, espacios, letras y algunos caracteres especiales`
             })
             .nullable()
     });

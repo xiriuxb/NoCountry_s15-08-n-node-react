@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import FishInfoService from "../../services/fishInfo";
+import { useState } from "react";
+
 const tools = [
   {
     name: "Caña Madera",
@@ -30,6 +34,19 @@ const fishes = [
 ];
 
 const InfoPeces = () => {
+  const [fishes, setFishes] = useState([]);
+  const [tip, setTip] = useState({ description: "La mejor temporada de pesca de salmon " });
+
+  useEffect(() => {
+    FishInfoService.fetchFishData()
+      .then((data) => setFishes(data))
+      .catch((error) => console.log(error));
+
+    FishInfoService.fetchGetTipById(3)
+      .then((data) => setTip(data)) // Aquí actualizamos el estado de 'tip'
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="p-6 text-white">
       <div className="flex flex-col md:flex-row">
@@ -38,10 +55,11 @@ const InfoPeces = () => {
             <img src="/otoño.jpg" className="rounded-md h-full object-cover" />
           </div>
           <div className="flex-col pl-2">
+            <div className="">
+              <h5 className="font-bold pb-36 text-center px-3 text-gray-200/45">Consejo</h5>
+            </div>
             <h4 className="text-lg text-left font-bold">Otoño</h4>
-            <p className="text-sm text-left">
-              La mejor temporada de pesca de salmon{" "}
-            </p>
+            <p className="text-sm text-left">{tip.description}</p>
           </div>
         </div>
         <div className="flex flex-1 items-center">
@@ -69,7 +87,7 @@ export default InfoPeces;
 
 const ToolDescComponent = ({ toolInfo }) => {
   return (
-    <div className="flex flex-col sm:flex-row md:flex-col justify-start p-1 w-full md:w-1/2 md:max-w-40 md:min-w-40 bg-zinc-500/10 rounded-md">
+    <div className="flex flex-col sm:flex-row md:flex-col justify-start p-1 my-3 w-full md:w-1/2 md:max-w-40 md:min-w-40 bg-zinc-500/10 rounded-md">
       <img src={toolInfo.img} className="rounded-md h-24 max-h-24" />
       <div className="flex flex-col p-1 w-full">
         <h5 className="text-center text-lg font-bold">{toolInfo.name}</h5>
@@ -81,13 +99,16 @@ const ToolDescComponent = ({ toolInfo }) => {
 
 const FishDescComponent = ({ fishInfo }) => {
   return (
-    <div className="w-3/4 px-2">
+    <div className="w-3/4 p-2  m-2 h-full flex flex-col w-32 bg-zinc-500/10 rounded-md">
       <img
         src={fishInfo.img ? fishInfo.img : "/Salmon.jpg"}
-        className="w-full h-14"
+        className="w-full rounded-md h-14 object-contain"
       />
-      <p className="text-sm font-bold text-center">{fishInfo.name}</p>
-      <p className="text-sm text-center">{fishInfo.description}</p>
+      <article className="flex flex-col gap-4 px-1">
+        <h5 className="text-sm font-bold text-center">{fishInfo.species_name}</h5>
+        <p className="text-sm text-center text-zinc-500">{fishInfo.season}</p>
+        <p className="text-sm text-pretty">{fishInfo.importance_sport_fishing}</p>
+      </article>
     </div>
   );
 };

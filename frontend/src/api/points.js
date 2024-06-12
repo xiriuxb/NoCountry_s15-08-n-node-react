@@ -10,3 +10,12 @@ export const getPointsData = async () => {
     return [];
   }
 };
+
+export const postNewPoint = async (data) => {
+  try {
+    await appApi.post(URI_PATH, data);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

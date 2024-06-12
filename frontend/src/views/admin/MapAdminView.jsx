@@ -18,7 +18,7 @@ const MapAdminView = () => {
 
   const getData = async () => {
     const points = await getPointsData();
-    setData((prev) => [...prev, ...points]);
+    setData([...data, ...points]);
   };
 
   const handleClicNewPoint = (e) => {

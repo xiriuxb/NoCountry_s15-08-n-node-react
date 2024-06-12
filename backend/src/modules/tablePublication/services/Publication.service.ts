@@ -15,6 +15,7 @@ import { ImagesServices } from '@/modules/tableImages/services/Images.service';
 
 import { EntityNotFound } from '@/Error/Exception';
 import fs from 'fs';
+import { FindOptions } from 'sequelize';
 
 export default class PublicationService
     implements CRUDService<PublicationDTO, PublicationModelType>
@@ -22,9 +23,9 @@ export default class PublicationService
     private ImagesService: ImagesServices = new ImagesServices();
     private fisherService = new FisherService();
 
-    async findAll(): Promise<PublicationDTO[]> {
+    async findAll(Limit?: number): Promise<PublicationDTO[]> {
         try {
-            const publications = await PublicationModel.findAll({
+            const options: FindOptions = {
                 include: [
                     {
                         model: ImageModel,
@@ -32,7 +33,10 @@ export default class PublicationService
                         attributes: ['url']
                     }
                 ]
-            });
+            };
+            if (Limit) options.limit = Limit;
+
+            const publications = await PublicationModel.findAll(options);
 
             if (!publications) {
                 throw new EntityNotFound('Publications not found');
@@ -55,9 +59,21 @@ export default class PublicationService
         }
     }
 
-    async findByUserId(id: number): Promise<PublicationDTO[]> {
+    async findByUserId(id: number, limit?: number): Promise<PublicationDTO[]> {
         try {
-            const publications = await PublicationModel.findAll({ where: { id_user: id } });
+            const options: FindOptions = {
+                where: { id_user: id },
+                include: [
+                    {
+                        model: ImageModel,
+                        as: 'images',
+                        attributes: ['url']
+                    }
+                ]
+            };
+            if (limit) options.limit = limit;
+
+            const publications = await PublicationModel.findAll(options);
             if (!publications) {
                 throw new EntityNotFound('Publications not found');
             }
@@ -68,9 +84,23 @@ export default class PublicationService
         }
     }
 
-    async findByPointInterestId(id: number): Promise<PublicationModel[]> {
-        const publications = PublicationModel.findAll({ where: { id_point_interest: id } });
-        return publications;
+    async findByPointInterestId(id: number, limit?: number): Promise<PublicationDTO[]> {
+        const options: FindOptions = { where: { id_point_interest: id } };
+        if (limit) options.limit = limit;
+
+        const publications = await PublicationModel.findAll({
+            where: { id_point_interest: id },
+            include: [
+                {
+                    model: ImageModel,
+                    as: 'images',
+                    attributes: ['url']
+                }
+            ]
+        });
+        const publicationsWithUser = await this.expandPublications(publications);
+
+        return publicationMapper.mapAll(publicationsWithUser);
     }
 
     async create(entity: PublicationModelType): Promise<PublicationDTO | null> {

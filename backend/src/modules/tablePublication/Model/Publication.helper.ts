@@ -27,7 +27,6 @@ export default class publicationMapper {
                 rating: Publication.rating,
                 urls: [...Publication.images.map((image: ImageModel) => image.dataValues.url)]
             };
-
             return publication;
         } catch (error) {
             throw error;

@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
 import PublicationService from '../services/Publication.service';
 import { PublicationModelType } from '../Model/Publication.model';
-import multer from 'multer';
-import { Expertise } from '@/utils/types';
-import { EntityInvalid, EntityNotFound } from '@/Error/Exception';
+import { EntityNotFound } from '@/Error/Exception';
 
 export class PublicationController {
     private publicationService: PublicationService;
@@ -11,9 +9,11 @@ export class PublicationController {
         this.publicationService = new PublicationService();
     }
 
-    public findAll = async (_req: Request, res: Response): Promise<void> => {
+    public findAll = async (req: Request, res: Response): Promise<void> => {
         try {
-            const publications = await this.publicationService.findAll();
+            const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+            const publications = await this.publicationService.findAll(limit);
+
             res.status(200).json(publications);
         } catch (error) {
             res.status(500).json({ error: 'An error occurred on the server.' });
@@ -21,8 +21,8 @@ export class PublicationController {
     };
 
     public findById = async (req: Request, res: Response): Promise<void> => {
+        const { id } = req.params;
         try {
-            const { id } = req.params;
             const publication = await this.publicationService.findById(Number(id));
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
@@ -35,9 +35,11 @@ export class PublicationController {
     };
 
     public findByUserId = async (req: Request, res: Response): Promise<void> => {
+        const { id } = req.params;
         try {
-            const { id } = req.params;
-            const publication = await this.publicationService.findByUserId(Number(id));
+            const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+            const publication = await this.publicationService.findByUserId(Number(id), limit);
+
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
             } else {
@@ -49,9 +51,14 @@ export class PublicationController {
     };
 
     public findByPointInterestId = async (req: Request, res: Response): Promise<void> => {
+        const { id } = req.params;
         try {
-            const { id } = req.params;
-            const publication = await this.publicationService.findByPointInterestId(Number(id));
+            const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+            const publication = await this.publicationService.findByPointInterestId(
+                Number(id),
+                limit
+            );
+
             if (!publication) {
                 res.status(404).json({ message: 'Publication not found' });
             } else {

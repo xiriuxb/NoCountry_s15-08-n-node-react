@@ -19,7 +19,7 @@ export type PublicationModelType = {
     urls?: ImageModelType[] | null;
 };
 
-export type PublicationExpandedType = PublicationModel & UserModelType;
+export type PublicationExpandedType = PublicationModelType & UserModelType;
 
 export type PublicationDTO = Omit<PublicationModelType, 'id_user'> & {
     user: UserDTO;

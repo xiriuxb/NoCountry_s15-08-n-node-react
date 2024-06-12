@@ -64,13 +64,7 @@ const Navbar = () => {
                   return (
                     <li key={item.route}>
                       <NavLink
-                        className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
-                        style={({ isActive }) => {
-                          return {
-                            textDecoration: isActive ? "underline" : "",
-                            textUnderlineOffset: isActive ? "3px" : "",
-                          };
-                        }}
+                        className="w-full btn btn-sm btn-outline text-base text-white px-4 uppercase"
                         to={item.route}
                       >
                         {item.name}
@@ -102,19 +96,13 @@ const Navbar = () => {
             {navItems.map((item) => {
               return (
                 <li key={item.route}>
-                  <NavLink
-                    className="btn btn-md btn-ghost text-base text-white mx-3 uppercase"
+                  <Link
+                    className="btn btn-md btn-outline text-base text-white mx-3 uppercase"
                     to={item.route}
-                    style={({ isActive }) => {
-                      return {
-                        textDecoration: isActive ? "underline" : "",
-                        textUnderlineOffset: isActive ? "3px" : "",
-                      };
-                    }}
                     onClick={handleClickBtn}
                   >
                     {item.name}
-                  </NavLink>
+                  </Link>
                 </li>
               );
             })}

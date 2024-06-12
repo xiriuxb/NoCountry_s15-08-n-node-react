@@ -1,10 +1,9 @@
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMapStore } from "../../context/mapStore";
 import { FaStar } from "react-icons/fa";
 import { useForm } from "../../hooks/useForm";
 import { postNewPublication } from "../../api/posts";
 import PostButtonComponent from "../general/PostButtonComponent";
-import { parsePoint } from "../../utils/functions";
 
 const FISHER_ID = import.meta.env.VITE_FISHER_ID || 1;
 
@@ -37,8 +36,6 @@ const CreatePostComponent = ({ handleAfterCreate }) => {
   const imgInputRef = useRef(null);
   const { description, onInputChange, validForm, formState, onResetForm } =
     useForm(initialValues, formValidations);
-
-  const parsedPoint = useMemo(() => parsePoint(selectedPoint), [selectedPoint]);
 
   const handleCloseModal = () => {
     setLoading(false);
@@ -110,7 +107,7 @@ const CreatePostComponent = ({ handleAfterCreate }) => {
             </button>
           </div>
           <div className="p-3 flex flex-col overflow-hidden">
-            <h4 className="py-2">{`${parsedPoint.name}`}</h4>
+            <h4 className="py-2">{`${selectedPoint.name}`}</h4>
             {backError && (
               <div role="alert" className="alert alert-error">
                 <span>{backError}</span>

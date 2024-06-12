@@ -48,7 +48,7 @@ export default function UserLogIn({ registerPath = "/" }) {
               O
             </p>
             <p className="text-center text-LG underline">
-              REGISTRATE DIRECTAMENTE CON
+              INICIAR DIRECTAMENTE CON
             </p>
           </div>
           <div className="flex w-full flex-row justify-center mt-4 mb-10">

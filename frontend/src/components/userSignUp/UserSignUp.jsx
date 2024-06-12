@@ -57,7 +57,7 @@ export default function UserSignUp({ loginPath = "/" }) {
               <option value="intermediate">Intermedio</option>
               <option value="expert" selected >Experto</option>
             </select>
-          </div>        
+          </div>
           <div className="text-center justify-center mt-2 w-full">
             <button
               className="text-center text-white p-2 w-[40%] bg-gray-700 rounded-xl text-xl my-3"

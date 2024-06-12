@@ -1,5 +1,9 @@
-import appApi from "../../api/axios";
+import { useState } from "react";
+import { postNewPoint } from "../../api/points";
 import { useForm } from "../../hooks/useForm";
+import PostButtonComponent from "../general/PostButtonComponent";
+
+const ADMIN_ID = import.meta.env.VITE_ADMIN_ID || 1;
 
 const initialState = {
   name: "",
@@ -19,91 +23,116 @@ const PointFormComponent = ({ point, setData, onCancel }) => {
     initialState,
     formValidations
   );
+  const [backError, setBackError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setBackError(null);
     const newPoint = {
       ...formState,
       latitude: point.lat,
       longitude: point.lng,
-      id_user: 1,
+      id_user: ADMIN_ID,
       state: "active",
     };
     setData((prev) => [
       ...prev,
-      { ...newPoint, latitud: point.lat, longitud: point.lng },
+      { ...newPoint, latitude: point.lat, longitude: point.lng },
     ]);
-    await appApi.post("/pointOfInterest", newPoint);
-    onCancel();
+    try {
+      await postNewPoint(newPoint);
+      onCancel();
+    } catch (error) {
+      setBackError("An error ocurred");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="modal-box">
       <h3 className="font-bold text-lg">Datos del punto</h3>
-      <div className="modal-action mt-0">
-        <form method="dialog">
+      {backError && (
+        <div role="alert" className="alert alert-error">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>Error! Task failed successfully.</span>
+        </div>
+      )}
+      <form method="dialog">
+        <div>
+          <div className="label">
+            <span className="label-text">Name:</span>
+          </div>
+          <input
+            name="name"
+            value={formState["name"]}
+            onChange={onInputChange}
+            type="text"
+            placeholder="Name"
+            className="input input-bordered input-info w-full"
+          />
+        </div>
+        <div className="flex justify-between">
           <div>
             <div className="label">
-              <span className="label-text">Name:</span>
+              <span className="label-text">Latitud:</span>
             </div>
             <input
-              name="name"
-              value={formState["name"]}
-              onChange={onInputChange}
               type="text"
-              placeholder="Name"
-              className="input input-bordered input-info w-full"
+              placeholder="Latitud"
+              className="input input-bordered input-info w-full max-w-xs"
+              value={point.lat}
+              disabled
             />
-          </div>
-          <div className="flex">
-            <div>
-              <div className="label">
-                <span className="label-text">Latitud:</span>
-              </div>
-              <input
-                type="text"
-                placeholder="Latitud"
-                className="input input-bordered input-info w-full max-w-xs"
-                value={point.lat}
-                disabled
-              />
-            </div>
-            <div>
-              <div className="label">
-                <span className="label-text">Longitud:</span>
-              </div>
-              <input
-                type="text"
-                placeholder="Longitud"
-                className="input input-bordered input-info w-full max-w-xs"
-                value={point.lng}
-                disabled
-              />
-            </div>
           </div>
           <div>
             <div className="label">
-              <span className="label-text">Descripción:</span>
+              <span className="label-text">Longitud:</span>
             </div>
-            <textarea
-              className="textarea textarea-accent w-full"
-              placeholder="Descripción"
-              name="description"
-              value={formState["description"]}
-              onChange={onInputChange}
-            ></textarea>
+            <input
+              type="text"
+              placeholder="Longitud"
+              className="input input-bordered input-info w-full max-w-xs"
+              value={point.lng}
+              disabled
+            />
           </div>
-          {/* if there is a button in form, it will close the modal */}
-          <button
-            className="btn btn-primary"
-            onClick={handleSubmit}
-            disabled={!validForm}
-          >
-            Guardar
-          </button>
-          <button className="btn">Close</button>
-        </form>
-      </div>
+        </div>
+        <div>
+          <div className="label">
+            <span className="label-text">Descripción:</span>
+          </div>
+          <textarea
+            className="textarea textarea-accent w-full"
+            placeholder="Descripción"
+            name="description"
+            value={formState["description"]}
+            onChange={onInputChange}
+          ></textarea>
+        </div>
+        {/* if there is a button in form, it will close the modal */}
+        <PostButtonComponent
+          loading={loading}
+          disabled={loading || !validForm}
+          onClick={handleSubmit}
+          className="w-36"
+        />
+        <button className="btn">Close</button>
+      </form>
     </div>
   );
 };

@@ -54,8 +54,8 @@ const CardPostUserInfo = ({ userData, className = "" }) => {
     >
       <div className="avatar">
         <div className="w-10 h-10 rounded-full">
-          {userData && userData.image ? (
-            <img src={userData.image} />
+          {userData && userData.urls ? (
+            <img src={userData.urls[0]} />
           ) : (
             <FaUser className="w-full h-full" />
           )}

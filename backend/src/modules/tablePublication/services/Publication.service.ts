@@ -23,7 +23,7 @@ export default class PublicationService
     private ImagesService: ImagesServices = new ImagesServices();
     private fisherService = new FisherService();
 
-    async findAll(Limit?: number): Promise<PublicationDTO[]> {
+    async findAll(Limit?: number, orderByDate?: string): Promise<PublicationDTO[]> {
         try {
             const options: FindOptions = {
                 include: [
@@ -35,6 +35,7 @@ export default class PublicationService
                 ]
             };
             if (Limit) options.limit = Limit;
+            if (orderByDate) options.order = [['createdAt', orderByDate]];
 
             const publications = await PublicationModel.findAll(options);
 
@@ -122,30 +123,37 @@ export default class PublicationService
     async createWithImage(
         entity: PublicationModelType,
         file: Express.Multer.File
-    ): Promise<PublicationModelType> {
+    ): Promise<PublicationDTO | null> {
         const transaction = await mySqlSequelize.transaction();
 
         try {
             const user = await this.fisherService.findById(entity.id_user);
             if (!user) {
-                throw new EntityNotFound('User not found please use a valid Fisherman ID');
+                throw new EntityNotFound('User not found, please use a valid Fisherman ID');
             }
 
-            const publication = await PublicationModel.create({ ...entity });
+            const publication = await PublicationModel.create({ ...entity }, { transaction });
 
-            const ImageUpload = await this.ImagesService.uploadImage(file);
+            const imageUpload = await this.ImagesService.uploadImage(file);
 
-            await this.ImagesService.create({
-                ...ImageUpload,
-                id_publication: publication.dataValues.id_publication
-            });
+            const image = await ImageModel.create(
+                {
+                    ...imageUpload,
+                    id_publication: publication.dataValues.id_publication
+                },
+                { transaction }
+            );
+            const publicationWithUser = await this.expandPublication(publication);
 
             await transaction.commit();
 
-            return { ...publication.dataValues, ...ImageUpload };
-        } catch (error: Error | any) {
-            await transaction.rollback();
+            const publicationWithImages = { ...publicationWithUser, images: [image] };
 
+            return publicationMapper.map(publicationWithImages);
+        } catch (error) {
+            if (transaction) {
+                await transaction.rollback();
+            }
             throw error;
         } finally {
             fs.unlink(file.path, (err) => {
@@ -207,6 +215,7 @@ export default class PublicationService
     }
 
     async expandPublication(publication: PublicationModel): Promise<PublicationExpandedType> {
+        console.log(publication.dataValues);
         const user = await UserModel.findByPk(publication.dataValues.id_user);
         return { ...publication.dataValues, user: user?.dataValues };
     }

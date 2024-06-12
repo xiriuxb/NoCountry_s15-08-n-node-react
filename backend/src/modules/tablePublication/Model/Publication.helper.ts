@@ -9,6 +9,7 @@ export default class publicationMapper {
 
     public static map(Publication: any | null): PublicationDTO | null {
         try {
+            console.log(Publication);
             if (!Publication) {
                 return null;
             }
@@ -25,7 +26,9 @@ export default class publicationMapper {
                 updatedAt: Publication.updatedAt,
                 is_edited: Publication.is_edited,
                 rating: Publication.rating,
-                urls: [...Publication.images.map((image: ImageModel) => image.dataValues.url)]
+                urls: Publication.images && [
+                    ...Publication.images.map((image: ImageModel) => image.dataValues.url)
+                ]
             };
             return publication;
         } catch (error) {

@@ -27,7 +27,7 @@ export class ImagesServices {
         }
     }
 
-    async create(file: ImageModelType, transaction?: Transaction) {
+    async create(file: ImageModelType, transaction?: Transaction): Promise<ImageModel> {
         try {
             const image = await ImageModel.create(file);
             await transaction?.commit();

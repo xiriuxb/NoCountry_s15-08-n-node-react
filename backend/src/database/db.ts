@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, PORT } from '@/Config/config';
 import { initializeModels } from './syncEntity';
 
@@ -18,5 +18,5 @@ export const connection = async () => {
         .catch((error) => {
             console.error('Unable to connect to the database:', error);
         });
-    mySqlSequelize.sync({ alter: true });
+    mySqlSequelize.sync();
 };

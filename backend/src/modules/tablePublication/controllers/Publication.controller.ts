@@ -12,6 +12,12 @@ export class PublicationController {
     public findAll = async (req: Request, res: Response): Promise<void> => {
         try {
             const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
+            const date = req.query.order
+                ? (req.query.order as string).toLocaleUpperCase() === 'DESC'
+                    ? 'DESC'
+                    : 'ASC'
+                : undefined;
+
             const publications = await this.publicationService.findAll(limit);
 
             res.status(200).json(publications);

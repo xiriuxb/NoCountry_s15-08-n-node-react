@@ -48,7 +48,7 @@ const InfoPeces = () => {
   }, []);
 
   return (
-    <div className="p-6 text-white">
+    <div className="p-6 bg-custom-dark text-white rounded-lg">
       <div className="flex flex-col md:flex-row">
         <div className="flex p-2 bg-zinc-900/50 rounded-md items-end w-5/12">
           <div className="h-full">

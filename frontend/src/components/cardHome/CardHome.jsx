@@ -2,7 +2,7 @@ import React from "react";
 
 const CardHome = ({ img, text, title }) => {
   return (
-    <div className={`card w-full h-48 p-5 shadow-2xl font-inter ${img ? "image-full" : "bg-zinc-700/35"}`} >
+<div className={`card w-full h-48 p-5 shadow-2xl font-inter ${img ? "image-full" : "bg-zinc-700/35"}`} >
       {img && <figure className="w-full h-[160px]">
         <img className="w-full h-full object-cover" src={img} alt="Shoes" />
       </figure>}

@@ -1,10 +1,20 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
+import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { useAuthStore } from "../../context/useAuth";
 
 export default function UserLogIn({ registerPath = "/" }) {
+  const setIsAuth = useAuthStore((state) => state.setIsAuth);
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    localStorage.setItem("user:auth", "true");
+    setIsAuth(true);
+    navigate("/admin/map");
+  };
+
   return (
     <form className="flex flex-col w-full bg-black h-screen">
       <div className="bg-custom-dark w-4/3 mr-80 h-screen p-20 items-center">
@@ -35,19 +45,21 @@ export default function UserLogIn({ registerPath = "/" }) {
             />
           </div>
           <span className="w-full flex text-center mt-4 mb-14">
-          <Link className="underline  text-white" to={"/"}>¿HAS OLVIDADO LA CLAVE?</Link>
-        </span>
+            <Link className="underline  text-white" to={"/"}>
+              ¿HAS OLVIDADO LA CLAVE?
+            </Link>
+          </span>
           <div className="text-center justify-center mt-2 w-full">
             <button
               className="text-center text-white p-2 w-[40%] bg-gray-700 rounded-xl text-xl my-3"
-              type="submit">
+              type="submit"
+              onClick={handleLogin}
+            >
               INICIAR
             </button>
           </div>
           <div className="w-full items-center mt-4">
-            <p className="text-center text-xl underline">
-              O
-            </p>
+            <p className="text-center text-xl underline">O</p>
             <p className="text-center text-LG underline">
               INICIAR DIRECTAMENTE CON
             </p>

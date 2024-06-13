@@ -19,7 +19,18 @@ export const postNewPublication = async (data) => {
 
 export const getPointPublications = async (pointId) => {
   try {
-    const postsData = (await appApi.get(`${URI_PATH}/pointInterest/${pointId}`)).data;
+    const postsData = (await appApi.get(`${URI_PATH}/pointInterest/${pointId}`))
+      .data;
+    console.log(postsData);
+    return postsData;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getPublications = async () => {
+  try {
+    const postsData = (await appApi.get(`${URI_PATH}`)).data;
     console.log(postsData);
     return postsData;
   } catch (error) {

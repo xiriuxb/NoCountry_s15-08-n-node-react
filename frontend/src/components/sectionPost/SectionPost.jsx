@@ -11,7 +11,7 @@ const SectionPost = ({ isHidden, setIsHidden }) => {
   };
 
   return (
-    <section className="w-full h-full text-white">
+    <section className="w-full h-full bg-custom-dark text-white">
       <div className="flex flex-col items-center gap-1 h-full">
         <div
           className={`flex w-full p-2 ${

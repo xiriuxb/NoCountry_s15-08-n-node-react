@@ -31,7 +31,7 @@ const HeroPage = () => {
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: false, amount: 0.7 }}
-                className="btn  btn-outline text-slate-100 mt-4 font-playfair text-xl"
+                className="btn  btn-outline text-white mt-4 font-playfair text-xl"
               >
                 Unete a la comunidad de pescadores
               </motion.button>

@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import AdminSideNavComponent from "../components/adminDashboard/AdminSideNavComponent";
-import { useAuthStore } from "../context/useAuth";
+import { useAuthStore } from "../context/useAuthStore";
 
 const AdminLayout = () => {
   const isAuth = useAuthStore((state) => state.isAuth);

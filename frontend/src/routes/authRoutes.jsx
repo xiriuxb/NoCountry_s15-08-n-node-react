@@ -9,11 +9,11 @@ const authRoutes = [
   },
   {
     path: "register",
-    element: <UserSignUp loginPath="/auth/register" />,
+    element: <UserSignUp />,
   },
   {
     path: "login",
-    element: <UserLogIn registerPath="/auth/login" />,
+    element: <UserLogIn />,
   },
 ];
 

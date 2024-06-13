@@ -1,14 +1,11 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../context/useAuth";
+import { useAuthStore } from "../../context/useAuthStore";
+import useAuth from "../../hooks/useAuth";
 
 const navItems = [
   {
     name: "eventos",
     route: "/events",
-  },
-  {
-    name: "tienda",
-    route: "",
   },
   {
     name: "mapa",
@@ -17,27 +14,13 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const isAuth = useAuthStore((state) => state.isAuth);
-  const setIsAuth = useAuthStore((state) => state.setIsAuth);
-  const navigate = useNavigate();
-
   const handleClickBtn = () => {
     document.getElementById("drawer-btn").click();
   };
 
-  const handleLoginLogout = () => {
-    if (isAuth) {
-      localStorage.removeItem("user:auth");
-      setIsAuth(false);
-      navigate("/", { replace: true });
-      return;
-    }
-    navigate("/auth");
-  };
-
   return (
     <>
-      <div className="drawer z-30">
+      <div className="drawer z-30 font-inter">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
@@ -89,16 +72,9 @@ const Navbar = () => {
                     </li>
                   );
                 })}
-                {
-                  <li>
-                    <button
-                      className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
-                      onClick={handleLoginLogout}
-                    >
-                      {isAuth ? "logout" : "registrarse"}
-                    </button>
-                  </li>
-                }
+                {<li>
+                    <AuthButtonComponent />
+                  </li>}
               </ul>
             </div>
           </div>
@@ -139,6 +115,9 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li>
+              <AuthButtonComponent />
+            </li>
           </ul>
         </div>
       </div>
@@ -146,3 +125,25 @@ const Navbar = () => {
   );
 };
 export default Navbar;
+
+const AuthButtonComponent = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const navigate = useNavigate();
+  const { logOut } = useAuth();
+
+  const handleLoginLogout = () => {
+    if (isAuth) {
+      logOut("/");
+      return;
+    }
+    navigate("/auth");
+  };
+  return (
+    <button
+      className="w-full btn btn-sm btn-ghost text-base text-white px-4 uppercase"
+      onClick={handleLoginLogout}
+    >
+      {isAuth ? "logout" : "registrarse"}
+    </button>
+  );
+};

@@ -10,7 +10,7 @@ export default {
       },
       backgroundImage: {
         "fondo":
-          "url('/Background.jpg')",
+          "url('/barquito.gif')",
       },
       fontFamily: {
         poetsen: ["Poetsen One", "sans-serif"],

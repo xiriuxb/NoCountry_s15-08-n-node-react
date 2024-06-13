@@ -16,13 +16,13 @@ const CardPost = ({ post }) => {
         </div>
         <div className="cursor-pointer hover:bg-slate-700 rounded-lg">
           <div className="flex flex-row max-h-40">
-            <div className="w-1/2 bg-zinc-900/50 p-1 rounded-lg flex-1">
+            <div className="w-1/2 bg-zinc-900/50 p-1 rounded-lg flex-1 overflow-hidden">
               <p
                 className="text-white mx-1 text-ellipsis whitespace-normal overflow-hidden"
                 style={{
-                  WebkitBoxOrient: "vertical",
+                  "-webkit-box-orient": "vertical",
                   display: "-webkit-box",
-                  WebKitLineClamp: "6",
+                  "-webkit-line-clamp": "6",
                 }}
               >
                 {post.description}

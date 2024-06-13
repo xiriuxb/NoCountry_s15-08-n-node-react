@@ -35,7 +35,9 @@ const fishes = [
 
 const InfoPeces = () => {
   const [fishes, setFishes] = useState([]);
-  const [tip, setTip] = useState({ description: "La mejor temporada de pesca de salmon " });
+  const [tip, setTip] = useState({
+    description: "La mejor temporada de pesca de salmon ",
+  });
 
   useEffect(() => {
     FishInfoService.fetchFishData()
@@ -50,19 +52,22 @@ const InfoPeces = () => {
   return (
     <div className="p-6 bg-custom-dark text-white rounded-lg">
       <div className="flex flex-col md:flex-row">
-        <div className="flex p-2 bg-zinc-900/50 rounded-md items-end w-5/12">
-          <div className="h-full">
-            <img src="/otoño.jpg" className="rounded-md h-full object-cover" />
+        <div className="flex flex-col p-2 bg-zinc-900/50 rounded-md items-end w-1/3">
+          <div className="h-full w-full ">
+            <img
+              src="/otoño.jpg"
+              className="rounded-md w-full h-full object-cover"
+            />
           </div>
-          <div className="flex-col pl-2">
-            <div className="">
-              <h5 className="font-bold pb-36 text-center px-3 text-gray-200/45">Consejo</h5>
-            </div>
+          <div className="flex flex-col pl-2 ">
+            <h5 className="font-bold text-center px-3 text-gray-200/45">
+              Consejo
+            </h5>
             <h4 className="text-lg text-left font-bold">Otoño</h4>
             <p className="text-sm text-left">{tip.description}</p>
           </div>
         </div>
-        <div className="flex flex-1 items-center">
+        <div className="flex flex-1 items-center ">
           {fishes.map((fish) => {
             return <FishDescComponent fishInfo={fish} key={fish.name} />;
           })}
@@ -99,15 +104,19 @@ const ToolDescComponent = ({ toolInfo }) => {
 
 const FishDescComponent = ({ fishInfo }) => {
   return (
-    <div className="w-3/4 p-2  m-2 h-full flex flex-col w-32 bg-zinc-500/10 rounded-md">
+    <div className="w-1/3 p-2  m-2 h-full flex flex-col bg-zinc-500/10  rounded-md">
       <img
         src={fishInfo.img ? fishInfo.img : "/Salmon.jpg"}
-        className="w-full rounded-md h-14 object-contain"
+        className="w-full h-20  rounded-md  object-contain"
       />
-      <article className="flex flex-col gap-4 px-1">
-        <h5 className="text-sm font-bold text-center">{fishInfo.species_name}</h5>
-        <p className="text-sm text-center text-zinc-500">{fishInfo.season}</p>
-        <p className="text-sm text-pretty">{fishInfo.importance_sport_fishing}</p>
+      <article className="flex flex-col gap-4 px-1 ">
+        <h5 className="text-sm font-bold text-center">
+          {fishInfo.species_name}
+        </h5>
+        <p className="text-xs text-center text-zinc-500">{fishInfo.season}</p>
+        <p className="text-xs text-pretty">
+          {fishInfo.importance_sport_fishing}
+        </p>
       </article>
     </div>
   );

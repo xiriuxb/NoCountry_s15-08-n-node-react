@@ -2,12 +2,26 @@
 
 El proyecto tiene como objetivo principal proporcionar a los pescadores una herramienta básica para encontrar rutas seguras para pescar dependiendo de las temporadas. Además, se incluirá una comunidad donde los usuarios podrán compartir información sobre los peces encontrados.
 
+![1](https://github.com/xiriuxb/NoCountry_s15-08-n-node-react/assets/117502571/0de66458-e08b-4fe2-8d44-81d2029222eb)
+
+
+
 ## Caracteristicas principales
+![7](https://github.com/xiriuxb/NoCountry_s15-08-n-node-react/assets/117502571/5ea91d19-2a91-4aef-97ce-7154615d383c)
+
+![4](https://github.com/xiriuxb/NoCountry_s15-08-n-node-react/assets/117502571/cbb452d3-a417-4b83-b0d5-537be716da87)
+
+
+
 
 **Guía de Rutas no restringidas:** 
 
-**Comunidad de Pescadores:**
 
+
+**Autenticacion **
+![2](https://github.com/xiriuxb/NoCountry_s15-08-n-node-react/assets/117502571/e9d4125a-57a4-4f9e-a4f8-09df5ffa6f4e)
+
+![3](https://github.com/xiriuxb/NoCountry_s15-08-n-node-react/assets/117502571/b84d7dcf-b777-4649-a778-755e2385bd78)
 
 ## Colaboradores
 

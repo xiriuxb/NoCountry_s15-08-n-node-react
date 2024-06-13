@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMapStore } from "../../context/mapStore";
 import { FaStar } from "react-icons/fa";
 import { useForm } from "../../hooks/useForm";
+import { postNewPublication } from "../../api/posts";
+import PostButtonComponent from "../general/PostButtonComponent";
+import useParsePoint from "../../hooks/useParsePoint";
+
+const FISHER_ID = import.meta.env.VITE_FISHER_ID || 1;
 
 const adjustTextareaHeight = (textarea) => {
   textarea.style.height = "auto";
   textarea.style.height = `${textarea.scrollHeight}px`;
 };
 
-const handleCloseModal = () => {
+const handleCloseModalLabel = () => {
   document.getElementById("close_user_modal").click();
 };
 
 const formValidations = {
   description: [
-    (value) => value.length > 1 && value.length < 512,
+    (value) => value.length > 4 && value.length < 512,
     "Invalid value",
   ],
 };
@@ -23,29 +28,57 @@ const initialValues = {
   description: "",
 };
 
-const CreatePostComponent = () => {
+const CreatePostComponent = ({ handleAfterCreate }) => {
   const selectedPoint = useMapStore((state) => state.selectedPoint);
   const [selectedImage, setSelectedImage] = useState(null);
   const [rating, setRating] = useState(1);
+  const [backError, setBackError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const imgInputRef = useRef(null);
+  const parsedPoint = useParsePoint(selectedPoint);
   const { description, onInputChange, validForm, formState, onResetForm } =
     useForm(initialValues, formValidations);
 
-  const handleImageChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setSelectedImage(selectedFile);
+  const handleCloseModal = () => {
+    setLoading(false);
+    setBackError(null);
+    handleCloseModalLabel();
   };
 
-  const handleSubmit = (e) => {
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+  };
+
+  const handleClearFileInput = () => {
+    if (imgInputRef && imgInputRef.current) {
+      imgInputRef.current.value = "";
+      setSelectedImage(null);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setBackError(null);
     const data = {
-      idPuntointeres: selectedPoint.id,
-      descripcion: description,
+      id_user: FISHER_ID,
+      id_point_interest: selectedPoint.id_point_interest,
+      description,
       rating,
-      foto: selectedImage ? URL.createObjectURL(selectedImage) : null,
+      image: selectedImage,
     };
-    console.log(data);
-    onResetForm();
-    handleCloseModal();
+    try {
+      const newPublication = await postNewPublication(data);
+      if (handleAfterCreate) {
+        handleAfterCreate(newPublication);
+      }
+      handleClearFileInput();
+      onResetForm();
+      handleCloseModal();
+    } catch (error) {
+      setBackError("Error creating");
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,18 +98,24 @@ const CreatePostComponent = () => {
             <label
               id="close_user_modal"
               htmlFor="user_modal"
+              className="hidden"
+            ></label>
+            <button
               className="btn btn-circle btn-ghost font-bold text-3xl"
+              onClick={handleCloseModal}
+              disabled={loading}
             >
               ×
-            </label>
+            </button>
           </div>
           <div className="p-3 flex flex-col overflow-hidden">
-            <h4 className="py-2">{`${selectedPoint.nombreLugar}`}</h4>
-            <form
-              className="flex flex-col overflow-hidden"
-              onSubmit={handleSubmit}
-              method="post"
-            >
+            <h4 className="py-2">{`${parsedPoint.name}`}</h4>
+            {backError && (
+              <div role="alert" className="alert alert-error">
+                <span>{backError}</span>
+              </div>
+            )}
+            <form className="flex flex-col overflow-hidden" method="post">
               <div className="overflow-y-auto">
                 <label>Rating: </label>
                 <RatingSelector defaultValue={rating} onChange={setRating} />
@@ -91,24 +130,36 @@ const CreatePostComponent = () => {
                   }}
                 ></textarea>
                 {selectedImage && (
-                  <img
-                    src={URL.createObjectURL(selectedImage)}
-                    alt="Selected Image"
-                  />
+                  <div className="relative">
+                    <img
+                      className="w-full"
+                      src={URL.createObjectURL(selectedImage)}
+                      alt="Selected Image"
+                    />
+                    <button
+                      className="absolute top-0 btn btn-circle btn-ghost font-bold text-3xl bg-slate-800/50 m-2"
+                      onClick={handleClearFileInput}
+                      disabled={loading}
+                    >
+                      ×
+                    </button>
+                  </div>
                 )}
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleImageChange}
                   className="file-input file-input-bordered file-input-md w-full bg-slate-500"
+                  ref={imgInputRef}
                 />
               </div>
-              <input
-                type="submit"
-                value={"Publicar"}
-                disabled={!validForm}
-                className="btn btn-primary w-full mt-2"
-              ></input>
+              <PostButtonComponent
+                disabled={loading || !validForm}
+                loading={loading}
+                onClick={handleSubmit}
+                text="Publicar"
+                className="w-full"
+              />
             </form>
           </div>
         </div>

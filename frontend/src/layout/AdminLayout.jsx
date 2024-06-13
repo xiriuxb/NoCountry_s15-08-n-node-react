@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import AdminSideNavComponent from "../components/adminDashboard/AdminSideNavComponent";
+import { useAuthStore } from "../context/useAuth";
 
 const AdminLayout = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
   return (
     <>
-      {import.meta.env.VITE_APP_IS_LOGGED == "true" &&
-      import.meta.env.VITE_USER_ROLE == "admin" ? (
+      {isAuth && import.meta.env.VITE_USER_ROLE == "admin" ? (
         <main>
           <AdminSideNavComponent>
             <Outlet />

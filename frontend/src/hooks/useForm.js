@@ -9,10 +9,7 @@ export const useForm = (initialForm, formValidations) => {
   }, [initialForm]);
 
   useEffect(() => {
-    if (
-      !!formValidations &&
-      JSON.stringify(initialForm) !== JSON.stringify(formState)
-    ) {
+    if (!!formValidations) {
       createValidators();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

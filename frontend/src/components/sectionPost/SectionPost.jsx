@@ -12,12 +12,16 @@ const SectionPost = ({ isHidden, setIsHidden }) => {
 
   return (
     <section className="w-full h-full text-white">
-      <div className="flex flex-col items-center p-2 gap-1 h-full">
-        <div className={`flex w-full ${isHidden ? "flex-col" : "flex-row-reverse"}`}>
+      <div className="flex flex-col items-center gap-1 h-full">
+        <div
+          className={`flex w-full p-2 ${
+            isHidden ? "flex-col" : "flex-row-reverse"
+          }`}
+        >
           <button
             id="button-map-drawer"
             onClick={handleHideButtonClick}
-            className="btn max-w-11 bg-slate-600"
+            className="btn max-w-11 bg-[#3d4451]"
           >
             {isHidden ? (
               <FaArrowLeft fill="#fff" />
@@ -30,12 +34,12 @@ const SectionPost = ({ isHidden, setIsHidden }) => {
           </div>
         </div>
         {!isHidden && selectedPoint && (
-          <div className="w-screen sm:w-[26rem] flex flex-col p-1 overflow-hidden">
+          <div className="w-full flex flex-col p-1 overflow-hidden">
             <PointPostsComponents />
           </div>
         )}
         {!isHidden && !selectedPoint && (
-          <div className="flex flex-col overflow-hidden">
+          <div className="w-full flex flex-col overflow-hidden">
             <BestPostsComponent />
           </div>
         )}

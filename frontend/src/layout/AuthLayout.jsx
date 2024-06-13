@@ -1,13 +1,16 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/variants";
+import { useAuthStore } from "../context/useAuth";
 
 const AuthLayout = () => {
+  const isAuth = useAuthStore((state) => state.isAuth);
   return (
     <>
-      {import.meta.env.VITE_APP_IS_LOGGED === "true" ? (
+      {isAuth ? (
         <Navigate to={"/"} replace />
       ) : (
+
         <main className="flex w-full bg-black h-screen">
           <div className="flex flex-row w-1/2 relative ml-60">
             <img src="/canadepesca.png" className="w-full" />

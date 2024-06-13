@@ -5,17 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-dark': '#222224',
-        'custom-gray': '#252527'
+        "custom-dark": "#092341",
+        "custom-blue": "#092391",
       },
       backgroundImage: {
-        "fondo":
-          "url('/Background.jpg')",
+        fondo: "url('/background.png')",
+        barco: "url('/barquito.gif')",
       },
       fontFamily: {
         poetsen: ["Poetsen One", "sans-serif"],
         playfair: ["Playfair Display", "serif"],
-        inter: ["Inter", "serif"]
+        inter: ["Inter", "serif"],
       },
     },
   },

@@ -15,7 +15,7 @@ const mostVisitedPlaces = [
 
 const PuntoInteres = () => {
   return (
-    <div className="flex bg-zinc-900/25 rounded-xl">
+    <div className="flex bg-custom-dark rounded-xl">
       <div className="py-2 px-4 flex flex-col items-center flex-1">
         <h4 className="text-white text-lg pb-2 text-center">
           Lugares mas Visitados en esta temporada
